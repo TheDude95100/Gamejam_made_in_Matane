@@ -10,9 +10,14 @@ public class Player : Entity
                 _sanity,
                 _maxHP,
                 _currentHP,
-                _bonusFireDamage,
-                _bonusMeleeDamage,
-                _bonusRangedDamage;
+                _maxHPFlatBonus;
+
+    private float _maxHPScaleBonus,
+                  _fireDamageBonus,
+                  _meleeDamageBonus,
+                  _rangedDamageBonus;
+
+    private float _accuracyBonus;
 
     public int Strengh => _strengh;
     public int Agility => _agility;
@@ -20,9 +25,12 @@ public class Player : Entity
     public int Sanity => _sanity;
     public int MaxHP => _maxHP;
     public int CurrentHP => _currentHP;
-    public int BonusFireDamage => _bonusFireDamage;
-    public int BonusMeleeDamage => _bonusMeleeDamage;
-    public int BonusRangedDamage => _bonusRangedDamage;
+    public int MaxHPFlatBonus  => _maxHPFlatBonus;
+    public float MaxHPScaleBonus => _maxHPScaleBonus;
+    public float FireDamageBonus => _fireDamageBonus;
+    public float MeleeDamageBonus => _meleeDamageBonus;
+    public float RangedDamageBonus => _rangedDamageBonus; 
+    public float AccuracyBonus => _accuracyBonus;
 
 
     // Start is called before the first frame update
@@ -43,6 +51,11 @@ public class Player : Entity
         _agility = Data.Agility;
         _constitution = Data.Constitution;
         _sanity = Data.Sanity;
+        _maxHPFlatBonus = Data.MaxHPFlatBonus;
+        _maxHPScaleBonus = Data.MaxHPScaleBonus;
+        _fireDamageBonus = Data.FireDamageBonus;
+        _meleeDamageBonus = Data.MeleeDamageBonus;
+        _rangedDamageBonus = Data.RangedDamageBonus;
 
         foreach (EntityTrait trait in Data.Traits)
         {
@@ -50,12 +63,14 @@ public class Player : Entity
             _agility += trait.Agility;
             _constitution += trait.Constitution;
             _sanity += trait.Sanity;
-            _bonusFireDamage += trait.FireDamageBonus;
-            _bonusMeleeDamage += trait.MeleeDamageBonus;
-            _bonusRangedDamage += trait.RangedDamageBonus;
+            _maxHPFlatBonus += trait.MaxHPFlatBonus;
+            _maxHPScaleBonus *= trait.MaxHPScaleBonus;
+            _fireDamageBonus *= trait.FireDamageBonus;
+            _meleeDamageBonus *= trait.MeleeDamageBonus;
+            _rangedDamageBonus *= trait.RangedDamageBonus;
         }
 
-        _maxHP = _constitution * 3;
+        _maxHP += Mathf.FloorToInt((Constitution * 3) * MaxHPScaleBonus) + MaxHPFlatBonus;
     }
 
     public void SetCurrentHP(int currentHP)
@@ -65,11 +80,11 @@ public class Player : Entity
 
     public void DealtDamage(int damage)
     {
-        if(CurrentHP + damage <= 0)
+        if(CurrentHP - damage <= 0)
         {
             _currentHP = 0;
         }
-        else if(CurrentHP + damage >= MaxHP)
+        else if(CurrentHP - damage >= MaxHP)
         {
             _currentHP = MaxHP;
         }
