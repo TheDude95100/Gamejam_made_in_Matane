@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
 
-public class DialogueTrigger : MonoBehaviour
+public class DialogueTrigger : CompagnonDialogue
 {
     public Dialogue dialogue;
 
