@@ -55,4 +55,29 @@ public class DialogueBox : MonoBehaviour
     {
         canvas.enabled = false;
     }
+
+    public void CheckDialogueStatus()
+    {
+
+        DialogueManager manager = FindObjectOfType<DialogueManager>();
+        Debug.Log("Manager flag: " + manager.flag);
+        Debug.Log("Dialogue flag: " + manager.talkingCompagnon.DialogueFini);
+        if (manager.flag && !manager.talkingCompagnon.DialogueFini)
+        {
+            UnsetActiveContinueButton();
+            UnsetActiveScriptText();
+            SetActiveReponsePanel();
+        }
+        if(manager.flag && manager.talkingCompagnon.DialogueFini)
+        {
+            DeactivateCanvas();
+        }
+    }
+
+    public void ResetCanvas()
+    {
+        UnsetActiveReponsePanel();
+        SetActiveScriptText();
+        SetActiveContinueButton();
+    }
 }

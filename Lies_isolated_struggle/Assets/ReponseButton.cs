@@ -14,5 +14,6 @@ public class ReponseButton : MonoBehaviour
     public void TriggerReponse(string dialogue)
     {
         FindObjectOfType<DialogueManager>().StartDialogue(TalkingCharacter.dictionnaireDialogue[dialogue]);
+        TalkingCharacter.DialogueFini = true;
     }
 }
