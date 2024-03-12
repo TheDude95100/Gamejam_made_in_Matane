@@ -8,14 +8,12 @@ public class DialogueManager : MonoBehaviour
     public Queue<string> phrases;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
-    //public Animator animator;
 
     public bool flag;
     public void StartDialogue(Dialogue dialogue)
     {
         flag = false;
         phrases = new Queue<string>();
-        // if (animator != null) animator.SetBool("IsDialogueFinished", false);
         nameText.text = dialogue.nom;
 
         phrases.Clear();
@@ -51,7 +49,6 @@ public class DialogueManager : MonoBehaviour
     }
     public void EndDialogue()
     {
-        //if (animator != null) animator.SetBool("IsDialogueFinished",true);
         flag = true;
     }
 
