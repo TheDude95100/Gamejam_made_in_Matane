@@ -456,9 +456,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 432414074}
-        m_TargetAssemblyTypeName: DialogueBox, Assembly-CSharp
-        m_MethodName: UnsetActiveScriptText
+      - m_Target: {fileID: 1773964215}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: DisplayNextSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -470,19 +470,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 432414074}
         m_TargetAssemblyTypeName: DialogueBox, Assembly-CSharp
-        m_MethodName: SetActiveReponsePanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 432414074}
-        m_TargetAssemblyTypeName: DialogueBox, Assembly-CSharp
-        m_MethodName: UnsetActiveContinueButton
+        m_MethodName: CheckDialogueStatus
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -668,13 +656,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 392063374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b63f0c90289dc784aa2af5021edc911c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eef12b5a4d657a4f909d8cc6ad69b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    nom: Compagnon 4
+  listeDialogue:
+  - nom: reponse1
     phrases:
-    - Compagnon 4
+    - Reponse Compagnon 2.1
+    - Reponse Compagnon 2.2
+    - Reponse Compagnon 2.3
+  - nom: reponse2
+    phrases:
+    - Reponse Compagnon 2.1
+    - Reponse Compagnon 2.2
+    - Reponse Compagnon 2.3
+  - nom: reponse3
+    phrases:
+    - Reponse Compagnon 2.1
+    - Reponse Compagnon 2.2
+    - Reponse Compagnon 2.3
+  introduction:
+    nom: Personnage 4
+    phrases:
+    - Je suis le 4e perso
+  dialogueFin:
+    nom: 
+    phrases: []
 --- !u!1 &432414067
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,12 +962,24 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1230272722}
-        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_TargetAssemblyTypeName: CompagnonDialogue, Assembly-CSharp
         m_MethodName: TriggerDialogue
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: introduction
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1773964215}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: SetCompagnonDialogue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1230272722}
+          m_ObjectArgumentAssemblyTypeName: CompagnonDialogue, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1109,6 +1128,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: introduction
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1773964215}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: SetCompagnonDialogue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1152957306}
+          m_ObjectArgumentAssemblyTypeName: CompagnonDialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &522804134
@@ -1521,6 +1552,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 775408098}
+        m_TargetAssemblyTypeName: ReponseButton, Assembly-CSharp
+        m_MethodName: TriggerReponse
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: reponse3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &775408096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1758,18 +1801,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1152957306}
-        m_TargetAssemblyTypeName: CompagnonDialogue, Assembly-CSharp
-        m_MethodName: TriggerDialogue
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: reponse1
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 432414074}
         m_TargetAssemblyTypeName: DialogueBox, Assembly-CSharp
         m_MethodName: UnsetActiveReponsePanel
@@ -1780,6 +1811,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 888620959}
+        m_TargetAssemblyTypeName: ReponseButton, Assembly-CSharp
+        m_MethodName: TriggerReponse
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: reponse1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &888620957
@@ -2028,6 +2071,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1112843431}
+        m_TargetAssemblyTypeName: ReponseButton, Assembly-CSharp
+        m_MethodName: TriggerReponse
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: reponse2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1112843429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2089,7 +2144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1152957304}
   - component: {fileID: 1152957306}
-  - component: {fileID: 1152957307}
   m_Layer: 5
   m_Name: Compagnon 1
   m_TagString: Untagged
@@ -2128,32 +2182,27 @@ MonoBehaviour:
   listeDialogue:
   - nom: Reponse 1
     phrases:
-    - Reponse 1
+    - Reponse 1.1
+    - Reponse 1.2
+    - Reponse 1.3
   - nom: Reponse 2
     phrases:
     - Reponse 2
+    - Reponse 2
+    - Reponse 2
   - nom: Reponse 3
     phrases:
+    - Reponse 3
+    - Reponse 3
     - Reponse 3
   introduction:
     nom: Compagnon 1
     phrases:
     - C'est ma premiere phrase d'introduction
---- !u!114 &1152957307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1152957303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b63f0c90289dc784aa2af5021edc911c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    nom: Compagnon 1
-    phrases: []
+  dialogueFin:
+    nom: 
+    phrases:
+    - "Tu as d\xE9ja parl\xE9 avec moi"
 --- !u!1 &1198799622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,13 +2379,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1230272720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b63f0c90289dc784aa2af5021edc911c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eef12b5a4d657a4f909d8cc6ad69b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    nom: Compagnon 2
+  listeDialogue:
+  - nom: reponse1
     phrases:
-    - Compagnon 2
+    - Reponse Compagnon 2.1
+    - Reponse Compagnon 2.2
+    - Reponse Compagnon 2.3
+  - nom: reponse2
+    phrases:
+    - Reponse Compagnon 2.1
+    - Reponse Compagnon 2.2
+    - Reponse Compagnon 2.3
+  - nom: reponse3
+    phrases:
+    - Reponse Compagnon 2.1
+    - Reponse Compagnon 2.2
+    - Reponse Compagnon 2.3
+  introduction:
+    nom: Personnage 2
+    phrases:
+    - Je suis le deuxieme perso
+  dialogueFin:
+    nom: 
+    phrases: []
 --- !u!1 &1515918145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2747,13 +2815,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1625004210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b63f0c90289dc784aa2af5021edc911c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eef12b5a4d657a4f909d8cc6ad69b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    nom: Compagnon 3
+  listeDialogue:
+  - nom: reponse1
     phrases:
-    - Compagnon 3
+    - Reponse Compagnon 2.1
+    - Reponse Compagnon 2.2
+    - Reponse Compagnon 2.3
+  - nom: reponse2
+    phrases:
+    - Reponse Compagnon 2.1
+    - Reponse Compagnon 2.2
+    - Reponse Compagnon 2.3
+  - nom: reponse3
+    phrases:
+    - Reponse Compagnon 2.1
+    - Reponse Compagnon 2.2
+    - Reponse Compagnon 2.3
+  introduction:
+    nom: Personnage 3
+    phrases:
+    - Je suis le 3e perso
+  dialogueFin:
+    nom: 
+    phrases: []
 --- !u!1 &1644397548
 GameObject:
   m_ObjectHideFlags: 0
@@ -3438,12 +3525,24 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1625004212}
-        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_TargetAssemblyTypeName: CompagnonDialogue, Assembly-CSharp
         m_MethodName: TriggerDialogue
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: introduction
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1773964215}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: SetCompagnonDialogue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1625004212}
+          m_ObjectArgumentAssemblyTypeName: CompagnonDialogue, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3785,12 +3884,24 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 392063376}
-        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_TargetAssemblyTypeName: CompagnonDialogue, Assembly-CSharp
         m_MethodName: TriggerDialogue
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: introduction
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1773964215}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: SetCompagnonDialogue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 392063376}
+          m_ObjectArgumentAssemblyTypeName: CompagnonDialogue, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4085,7 +4196,6 @@ GameObject:
   - component: {fileID: 2057540051}
   - component: {fileID: 2057540050}
   - component: {fileID: 2057540049}
-  - component: {fileID: 2057540048}
   m_Layer: 5
   m_Name: Close
   m_TagString: Untagged
@@ -4113,22 +4223,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 31.8744, y: 35.6648}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &2057540048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057540046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eef12b5a4d657a4f909d8cc6ad69b10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listeDialogue: []
-  introduction:
-    nom: 
-    phrases: []
 --- !u!114 &2057540049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4176,6 +4270,18 @@ MonoBehaviour:
       - m_Target: {fileID: 432414074}
         m_TargetAssemblyTypeName: DialogueBox, Assembly-CSharp
         m_MethodName: DeactivateCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 432414074}
+        m_TargetAssemblyTypeName: DialogueBox, Assembly-CSharp
+        m_MethodName: ResetCanvas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
