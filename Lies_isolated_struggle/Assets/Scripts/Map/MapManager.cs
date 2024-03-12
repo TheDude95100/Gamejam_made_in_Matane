@@ -2,55 +2,70 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 
-public class MapManager : MonoBehaviour
+namespace finished1
 {
-    private static MapManager _instance;
-    public static MapManager Instance { get { return _instance; } }
-    [FormerlySerializedAs("OverlayTilePrefab")] public GameObject overlayTilePrefab;
-    public GameObject OverlayContainer;
-    private void Awake()
+    public class MapManager : MonoBehaviour
     {
-        if (_instance != null && _instance != this) {
-            Destroy(this.gameObject);
-        }
-        else {
-            _instance = this;
-        }
-    }
+        private static MapManager _instance;
+        public static MapManager Instance { get { return _instance; } }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Tilemap tileMap = gameObject.GetComponentInChildren<Tilemap>();
-        BoundsInt bounds = tileMap.cellBounds;
-        
-        // Looping through all tiles
-        for (int z = bounds.max.z; z > bounds.min.z; z++)
+        public GameObject overlayPrefab;
+        public GameObject overlayContainer;
+
+        public Dictionary<Vector2Int, GameObject> map;
+        public bool ignoreBottomTiles;
+
+        private void Awake()
         {
-            for (int y = bounds.min.y; y < bounds.max.y; y++)
+            if(_instance != null && _instance != this)
             {
-                for (int x = bounds.min.x; x < bounds.max.x; x++)
+                Destroy(this.gameObject);
+            } else
+            {
+                _instance = this;
+            }
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            var tileMap = gameObject.GetComponentInChildren<Tilemap>();
+            map = new Dictionary<Vector2Int, GameObject>();
+
+            BoundsInt bounds = tileMap.cellBounds;
+
+            for (int z = bounds.max.z; z >= bounds.min.z; z--)
+            {
+                for (int y = bounds.min.y; y < bounds.max.y; y++)
                 {
-                    Vector3Int tileLocation = new Vector3Int(x, y, z);
-
-                    if (tileMap.HasTile(tileLocation))
+                    for (int x = bounds.min.x; x < bounds.max.x; x++)
                     {
-                        GameObject overlayTile = Instantiate(overlayTilePrefab, OverlayContainer.transform);
-                        Vector3 cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
-
-                        overlayTile.transform.position = new Vector3(
-                            cellWorldPosition.x,
-                            cellWorldPosition.y,
-                            cellWorldPosition.z + 1);
-                        overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
+                        if (z == 0 && ignoreBottomTiles)
+                            return;
+                        
+                        var tileLocation = new Vector3Int(x, y, z);
+                        Debug.Log(tileLocation);
+                        var tileKey = new Vector2Int(x, y);
+                        if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
+                        {
+                            var overlayTile = Instantiate(overlayPrefab, overlayContainer.transform);
+                            var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
+                            overlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z-1);
+                            overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
+                            // overlayTile.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                            map.Add(tileKey, overlayTile);
+                        }
                     }
                 }
             }
         }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
-    
 }

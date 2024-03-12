@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4859508448635300653}
   - component: {fileID: 3741349833982605961}
   - component: {fileID: 4235096622285939270}
+  - component: {fileID: 2509963761458562060}
   m_Layer: 0
   m_Name: OverlayTile
   m_TagString: Untagged
@@ -120,7 +121,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.4995}
     oldSize: {x: 1, y: 0.5625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -134,3 +135,15 @@ PolygonCollider2D:
       - {x: 0, y: -0.25}
       - {x: 0.5, y: 0}
   m_UseDelaunayMesh: 0
+--- !u!114 &2509963761458562060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497731181865220349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d14a5ef7a63c04c827d0deaa4f2884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
