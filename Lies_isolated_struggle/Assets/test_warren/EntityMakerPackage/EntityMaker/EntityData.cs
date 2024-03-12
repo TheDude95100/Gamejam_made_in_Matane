@@ -8,7 +8,7 @@ public class EntityData: ScriptableObject
     [SerializeField]
     private string _name = "...";
     [SerializeField]
-    private EntityType _monsterType = EntityType.None;
+    private EntityType _entityType = EntityType.None;
     [SerializeField]
     [Range(0, 100)]
     private float _chanceToDropItem = 0.5f;
@@ -27,7 +27,7 @@ public class EntityData: ScriptableObject
     [SerializeField]
     private int _sanity = 1;
     [SerializeField]
-    private int _maxHP;
+    private int _bonusMaxHP;
 
 
     [SerializeField]
@@ -36,10 +36,12 @@ public class EntityData: ScriptableObject
     private string _battleCry = "...";
 
     [SerializeField]
-    private EntityAbilty[] _abilities;
+    private EntityAbility[] _abilities;
+    [SerializeField]
+    private EntityTrait[] _traits;
 
     public string Name => _name;
-    public EntityType MonsterType => _monsterType;
+    public EntityType EntityType => _entityType;
     public float ChanceToDropItem => _chanceToDropItem;
     public float RangeOfAwareness => _rangeOfAwareness;
     public bool CanEnterCombat => _canEnterCombat;
@@ -48,9 +50,10 @@ public class EntityData: ScriptableObject
     public int Agility => _agility;
     public int Constitution => _constitution;
     public int Sanity => _sanity;
-    public int MaxHP => _maxHP;
+    public int BonusMaxHP => _bonusMaxHP;
 
     public string BattleCry => _battleCry;
 
-    public EntityAbilty[] Abilities => _abilities;
+    public EntityAbility[] Abilities => _abilities;
+    public EntityTrait[] Traits => _traits;
 }

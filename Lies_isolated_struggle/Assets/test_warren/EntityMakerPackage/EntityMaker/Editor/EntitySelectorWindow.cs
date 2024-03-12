@@ -112,7 +112,7 @@ public class EntitySelectorWindow : EditorWindow
 
         foreach (Entity monster in monsters)
         {
-            if(monster.Data.MonsterType == _selectedMonsterType)
+            if(monster.Data.EntityType == _selectedMonsterType)
             {
                 _selectableGameObjects.Add(monster.gameObject);
             }

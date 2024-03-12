@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(EntityAbilty))]
+[CustomPropertyDrawer(typeof(EntityAbility))]
 public class EntityAbilityDrawer : PropertyDrawer
 {
 

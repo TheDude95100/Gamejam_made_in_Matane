@@ -16,15 +16,16 @@ public class EntityDataEditor : Editor
     private SerializedProperty _agility;
     private SerializedProperty _constitution;
     private SerializedProperty _sanity;
-    private SerializedProperty _maxHP;
+    private SerializedProperty _bonusMaxHP;
 
     private SerializedProperty _battleCry;
     private SerializedProperty _abilities;
+    private SerializedProperty _traits;
 
     private void OnEnable()
     {
         _name = serializedObject.FindProperty("_name");
-        _entityType = serializedObject.FindProperty("_monsterType");
+        _entityType = serializedObject.FindProperty("_entityType");
         _chanceToDropItem = serializedObject.FindProperty("_chanceToDropItem");
         _rangeOfAwareness = serializedObject.FindProperty("_rangeOfAwareness");
         _canEnterCombat = serializedObject.FindProperty("_canEnterCombat");
@@ -33,10 +34,11 @@ public class EntityDataEditor : Editor
         _agility = serializedObject.FindProperty("_agility");
         _constitution = serializedObject.FindProperty("_constitution");
         _sanity = serializedObject.FindProperty("_sanity");
-        _maxHP = serializedObject.FindProperty("_maxHP");
+        _bonusMaxHP = serializedObject.FindProperty("_bonusMaxHP");
 
         _battleCry = serializedObject.FindProperty("_battleCry");
         _abilities = serializedObject.FindProperty("_abilities");
+        _traits = serializedObject.FindProperty("_traits");
     }
 
     public override void OnInspectorGUI()
@@ -113,11 +115,9 @@ public class EntityDataEditor : Editor
                 RandomStats();
             }
 
-            RecalculateHP();
-
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Max HP", EditorStyles.boldLabel);
-            EditorGUILayout.LabelField(_maxHP.intValue + "");
+            EditorGUILayout.LabelField("Bonus to HP", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField(_bonusMaxHP.intValue + "");
             EditorGUILayout.EndHorizontal();
 
             EditorGUI.indentLevel--;
@@ -130,14 +130,10 @@ public class EntityDataEditor : Editor
         EditorGUILayout.Space(5);
         EditorGUILayout.PropertyField(_abilities, new GUIContent("Abilities"));
 
-
+        EditorGUILayout.Space(5);
+        EditorGUILayout.PropertyField(_traits, new GUIContent("Traits"));
 
         serializedObject.ApplyModifiedProperties();
-    }
-
-    private void RecalculateHP()
-    {
-        _maxHP.intValue = _constitution.intValue * 3;
     }
 
     private void ProgressBar(float value, string label)
