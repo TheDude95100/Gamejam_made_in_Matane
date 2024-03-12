@@ -16,7 +16,14 @@ public class EntityDataEditor : Editor
     private SerializedProperty _agility;
     private SerializedProperty _constitution;
     private SerializedProperty _sanity;
-    private SerializedProperty _bonusMaxHP;
+    private SerializedProperty _maxHPFlatBonus;
+    private SerializedProperty _maxHPScaleBonus;
+
+    private SerializedProperty _fireDamageBonus;
+    private SerializedProperty _meleeDamageBonus;
+    private SerializedProperty _rangedDamageBonus;
+
+    private SerializedProperty _accuracyBonus;
 
     private SerializedProperty _battleCry;
     private SerializedProperty _abilities;
@@ -34,7 +41,14 @@ public class EntityDataEditor : Editor
         _agility = serializedObject.FindProperty("_agility");
         _constitution = serializedObject.FindProperty("_constitution");
         _sanity = serializedObject.FindProperty("_sanity");
-        _bonusMaxHP = serializedObject.FindProperty("_bonusMaxHP");
+        _maxHPFlatBonus = serializedObject.FindProperty("_maxHPFlatBonus");
+        _maxHPScaleBonus = serializedObject.FindProperty("_maxHPScaleBonus");
+
+        _fireDamageBonus = serializedObject.FindProperty("_fireDamageBonus");
+        _meleeDamageBonus = serializedObject.FindProperty("_meleeDamageBonus");
+        _rangedDamageBonus = serializedObject.FindProperty("_rangedDamageBonus");
+
+        _accuracyBonus = serializedObject.FindProperty("_accuracyBonus");
 
         _battleCry = serializedObject.FindProperty("_battleCry");
         _abilities = serializedObject.FindProperty("_abilities");
@@ -78,47 +92,106 @@ public class EntityDataEditor : Editor
 
         if(_canEnterCombat.boolValue)
         {
-            EditorGUI.indentLevel++;
             EditorGUILayout.LabelField("Combat Stats", EditorStyles.boldLabel);
+            EditorGUI.indentLevel++;
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUIUtility.labelWidth = 85;
-
+            EditorGUIUtility.labelWidth = 90;
             EditorGUILayout.PropertyField(_strengh, new GUIContent("Strengh"));
-            if(_strengh.intValue < 0)
+            EditorGUILayout.PropertyField(_agility, new GUIContent("Agility"));
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PropertyField(_constitution, new GUIContent("Constitution"));
+            EditorGUILayout.PropertyField(_sanity, new GUIContent("Sanity"));
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.Space(5);
+
+            EditorGUILayout.LabelField("Hit points");
+            EditorGUIUtility.labelWidth = 120;
+            EditorGUI.indentLevel++;
+
+            EditorGUILayout.PropertyField(_maxHPFlatBonus, new GUIContent("Flat Modifier"));
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Scaling modifier");
+            _maxHPScaleBonus.floatValue = EditorGUILayout.Slider(
+                        _maxHPScaleBonus.floatValue,
+                        0.1f,
+                        5f
+                );
+            EditorGUILayout.EndHorizontal();
+            EditorGUI.indentLevel--;
+
+            EditorGUILayout.Space(5);
+
+            EditorGUILayout.LabelField("Damage modifiers");
+            EditorGUI.indentLevel++;
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Fire damage");
+            _fireDamageBonus.floatValue = EditorGUILayout.Slider(
+                        _fireDamageBonus.floatValue,
+                        0.1f,
+                        3f
+                );
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Melee damage");
+            _meleeDamageBonus.floatValue = EditorGUILayout.Slider(
+                        _meleeDamageBonus.floatValue,
+                        0.1f,
+                        3f
+                );
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Ranged damage");
+            _rangedDamageBonus.floatValue = EditorGUILayout.Slider(
+                        _rangedDamageBonus.floatValue,
+                        0.1f,
+                        3f
+                );
+            EditorGUILayout.EndHorizontal();
+            EditorGUI.indentLevel--;
+
+            EditorGUILayout.Space(5);
+
+            EditorGUILayout.LabelField("Accuracy modifiers");
+            EditorGUI.indentLevel++;
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Accuracy Bonus");
+            _rangedDamageBonus.floatValue = EditorGUILayout.Slider(
+                        _rangedDamageBonus.floatValue,
+                        0.1f,
+                        3f
+                );
+            EditorGUILayout.EndHorizontal();
+            EditorGUI.indentLevel--;
+
+            if (_strengh.intValue < 0)
             {
-                EditorGUILayout.HelpBox("Monsters shouldn't have negative Strengh.", MessageType.Warning);
+                EditorGUILayout.HelpBox("Entities shouldn't have negative Strengh.", MessageType.Warning);
             }
 
-            EditorGUILayout.PropertyField(_agility, new GUIContent("Agility"));
             if (_agility.intValue < 0)
             {
-                EditorGUILayout.HelpBox("Monsters shouldn't have negative Agility.", MessageType.Warning);
+                EditorGUILayout.HelpBox("Entities shouldn't have negative Agility.", MessageType.Warning);
             }
 
-            EditorGUILayout.EndHorizontal();
-            EditorGUILayout.BeginHorizontal();
-
-            EditorGUILayout.PropertyField(_constitution, new GUIContent("Constitution"));
             if (_constitution.intValue < 0)
             {
-                EditorGUILayout.HelpBox("Monsters shouldn't have negative Constitution.", MessageType.Warning);
+                EditorGUILayout.HelpBox("Entities shouldn't have negative Constitution.", MessageType.Warning);
             }
 
-            EditorGUILayout.PropertyField(_sanity, new GUIContent("Sanity"));
-
-
-            EditorGUILayout.EndHorizontal();
+            if (_maxHPFlatBonus.intValue < 0)
+            {
+                EditorGUILayout.HelpBox("Make sure the negative flat HP bonus doesn't bring the entity below 0.", MessageType.Warning);
+            }
 
             if (GUILayout.Button("Random Stats"))
             {
                 RandomStats();
             }
 
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Bonus to HP", EditorStyles.boldLabel);
-            EditorGUILayout.LabelField(_bonusMaxHP.intValue + "");
-            EditorGUILayout.EndHorizontal();
 
             EditorGUI.indentLevel--;
         }

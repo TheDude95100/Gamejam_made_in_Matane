@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EntityData_", menuName = "UnitData/Entity")]
-public class EntityData: ScriptableObject
+public class EntityData : ScriptableObject
 {
     [SerializeField]
     private string _name = "...";
@@ -27,8 +27,19 @@ public class EntityData: ScriptableObject
     [SerializeField]
     private int _sanity = 1;
     [SerializeField]
-    private int _bonusMaxHP;
+    private int _maxHPFlatBonus = 0;
+    [SerializeField]
+    private float _maxHPScaleBonus = 1f;
 
+    [SerializeField]
+    private float _fireDamageBonus = 1f;
+    [SerializeField]
+    private float _meleeDamageBonus = 1f;
+    [SerializeField]
+    private float _rangedDamageBonus = 1f;
+
+    [SerializeField]
+    private float _accuracyBonus = 1f;
 
     [SerializeField]
     [Tooltip("Speaks dialogue when entering combat.")]
@@ -50,7 +61,14 @@ public class EntityData: ScriptableObject
     public int Agility => _agility;
     public int Constitution => _constitution;
     public int Sanity => _sanity;
-    public int BonusMaxHP => _bonusMaxHP;
+    public int MaxHPFlatBonus => _maxHPFlatBonus;
+    public float MaxHPScaleBonus => _maxHPScaleBonus;
+
+    public float FireDamageBonus => _fireDamageBonus;
+    public float MeleeDamageBonus => _meleeDamageBonus;
+    public float RangedDamageBonus => _rangedDamageBonus;
+
+    public float AccuracyBonus => _accuracyBonus;
 
     public string BattleCry => _battleCry;
 
