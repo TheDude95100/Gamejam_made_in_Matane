@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
 
-public class DialogueTrigger : CompagnonDialogue
+public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
 
     public void TriggerDialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        FindObjectOfType<DialogueManager>().StartDialogue(GetComponent<CompagnonDialogue>().dictionnaireDialogue["introduction"]);
     }
 }

@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
+    public CompagnonDialogue talkingCompagnon;
+
     public bool flag;
     public void StartDialogue(Dialogue dialogue)
     {
@@ -52,4 +54,8 @@ public class DialogueManager : MonoBehaviour
         flag = true;
     }
 
+   public void SetCompagnonDialogue(CompagnonDialogue compagnon)
+    {
+        talkingCompagnon= compagnon;
+    }
 }

@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CompagnonDialogue : MonoBehaviour
 {
+    public Dialogue[] listeDialogue;
 
-    public Canvas canvas;
-    public void ActivateCanvas()
+    public Dialogue introduction;
+
+
+    public Dictionary<string, Dialogue> dictionnaireDialogue;
+
+
+
+
+    private void Start()
     {
-        canvas.enabled= true;
+        dictionnaireDialogue = new Dictionary<string, Dialogue>();
+        dictionnaireDialogue.Add("introduction", introduction);
+        Debug.Log(listeDialogue.Length);
+        for (int indexDialogue = 0; indexDialogue < listeDialogue.Length; indexDialogue++)
+        {
+                listeDialogue[indexDialogue].nom = GetComponent<DialogueTrigger>().dialogue.nom;
+                dictionnaireDialogue.Add("reponse" + (indexDialogue+1), listeDialogue[indexDialogue]);
+        }
     }
 
-    public void DeactivateCanvas()
+    public void TriggerDialogue(string dialogue)
     {
-        canvas.enabled= false;
+        FindObjectOfType<DialogueManager>().StartDialogue(dictionnaireDialogue[dialogue]);
     }
 }
