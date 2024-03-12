@@ -13,7 +13,7 @@ public enum ElementType
 }
 
 [System.Serializable]
-public class MonsterAbilty
+public class EntityAbilty
 {
     [SerializeField]
     private string _name = ". . .";

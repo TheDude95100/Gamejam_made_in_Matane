@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(MonsterAbilty))]
-public class MonsterAbilityDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(EntityAbilty))]
+public class EntityAbilityDrawer : PropertyDrawer
 {
 
     private SerializedProperty _name;

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MonsterData_", menuName = "UnitData/Monster")]
-public class MonsterData : ScriptableObject
+[CreateAssetMenu(fileName = "EntityData_", menuName = "UnitData/Entity")]
+public class EntityData: ScriptableObject
 {
     [SerializeField]
     private string _name = "...";
     [SerializeField]
-    private MonsterType _monsterType = MonsterType.None;
+    private EntityType _monsterType = EntityType.None;
     [SerializeField]
     [Range(0, 100)]
     private float _chanceToDropItem = 0.5f;
@@ -19,11 +19,16 @@ public class MonsterData : ScriptableObject
     private bool _canEnterCombat = true;
 
     [SerializeField]
-    private int _damage = 1;
+    private int _strengh = 1;
     [SerializeField]
-    private int _health = 1;
+    private int _agility = 1;
     [SerializeField]
-    private int _speed = 1;
+    private int _constitution = 1;
+    [SerializeField]
+    private int _sanity = 1;
+    [SerializeField]
+    private int _maxHP;
+
 
     [SerializeField]
     [Tooltip("Speaks dialogue when entering combat.")]
@@ -31,19 +36,21 @@ public class MonsterData : ScriptableObject
     private string _battleCry = "...";
 
     [SerializeField]
-    private MonsterAbilty[] _abilities;
+    private EntityAbilty[] _abilities;
 
     public string Name => _name;
-    public MonsterType MonsterType => _monsterType;
+    public EntityType MonsterType => _monsterType;
     public float ChanceToDropItem => _chanceToDropItem;
     public float RangeOfAwareness => _rangeOfAwareness;
     public bool CanEnterCombat => _canEnterCombat;
 
-    public int Damage => _damage;
-    public int Health => _health;
-    public int Speed => _speed;
+    public int Strengh => _strengh;
+    public int Agility => _agility;
+    public int Constitution => _constitution;
+    public int Sanity => _sanity;
+    public int MaxHP => _maxHP;
 
     public string BattleCry => _battleCry;
 
-    public MonsterAbilty[] Abilities => _abilities;
+    public EntityAbilty[] Abilities => _abilities;
 }

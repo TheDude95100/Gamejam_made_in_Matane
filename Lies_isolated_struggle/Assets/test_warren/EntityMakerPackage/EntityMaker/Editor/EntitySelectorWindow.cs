@@ -4,24 +4,24 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class MonsterSelectorWindow : EditorWindow
+public class EntitySelectorWindow : EditorWindow
 {
-    private MonsterType _selectedMonsterType = MonsterType.None;
-    private MonsterType _previousSelection = MonsterType.None;
+    private EntityType _selectedMonsterType = EntityType.None;
+    private EntityType _previousSelection = EntityType.None;
     private List<GameObject> _selectableGameObjects = new List<GameObject>();
     private int _selectionIndex = 0;
 
     [MenuItem("Window/Monster Selector")]
     public static void ShowWindow()
     {
-        GetWindow<MonsterSelectorWindow>("Monster Selector");
+        GetWindow<EntitySelectorWindow>("Monster Selector");
     }
 
     private void OnGUI()
     {
         EditorGUILayout.Space(5);
         EditorGUILayout.LabelField("Selector Filters :", EditorStyles.boldLabel);
-        _selectedMonsterType = (MonsterType)EditorGUILayout.EnumPopup(
+        _selectedMonsterType = (EntityType)EditorGUILayout.EnumPopup(
                     "Monster type to select:", 
                     _selectedMonsterType
             );
@@ -108,9 +108,9 @@ public class MonsterSelectorWindow : EditorWindow
     {
         _selectableGameObjects.Clear();
 
-        Monster[] monsters = FindObjectsOfType<Monster>();
+        Entity[] monsters = FindObjectsOfType<Entity>();
 
-        foreach (Monster monster in monsters)
+        foreach (Entity monster in monsters)
         {
             if(monster.Data.MonsterType == _selectedMonsterType)
             {

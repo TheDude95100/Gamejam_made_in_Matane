@@ -10,18 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c3ccdd1b4fdc414da79ebe813a9eb96, type: 3}
-  m_Name: MonsterData_Dragon
+  m_Name: EntityData_Boris
   m_EditorClassIdentifier: 
-  _name: Dragon
-  _monsterType: 0
-  _chanceToDropItem: 50.4
-  _rangeOfAwareness: 15
+  _name: ...
+  _monsterType: 3
+  _chanceToDropItem: 0.5
+  _rangeOfAwareness: 3
   _canEnterCombat: 1
-  _damage: 19
-  _health: 2
-  _speed: 23
+  _strengh: 11
+  _agility: 7
+  _constitution: 21
+  _sanity: 14
+  _maxHP: 63
   _battleCry: ...
-  _abilities:
-  - _name: Fireball
-    _damage: 5
-    _element: 2
+  _abilities: []

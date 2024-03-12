@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MonsterType
+public enum EntityType
 {
     None = 0,
     Undead,
