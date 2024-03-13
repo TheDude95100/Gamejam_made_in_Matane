@@ -15,4 +15,11 @@ public class Dialogue
         this.nom = nom;
         this.phrases = phrases;
     }
+    public Dialogue(string nom, string texte)
+    {
+        this.nom = nom;
+        string[] test = new string[1];
+        test[0] = texte;
+        this.phrases = test;
+    }
 }

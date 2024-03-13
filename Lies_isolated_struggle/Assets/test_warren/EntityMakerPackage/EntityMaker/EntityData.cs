@@ -27,6 +27,10 @@ public class EntityData : ScriptableObject
     [SerializeField]
     private int _sanity = 1;
     [SerializeField]
+    private int _affinity = 0;
+    [SerializeField]
+    private int _movement = 1;
+    [SerializeField]
     private int _maxHPFlatBonus = 0;
     [SerializeField]
     private float _maxHPScaleBonus = 1f;
@@ -39,7 +43,9 @@ public class EntityData : ScriptableObject
     private float _rangedDamageBonus = 1f;
 
     [SerializeField]
-    private float _accuracyBonus = 1f;
+    private float _rangedAccuracyBonus = 1f;
+    [SerializeField]
+    private float _meleeAccuracyBonus = 1f;
 
     [SerializeField]
     [Tooltip("Speaks dialogue when entering combat.")]
@@ -61,6 +67,8 @@ public class EntityData : ScriptableObject
     public int Agility => _agility;
     public int Constitution => _constitution;
     public int Sanity => _sanity;
+    public int Affinity => _affinity;
+    public int Movement => _movement;
     public int MaxHPFlatBonus => _maxHPFlatBonus;
     public float MaxHPScaleBonus => _maxHPScaleBonus;
 
@@ -68,7 +76,8 @@ public class EntityData : ScriptableObject
     public float MeleeDamageBonus => _meleeDamageBonus;
     public float RangedDamageBonus => _rangedDamageBonus;
 
-    public float AccuracyBonus => _accuracyBonus;
+    public float RangedAccuracyBonus => _rangedAccuracyBonus;
+    public float MeleeAccuracyBonus => _meleeAccuracyBonus;
 
     public string BattleCry => _battleCry;
 

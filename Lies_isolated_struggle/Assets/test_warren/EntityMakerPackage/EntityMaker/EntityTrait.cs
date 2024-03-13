@@ -22,6 +22,8 @@ public class EntityTrait : ScriptableObject
     [SerializeField]
     private int _sanity = 0;
     [SerializeField]
+    private int _movement = 0;
+    [SerializeField]
     private int _maxHPFlatBonus = 0;
     [SerializeField]
     [Range(0.1f,5)]
@@ -40,16 +42,21 @@ public class EntityTrait : ScriptableObject
 
     [Header("Accuracy bonuses")]
     [SerializeField]
-    private float _accuracyBonus = 0;
+    [Range(0.1f, 2f)]
+    private float _rangedAccuracyBonus = 1f;
+    [SerializeField]
+    [Range(0.1f, 2f)]
+    private float _meleeAccuracyBonus = 1f;
 
 
     public string Name => _name;
-    public string Description => _name;
+    public string Description => _description;
 
     public int Strengh => _strengh;
     public int Agility => _agility;
     public int Constitution => _constitution;
     public int Sanity => _sanity;
+    public int Movement => _movement;
     public int MaxHPFlatBonus => _maxHPFlatBonus;
     public float MaxHPScaleBonus => _maxHPScaleBonus;
 
@@ -57,5 +64,6 @@ public class EntityTrait : ScriptableObject
     public float MeleeDamageBonus => _meleeDamageBonus;
     public float RangedDamageBonus => _rangedDamageBonus;
 
-    public float AccuracyBonus => _accuracyBonus;
+    public float RangedAccuracyBonus => _rangedAccuracyBonus;
+    public float MeleeAccuracyBonus => _meleeAccuracyBonus;
 }

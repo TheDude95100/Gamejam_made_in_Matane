@@ -9,18 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c3ccdd1b4fdc414da79ebe813a9eb96, type: 3}
-  m_Name: EntityData_Boris
+  m_Script: {fileID: 11500000, guid: 16df2310ee7eb184ea75e4931a2b5a93, type: 3}
+  m_Name: TraitData_Dextrous
   m_EditorClassIdentifier: 
-  _name: ...
-  _entityType: 0
-  _chanceToDropItem: 0.5
-  _rangeOfAwareness: 3
-  _canEnterCombat: 1
-  _strengh: 10
-  _agility: 25
-  _constitution: 15
-  _sanity: 5
+  _name: Dextrous
+  _description: Bullies have been dreadful to you but you learned to be faster as
+    a result. Your agility is increased by 1 and your movement is increased by 1.
+  _strengh: 0
+  _agility: 1
+  _constitution: 0
+  _sanity: 0
   _movement: 1
   _maxHPFlatBonus: 0
   _maxHPScaleBonus: 1
@@ -29,7 +27,3 @@ MonoBehaviour:
   _rangedDamageBonus: 1
   _rangedAccuracyBonus: 1
   _meleeAccuracyBonus: 1
-  _battleCry: ...
-  _abilities: []
-  _traits:
-  - {fileID: 11400000, guid: 765abcf53f815424a9a2971ef14002c2, type: 2}

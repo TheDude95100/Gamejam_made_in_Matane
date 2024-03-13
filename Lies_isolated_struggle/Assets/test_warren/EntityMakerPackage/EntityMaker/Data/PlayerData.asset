@@ -10,26 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c3ccdd1b4fdc414da79ebe813a9eb96, type: 3}
-  m_Name: EntityData_Boris
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _name: ...
-  _entityType: 0
+  _name: Ben
+  _entityType: 3
   _chanceToDropItem: 0.5
   _rangeOfAwareness: 3
   _canEnterCombat: 1
-  _strengh: 10
-  _agility: 25
-  _constitution: 15
+  _strengh: 5
+  _agility: 5
+  _constitution: 5
   _sanity: 5
-  _movement: 1
-  _maxHPFlatBonus: 0
+  _maxHPFlatBonus: 10
   _maxHPScaleBonus: 1
   _fireDamageBonus: 1
   _meleeDamageBonus: 1
   _rangedDamageBonus: 1
-  _rangedAccuracyBonus: 1
-  _meleeAccuracyBonus: 1
+  _accuracyBonus: 1
   _battleCry: ...
   _abilities: []
-  _traits:
-  - {fileID: 11400000, guid: 765abcf53f815424a9a2971ef14002c2, type: 2}
+  _traits: []

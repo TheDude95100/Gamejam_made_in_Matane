@@ -9,6 +9,6 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(GetComponent<CompagnonDialogue>().dictionnaireDialogue["introduction"]);
+        FindObjectOfType<DialogueManager>().StartDialogue(GetComponent<CompagnonDialogue>().dictionnaireDialogue["Introduction"]);
     }
 }

@@ -9,27 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c3ccdd1b4fdc414da79ebe813a9eb96, type: 3}
-  m_Name: EntityData_Boris
+  m_Script: {fileID: 11500000, guid: 16df2310ee7eb184ea75e4931a2b5a93, type: 3}
+  m_Name: TraitData_Athletic
   m_EditorClassIdentifier: 
-  _name: ...
-  _entityType: 0
-  _chanceToDropItem: 0.5
-  _rangeOfAwareness: 3
-  _canEnterCombat: 1
-  _strengh: 10
-  _agility: 25
-  _constitution: 15
-  _sanity: 5
-  _movement: 1
+  _name: Athletic
+  _description: The gym was and still is your best friend. Might be the only one
+    too... Your Strengh is increased by 2 and your melee damage is increased by 10%.
+  _strengh: 2
+  _agility: 0
+  _constitution: 0
+  _sanity: 0
+  _movement: 0
   _maxHPFlatBonus: 0
   _maxHPScaleBonus: 1
   _fireDamageBonus: 1
-  _meleeDamageBonus: 1
+  _meleeDamageBonus: 1.1
   _rangedDamageBonus: 1
   _rangedAccuracyBonus: 1
   _meleeAccuracyBonus: 1
-  _battleCry: ...
-  _abilities: []
-  _traits:
-  - {fileID: 11400000, guid: 765abcf53f815424a9a2971ef14002c2, type: 2}

@@ -68,7 +68,11 @@ public class DialogueBox : MonoBehaviour
             UnsetActiveScriptText();
             SetActiveReponsePanel();
         }
-        if(manager.flag && manager.talkingCompagnon.DialogueFini)
+        if (manager.flag && manager.talkingCompagnon.flagEvent)
+        {
+            ResetCanvas();
+        }
+        if(manager.flag && manager.talkingCompagnon.DialogueFini || manager.flag && manager.talkingCompagnon.flagEvent)
         {
             DeactivateCanvas();
         }
