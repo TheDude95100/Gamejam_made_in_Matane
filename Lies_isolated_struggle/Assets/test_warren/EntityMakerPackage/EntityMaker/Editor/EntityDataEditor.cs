@@ -16,6 +16,7 @@ public class EntityDataEditor : Editor
     private SerializedProperty _agility;
     private SerializedProperty _constitution;
     private SerializedProperty _sanity;
+    private SerializedProperty _movement;
     private SerializedProperty _maxHPFlatBonus;
     private SerializedProperty _maxHPScaleBonus;
 
@@ -41,6 +42,7 @@ public class EntityDataEditor : Editor
         _agility = serializedObject.FindProperty("_agility");
         _constitution = serializedObject.FindProperty("_constitution");
         _sanity = serializedObject.FindProperty("_sanity");
+        _movement = serializedObject.FindProperty("_movement");
         _maxHPFlatBonus = serializedObject.FindProperty("_maxHPFlatBonus");
         _maxHPScaleBonus = serializedObject.FindProperty("_maxHPScaleBonus");
 
@@ -106,6 +108,7 @@ public class EntityDataEditor : Editor
             EditorGUILayout.PropertyField(_sanity, new GUIContent("Sanity"));
             EditorGUILayout.EndHorizontal();
 
+            EditorGUILayout.PropertyField(_movement, new GUIContent("Movement"));
             EditorGUILayout.Space(5);
 
             EditorGUILayout.LabelField("Hit points");
@@ -159,8 +162,8 @@ public class EntityDataEditor : Editor
             EditorGUI.indentLevel++;
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Accuracy Bonus");
-            _rangedDamageBonus.floatValue = EditorGUILayout.Slider(
-                        _rangedDamageBonus.floatValue,
+            _accuracyBonus.floatValue = EditorGUILayout.Slider(
+                        _accuracyBonus.floatValue,
                         0.1f,
                         3f
                 );
@@ -187,11 +190,15 @@ public class EntityDataEditor : Editor
                 EditorGUILayout.HelpBox("Make sure the negative flat HP bonus doesn't bring the entity below 0.", MessageType.Warning);
             }
 
+            if (_movement.intValue < 0)
+            {
+                EditorGUILayout.HelpBox("Entities shouldn't have negative Movement", MessageType.Warning);
+            }
+
             if (GUILayout.Button("Random Stats"))
             {
                 RandomStats();
             }
-
 
             EditorGUI.indentLevel--;
         }

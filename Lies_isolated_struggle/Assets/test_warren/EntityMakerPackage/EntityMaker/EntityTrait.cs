@@ -22,6 +22,8 @@ public class EntityTrait : ScriptableObject
     [SerializeField]
     private int _sanity = 0;
     [SerializeField]
+    private int _movement = 0;
+    [SerializeField]
     private int _maxHPFlatBonus = 0;
     [SerializeField]
     [Range(0.1f,5)]
@@ -50,6 +52,7 @@ public class EntityTrait : ScriptableObject
     public int Agility => _agility;
     public int Constitution => _constitution;
     public int Sanity => _sanity;
+    public int Movement => _movement;
     public int MaxHPFlatBonus => _maxHPFlatBonus;
     public float MaxHPScaleBonus => _maxHPScaleBonus;
 

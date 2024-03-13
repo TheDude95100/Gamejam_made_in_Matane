@@ -27,6 +27,8 @@ public class EntityData : ScriptableObject
     [SerializeField]
     private int _sanity = 1;
     [SerializeField]
+    private int _movement = 1;
+    [SerializeField]
     private int _maxHPFlatBonus = 0;
     [SerializeField]
     private float _maxHPScaleBonus = 1f;
@@ -61,6 +63,7 @@ public class EntityData : ScriptableObject
     public int Agility => _agility;
     public int Constitution => _constitution;
     public int Sanity => _sanity;
+    public int Movement => _movement;
     public int MaxHPFlatBonus => _maxHPFlatBonus;
     public float MaxHPScaleBonus => _maxHPScaleBonus;
 

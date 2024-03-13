@@ -8,6 +8,7 @@ public class Player : Entity
                 _agility,
                 _constitution,
                 _sanity,
+                _movement,
                 _maxHP,
                 _currentHP,
                 _maxHPFlatBonus;
@@ -25,6 +26,7 @@ public class Player : Entity
     public int Agility => _agility;
     public int Constitution => _constitution;
     public int Sanity => _sanity;
+    public int Movement => _movement;
     public int MaxHP => _maxHP;
     public int CurrentHP => _currentHP;
     public int MaxHPFlatBonus  => _maxHPFlatBonus;
@@ -55,6 +57,7 @@ public class Player : Entity
         _agility = Data.Agility;
         _constitution = Data.Constitution;
         _sanity = Data.Sanity;
+        _movement = Data.Movement;
         _maxHPFlatBonus = Data.MaxHPFlatBonus;
         _maxHPScaleBonus = Data.MaxHPScaleBonus;
         _fireDamageBonus = Data.FireDamageBonus;
@@ -67,6 +70,7 @@ public class Player : Entity
             _agility += trait.Agility;
             _constitution += trait.Constitution;
             _sanity += trait.Sanity;
+            _movement += trait.Movement;
             _maxHPFlatBonus += trait.MaxHPFlatBonus;
             _maxHPScaleBonus *= trait.MaxHPScaleBonus;
             _fireDamageBonus *= trait.FireDamageBonus;
