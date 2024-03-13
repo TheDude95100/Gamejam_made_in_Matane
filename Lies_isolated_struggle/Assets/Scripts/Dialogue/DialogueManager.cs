@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
 
     public CompagnonDialogue talkingCompagnon;
     public string currentDialogue;
+    public string chosenAnswer;
     public bool flag;
     public void StartDialogue(Dialogue dialogue)
     {
