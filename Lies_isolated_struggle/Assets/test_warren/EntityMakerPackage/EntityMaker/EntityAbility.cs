@@ -27,4 +27,9 @@ public class EntityAbility
 
     [SerializeField]
     private ElementType _element = ElementType.None;
+
+    public string Name => _name;
+    public int Damage => _damage;
+    public int Range => _range;
+    public ElementType Element => _element;
 }

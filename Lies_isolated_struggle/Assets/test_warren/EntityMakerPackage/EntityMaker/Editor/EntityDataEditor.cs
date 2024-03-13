@@ -16,6 +16,7 @@ public class EntityDataEditor : Editor
     private SerializedProperty _agility;
     private SerializedProperty _constitution;
     private SerializedProperty _sanity;
+    private SerializedProperty _affinity;
     private SerializedProperty _movement;
     private SerializedProperty _maxHPFlatBonus;
     private SerializedProperty _maxHPScaleBonus;
@@ -43,6 +44,7 @@ public class EntityDataEditor : Editor
         _agility = serializedObject.FindProperty("_agility");
         _constitution = serializedObject.FindProperty("_constitution");
         _sanity = serializedObject.FindProperty("_sanity");
+        _affinity = serializedObject.FindProperty("_affinity");
         _movement = serializedObject.FindProperty("_movement");
         _maxHPFlatBonus = serializedObject.FindProperty("_maxHPFlatBonus");
         _maxHPScaleBonus = serializedObject.FindProperty("_maxHPScaleBonus");
@@ -111,6 +113,16 @@ public class EntityDataEditor : Editor
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.PropertyField(_movement, new GUIContent("Movement"));
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Affinity");
+            _affinity.intValue = Mathf.FloorToInt(EditorGUILayout.Slider(
+                        _affinity.intValue *1f,
+                        -100f,
+                        100f
+                ));
+            EditorGUILayout.EndHorizontal();
+
             EditorGUILayout.Space(5);
 
             EditorGUILayout.LabelField("Hit points");

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    const int AFFINITY_MAX = 100,
+              AFFINITY_MIN = -100;
+
     private int _strengh,
                 _agility,
                 _constitution,
                 _sanity,
+                _affinity,
                 _movement,
                 _maxHP,
                 _currentHP,
@@ -27,13 +31,14 @@ public class Player : Entity
     public int Agility => _agility;
     public int Constitution => _constitution;
     public int Sanity => _sanity;
+    public int Affinity => _affinity;
     public int Movement => _movement;
     public int MaxHP => _maxHP;
     public int CurrentHP => _currentHP;
     public int MaxHPFlatBonus  => _maxHPFlatBonus;
     public float MaxHPScaleBonus => _maxHPScaleBonus;
     public float FireDamageBonus => _fireDamageBonus;
-    public float RangedDamageBonus => _rangedDamageBonus; 
+    public float RangedDamageBonus => _rangedDamageBonus;
     public float MeleeDamageBonus => _meleeDamageBonus;
     public float RangedAccuracyBonus => _rangedAccuracyBonus;
     public float MeleeAccuracyBonus => _meleeAccuracyBonus;
@@ -53,12 +58,60 @@ public class Player : Entity
 
     }
 
+    public Weapon GetActiveWeapon()
+    {
+        return currentWeapon;
+    }
+
+    public void SetCurrentHP(int currentHP)
+    {
+        _currentHP = currentHP;
+    }
+
+    public void SetActiveWeapon(Weapon weapon) 
+    {
+        currentWeapon = weapon;
+    }
+
+    public void DealtDamage(int damage)
+    {
+        if(CurrentHP - damage <= 0)
+        {
+            _currentHP = 0;
+        }
+        else if(CurrentHP - damage >= MaxHP)
+        {
+            _currentHP = MaxHP;
+        }
+        else
+        {
+            _currentHP -= damage;
+        }
+    }
+
+    public void ChangeAffinity(int amount)
+    {
+        if (Affinity + amount <= AFFINITY_MIN)
+        {
+            _affinity = AFFINITY_MIN;
+        }
+        else if (Affinity + amount >= AFFINITY_MAX)
+        {
+            _affinity = AFFINITY_MAX;
+        }
+        else
+        {
+            _affinity += amount;
+        }
+    }
+
     public void UpdateStat()
     {
         _strengh = Data.Strengh;
         _agility = Data.Agility;
         _constitution = Data.Constitution;
         _sanity = Data.Sanity;
+        _affinity = Data.Affinity;
         _movement = Data.Movement;
         _maxHPFlatBonus = Data.MaxHPFlatBonus;
         _maxHPScaleBonus = Data.MaxHPScaleBonus;
@@ -88,37 +141,6 @@ public class Player : Entity
         }
 
         _maxHP += Mathf.FloorToInt(Constitution * (3 * MaxHPScaleBonus)) + MaxHPFlatBonus;
-    }
-
-    public void SetCurrentHP(int currentHP)
-    {
-        _currentHP = currentHP;
-    }
-
-    public void DealtDamage(int damage)
-    {
-        if(CurrentHP - damage <= 0)
-        {
-            _currentHP = 0;
-        }
-        else if(CurrentHP - damage >= MaxHP)
-        {
-            _currentHP = MaxHP;
-        }
-        else
-        {
-            _currentHP = damage;
-        }
-    }
-
-    public void SetActiveWeapon(Weapon weapon) 
-    {
-        currentWeapon = weapon;
-    }
-
-    public Weapon GetActiveWeapon()
-    {
-        return currentWeapon;
     }
 
     public void UpdateRangeArea(int rangeValue)

@@ -50,7 +50,7 @@ public class EntityTrait : ScriptableObject
 
 
     public string Name => _name;
-    public string Description => _name;
+    public string Description => _description;
 
     public int Strengh => _strengh;
     public int Agility => _agility;
