@@ -41,7 +41,9 @@ public class EntityData : ScriptableObject
     private float _rangedDamageBonus = 1f;
 
     [SerializeField]
-    private float _accuracyBonus = 1f;
+    private float _rangedAccuracyBonus = 1f;
+    [SerializeField]
+    private float _meleeAccuracyBonus = 1f;
 
     [SerializeField]
     [Tooltip("Speaks dialogue when entering combat.")]
@@ -71,7 +73,8 @@ public class EntityData : ScriptableObject
     public float MeleeDamageBonus => _meleeDamageBonus;
     public float RangedDamageBonus => _rangedDamageBonus;
 
-    public float AccuracyBonus => _accuracyBonus;
+    public float RangedAccuracyBonus => _rangedAccuracyBonus;
+    public float MeleeAccuracyBonus => _meleeAccuracyBonus;
 
     public string BattleCry => _battleCry;
 

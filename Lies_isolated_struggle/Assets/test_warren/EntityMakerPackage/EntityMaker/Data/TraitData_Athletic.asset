@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16df2310ee7eb184ea75e4931a2b5a93, type: 3}
   m_Name: TraitData_Athletic
   m_EditorClassIdentifier: 
-  _name: ...
+  _name: Athletic
   _description: ...
-  _strengh: 0
+  _strengh: 1
   _agility: 0
   _constitution: 0
   _sanity: 0

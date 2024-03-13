@@ -18,7 +18,8 @@ public class Player : Entity
                   _meleeDamageBonus,
                   _rangedDamageBonus;
 
-    private float _accuracyBonus;
+    private float _rangedAccuracyBonus,
+                  _meleeAccuracyBonus;
 
     private Weapon currentWeapon;
 
@@ -32,9 +33,10 @@ public class Player : Entity
     public int MaxHPFlatBonus  => _maxHPFlatBonus;
     public float MaxHPScaleBonus => _maxHPScaleBonus;
     public float FireDamageBonus => _fireDamageBonus;
-    public float MeleeDamageBonus => _meleeDamageBonus;
     public float RangedDamageBonus => _rangedDamageBonus; 
-    public float AccuracyBonus => _accuracyBonus;
+    public float MeleeDamageBonus => _meleeDamageBonus;
+    public float RangedAccuracyBonus => _rangedAccuracyBonus;
+    public float MeleeAccuracyBonus => _meleeAccuracyBonus;
 
     public Weapon[] listWeapon;
 
@@ -63,22 +65,29 @@ public class Player : Entity
         _fireDamageBonus = Data.FireDamageBonus;
         _meleeDamageBonus = Data.MeleeDamageBonus;
         _rangedDamageBonus = Data.RangedDamageBonus;
+        _rangedAccuracyBonus = Data.RangedAccuracyBonus;
+        _meleeAccuracyBonus = Data.MeleeAccuracyBonus;
 
-        foreach (EntityTrait trait in Data.Traits)
+        if (Data.Traits.Length != 0)
         {
-            _strengh += trait.Strengh;
-            _agility += trait.Agility;
-            _constitution += trait.Constitution;
-            _sanity += trait.Sanity;
-            _movement += trait.Movement;
-            _maxHPFlatBonus += trait.MaxHPFlatBonus;
-            _maxHPScaleBonus *= trait.MaxHPScaleBonus;
-            _fireDamageBonus *= trait.FireDamageBonus;
-            _meleeDamageBonus *= trait.MeleeDamageBonus;
-            _rangedDamageBonus *= trait.RangedDamageBonus;
+            foreach (EntityTrait trait in Data.Traits)
+            {
+                _strengh += trait.Strengh;
+                _agility += trait.Agility;
+                _constitution += trait.Constitution;
+                _sanity += trait.Sanity;
+                _movement += trait.Movement;
+                _maxHPFlatBonus += trait.MaxHPFlatBonus;
+                _maxHPScaleBonus *= trait.MaxHPScaleBonus;
+                _fireDamageBonus *= trait.FireDamageBonus;
+                _meleeDamageBonus *= trait.MeleeDamageBonus;
+                _rangedDamageBonus *= trait.RangedDamageBonus;
+                _rangedAccuracyBonus *= trait.RangedAccuracyBonus;
+                _meleeAccuracyBonus *= trait.MeleeAccuracyBonus;
+            }
         }
 
-        _maxHP += Mathf.FloorToInt((Constitution * 3) * MaxHPScaleBonus) + MaxHPFlatBonus;
+        _maxHP += Mathf.FloorToInt(Constitution * (3 * MaxHPScaleBonus)) + MaxHPFlatBonus;
     }
 
     public void SetCurrentHP(int currentHP)

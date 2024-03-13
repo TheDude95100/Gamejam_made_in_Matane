@@ -42,7 +42,11 @@ public class EntityTrait : ScriptableObject
 
     [Header("Accuracy bonuses")]
     [SerializeField]
-    private float _accuracyBonus = 0;
+    [Range(0.1f, 2f)]
+    private float _rangedAccuracyBonus = 1f;
+    [SerializeField]
+    [Range(0.1f, 2f)]
+    private float _meleeAccuracyBonus = 1f;
 
 
     public string Name => _name;
@@ -60,5 +64,6 @@ public class EntityTrait : ScriptableObject
     public float MeleeDamageBonus => _meleeDamageBonus;
     public float RangedDamageBonus => _rangedDamageBonus;
 
-    public float AccuracyBonus => _accuracyBonus;
+    public float RangedAccuracyBonus => _rangedAccuracyBonus;
+    public float MeleeAccuracyBonus => _meleeAccuracyBonus;
 }

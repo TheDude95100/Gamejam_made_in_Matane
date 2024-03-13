@@ -17,7 +17,7 @@ MonoBehaviour:
   _strengh: 0
   _agility: 0
   _constitution: 0
-  _sanity: 0
+  _sanity: 1
   _movement: 0
   _maxHPFlatBonus: 0
   _maxHPScaleBonus: 1

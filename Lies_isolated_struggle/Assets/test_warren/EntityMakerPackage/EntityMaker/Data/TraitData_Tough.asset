@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16df2310ee7eb184ea75e4931a2b5a93, type: 3}
   m_Name: TraitData_Tough
   m_EditorClassIdentifier: 
-  _name: ...
+  _name: Tough
   _description: ...
   _strengh: 0
   _agility: 0
-  _constitution: 0
+  _constitution: 1
   _sanity: 0
   _movement: 0
   _maxHPFlatBonus: 0

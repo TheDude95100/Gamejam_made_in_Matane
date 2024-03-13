@@ -24,7 +24,8 @@ public class EntityDataEditor : Editor
     private SerializedProperty _meleeDamageBonus;
     private SerializedProperty _rangedDamageBonus;
 
-    private SerializedProperty _accuracyBonus;
+    private SerializedProperty _rangedAccuracyBonus;
+    private SerializedProperty _meleeAccuracyBonus;
 
     private SerializedProperty _battleCry;
     private SerializedProperty _abilities;
@@ -50,7 +51,8 @@ public class EntityDataEditor : Editor
         _meleeDamageBonus = serializedObject.FindProperty("_meleeDamageBonus");
         _rangedDamageBonus = serializedObject.FindProperty("_rangedDamageBonus");
 
-        _accuracyBonus = serializedObject.FindProperty("_accuracyBonus");
+        _rangedAccuracyBonus = serializedObject.FindProperty("_rangedAccuracyBonus");
+        _meleeAccuracyBonus = serializedObject.FindProperty("_meleeAccuracyBonus");
 
         _battleCry = serializedObject.FindProperty("_battleCry");
         _abilities = serializedObject.FindProperty("_abilities");
@@ -161,9 +163,17 @@ public class EntityDataEditor : Editor
             EditorGUILayout.LabelField("Accuracy modifiers");
             EditorGUI.indentLevel++;
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Accuracy Bonus");
-            _accuracyBonus.floatValue = EditorGUILayout.Slider(
-                        _accuracyBonus.floatValue,
+            EditorGUILayout.LabelField("Ranged Accuracy Bonus");
+            _rangedAccuracyBonus.floatValue = EditorGUILayout.Slider(
+                        _rangedAccuracyBonus.floatValue,
+                        0.1f,
+                        3f
+                );
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Melee Accuracy Bonus");
+            _meleeAccuracyBonus.floatValue = EditorGUILayout.Slider(
+                        _meleeAccuracyBonus.floatValue,
                         0.1f,
                         3f
                 );

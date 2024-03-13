@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16df2310ee7eb184ea75e4931a2b5a93, type: 3}
   m_Name: TraitData_Pyromaniac
   m_EditorClassIdentifier: 
-  _name: ...
+  _name: Pyromaniac
   _description: ...
   _strengh: 0
   _agility: 0
@@ -21,7 +21,7 @@ MonoBehaviour:
   _movement: 0
   _maxHPFlatBonus: 0
   _maxHPScaleBonus: 1
-  _fireDamageBonus: 1
+  _fireDamageBonus: 1.2
   _meleeDamageBonus: 1
   _rangedDamageBonus: 1
   _accuracyBonus: 0
