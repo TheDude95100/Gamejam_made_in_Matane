@@ -20,9 +20,9 @@ public class DestinationCreator : MonoBehaviour
             foreach(Destination destination in listDestination)
             {
                 GameObject newDestination = Instantiate(destinationPrefab, destinationPrefabPlace.transform);
-                newDestination.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = destination.GetDestinationName();
-                newDestination.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = destination.GetDifficulty().ToString();
-                newDestination.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = destination.GetRessourceRate().ToString();
+                newDestination.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = destination.Name;
+                newDestination.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = destination.Difficulty.ToString();
+                newDestination.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = destination.RessourceRate.ToString();
                 newDestination.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(transform.GetComponent<DestinationController>().ClickDestination);
             }
         }

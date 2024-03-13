@@ -19,6 +19,8 @@ public class Player : Entity
 
     private float _accuracyBonus;
 
+    private Weapon currentWeapon;
+
     public int Strengh => _strengh;
     public int Agility => _agility;
     public int Constitution => _constitution;
@@ -31,6 +33,8 @@ public class Player : Entity
     public float MeleeDamageBonus => _meleeDamageBonus;
     public float RangedDamageBonus => _rangedDamageBonus; 
     public float AccuracyBonus => _accuracyBonus;
+
+    public Weapon[] listWeapon;
 
 
     // Start is called before the first frame update
@@ -92,5 +96,20 @@ public class Player : Entity
         {
             _currentHP = damage;
         }
+    }
+
+    public void SetActiveWeapon(Weapon weapon) 
+    {
+        currentWeapon = weapon;
+    }
+
+    public Weapon GetActiveWeapon()
+    {
+        return currentWeapon;
+    }
+
+    public void UpdateRangeArea(int rangeValue)
+    {
+        transform.GetChild(0).transform.localScale = new Vector3(2 * rangeValue, 2 * rangeValue);
     }
 }
