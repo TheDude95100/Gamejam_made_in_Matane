@@ -630,7 +630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &392063375
 Transform:
   m_ObjectHideFlags: 0
@@ -683,6 +683,7 @@ MonoBehaviour:
     nom: 
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  flagEvent: 0
 --- !u!1 &432414067
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +972,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: introduction
+          m_StringArgument: Introduction
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1773964215}
@@ -1128,7 +1129,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: introduction
+          m_StringArgument: Introduction
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1773964215}
@@ -1556,7 +1557,7 @@ MonoBehaviour:
       - m_Target: {fileID: 775408098}
         m_TargetAssemblyTypeName: ReponseButton, Assembly-CSharp
         m_MethodName: TriggerReponse
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1616,6 +1617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TalkingCharacter: {fileID: 0}
+  idButton: 3
 --- !u!1 &867390131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,13 +1819,13 @@ MonoBehaviour:
       - m_Target: {fileID: 888620959}
         m_TargetAssemblyTypeName: ReponseButton, Assembly-CSharp
         m_MethodName: TriggerReponse
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: reponse1
+          m_StringArgument: reponse
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &888620957
@@ -1877,6 +1879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TalkingCharacter: {fileID: 0}
+  idButton: 1
 --- !u!1 &953366453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,7 +2078,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1112843431}
         m_TargetAssemblyTypeName: ReponseButton, Assembly-CSharp
         m_MethodName: TriggerReponse
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2135,6 +2138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TalkingCharacter: {fileID: 0}
+  idButton: 2
 --- !u!1 &1152957303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,21 +2185,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listeDialogue:
-  - nom: Reponse 1
+  - nom: Introduction 1
     phrases:
     - Reponse 1.1
     - Reponse 1.2
     - Reponse 1.3
-  - nom: Reponse 2
+  - nom: Introduction 2
     phrases:
     - Reponse 2
     - Reponse 2
     - Reponse 2
-  - nom: Reponse 3
+  - nom: Introdcution 3
     phrases:
     - Reponse 3
     - Reponse 3
     - Reponse 3
+  - nom: Mort
+    phrases:
+    - Dialogue Mort
+  - nom: Mort 1
+    phrases:
+    - Reponse mort 1
+  - nom: Mort 2
+    phrases:
+    - Reponse mort 2
+  - nom: Mort 3
+    phrases:
+    - Reponse mort 3
+  - nom: Loot
+    phrases:
+    - LE LOOOOT
+  - nom: Loot 1
+    phrases:
+    - LE LOOOOT
+  - nom: Loot 2
+    phrases:
+    - LE LOOOOT
+  - nom: Loot 3
+    phrases:
+    - LE LOOOOT
   introduction:
     nom: Compagnon 1
     phrases:
@@ -2204,6 +2232,7 @@ MonoBehaviour:
     nom: 
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  flagEvent: 0
 --- !u!1 &1198799622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,7 +2383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1230272721
 Transform:
   m_ObjectHideFlags: 0
@@ -2407,6 +2436,7 @@ MonoBehaviour:
     nom: 
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  flagEvent: 0
 --- !u!1 &1515918145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,7 +2821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1625004211
 Transform:
   m_ObjectHideFlags: 0
@@ -2844,6 +2874,7 @@ MonoBehaviour:
     nom: 
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  flagEvent: 0
 --- !u!1 &1644397548
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,6 +3313,7 @@ MonoBehaviour:
   nameText: {fileID: 1644397550}
   dialogueText: {fileID: 1824965243}
   talkingCompagnon: {fileID: 0}
+  currentDialogue: 
   flag: 0
 --- !u!4 &1773964216
 Transform:
@@ -3536,7 +3568,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: introduction
+          m_StringArgument: Introduction
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1773964215}
@@ -3895,7 +3927,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: introduction
+          m_StringArgument: Introduction
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1773964215}

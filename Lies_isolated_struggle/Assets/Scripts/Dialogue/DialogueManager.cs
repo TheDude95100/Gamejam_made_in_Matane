@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
 
     public CompagnonDialogue talkingCompagnon;
-
+    public string currentDialogue;
     public bool flag;
     public void StartDialogue(Dialogue dialogue)
     {
