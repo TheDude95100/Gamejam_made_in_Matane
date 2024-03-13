@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: TraitData_TavernBrawler
   m_EditorClassIdentifier: 
   _name: Tavern Brawler
-  _description: ...
+  _description: Your good love for drinks, the stronger the better, may have started
+    a fight or two. Okay, okay, more like 10 but who's counting anyway! Your melee
+    attacks have gotten stronger from knocking some sense into those defying alcoholics.
+    Your melee attacks deals 20% more damage and your melee accuracy is increased
+    by 10%.
   _strengh: 0
   _agility: 0
   _constitution: 0
@@ -24,4 +28,5 @@ MonoBehaviour:
   _fireDamageBonus: 1
   _meleeDamageBonus: 1.2
   _rangedDamageBonus: 1
-  _accuracyBonus: 0
+  _rangedAccuracyBonus: 1
+  _meleeAccuracyBonus: 1.1

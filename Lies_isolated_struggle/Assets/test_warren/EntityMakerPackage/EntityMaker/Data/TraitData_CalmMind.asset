@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16df2310ee7eb184ea75e4931a2b5a93, type: 3}
   m_Name: TraitData_CalmMind
   m_EditorClassIdentifier: 
-  _name: ...
-  _description: ...
+  _name: Calm Mind
+  _description: 'During stressful event, you are more capable to keep calm and think
+    of a plan, or simply to aim better at the opponent in front of you. Your Sanity
+    is increased by 1 and your accuracy with both melee and ranged weapon is increased
+    by 10% '
   _strengh: 0
   _agility: 0
   _constitution: 0
@@ -24,4 +27,5 @@ MonoBehaviour:
   _fireDamageBonus: 1
   _meleeDamageBonus: 1
   _rangedDamageBonus: 1
-  _accuracyBonus: 0
+  _rangedAccuracyBonus: 1.1
+  _meleeAccuracyBonus: 1.1

@@ -13,15 +13,19 @@ MonoBehaviour:
   m_Name: TraitData_Tough
   m_EditorClassIdentifier: 
   _name: Tough
-  _description: ...
+  _description: You have taken many wounds in your life going from small accidents
+    with a knife while cooking to full on fight against the infected. This makes
+    your body able to withstand more hits than usual. Your Constitution is increased
+    by 1, your Max HP by 5 and your Max HP scaling is increased by 5%.
   _strengh: 0
   _agility: 0
   _constitution: 1
   _sanity: 0
   _movement: 0
-  _maxHPFlatBonus: 0
-  _maxHPScaleBonus: 1
+  _maxHPFlatBonus: 5
+  _maxHPScaleBonus: 1.05
   _fireDamageBonus: 1
   _meleeDamageBonus: 1
   _rangedDamageBonus: 1
-  _accuracyBonus: 0
+  _rangedAccuracyBonus: 1
+  _meleeAccuracyBonus: 1

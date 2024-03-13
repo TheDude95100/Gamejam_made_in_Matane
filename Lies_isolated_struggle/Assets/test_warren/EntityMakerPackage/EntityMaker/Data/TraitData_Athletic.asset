@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: TraitData_Athletic
   m_EditorClassIdentifier: 
   _name: Athletic
-  _description: ...
-  _strengh: 1
+  _description: The gym was and still is your best friend. Might be the only one
+    too... Your Strengh is increased by 2 and your melee damage is increased by 10%.
+  _strengh: 2
   _agility: 0
   _constitution: 0
   _sanity: 0
@@ -22,6 +23,7 @@ MonoBehaviour:
   _maxHPFlatBonus: 0
   _maxHPScaleBonus: 1
   _fireDamageBonus: 1
-  _meleeDamageBonus: 1
+  _meleeDamageBonus: 1.1
   _rangedDamageBonus: 1
-  _accuracyBonus: 0
+  _rangedAccuracyBonus: 1
+  _meleeAccuracyBonus: 1
