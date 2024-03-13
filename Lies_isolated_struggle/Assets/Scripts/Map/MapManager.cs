@@ -4,68 +4,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace finished1
+
+public class MapManager : MonoBehaviour
 {
-    public class MapManager : MonoBehaviour
+    private static MapManager _instance;
+    public static MapManager Instance => _instance;
+
+    public GameObject overlayPrefab;
+    public GameObject overlayContainer;
+
+    public Dictionary<Vector2Int, GameObject> map;
+    public bool ignoreBottomTiles;
+
+    private void Awake()
     {
-        private static MapManager _instance;
-        public static MapManager Instance { get { return _instance; } }
-
-        public GameObject overlayPrefab;
-        public GameObject overlayContainer;
-
-        public Dictionary<Vector2Int, GameObject> map;
-        public bool ignoreBottomTiles;
-
-        private void Awake()
+        if(_instance != null && _instance != this)
         {
-            if(_instance != null && _instance != this)
-            {
-                Destroy(this.gameObject);
-            } else
-            {
-                _instance = this;
-            }
+            Destroy(this.gameObject);
+        } else
+        {
+            _instance = this;
         }
+    }
 
-        // Start is called before the first frame update
-        void Start()
+    // Start is called before the first frame update
+    void Start()
+    {
+        var tileMap = gameObject.GetComponentInChildren<Tilemap>();
+        map = new Dictionary<Vector2Int, GameObject>();
+
+        BoundsInt bounds = tileMap.cellBounds;
+
+        for (int z = bounds.max.z; z >= bounds.min.z; z--)
         {
-            var tileMap = gameObject.GetComponentInChildren<Tilemap>();
-            map = new Dictionary<Vector2Int, GameObject>();
-
-            BoundsInt bounds = tileMap.cellBounds;
-
-            for (int z = bounds.max.z; z >= bounds.min.z; z--)
+            for (int y = bounds.min.y; y < bounds.max.y; y++)
             {
-                for (int y = bounds.min.y; y < bounds.max.y; y++)
+                for (int x = bounds.min.x; x < bounds.max.x; x++)
                 {
-                    for (int x = bounds.min.x; x < bounds.max.x; x++)
+                    if (z == 0 && ignoreBottomTiles)
+                        return;
+                    
+                    Vector3Int tileLocation = new Vector3Int(x, y, z);
+                    Debug.Log(tileLocation);
+                    Vector2Int tileKey = new Vector2Int(x, y);
+                    if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
                     {
-                        if (z == 0 && ignoreBottomTiles)
-                            return;
-                        
-                        var tileLocation = new Vector3Int(x, y, z);
-                        Debug.Log(tileLocation);
-                        var tileKey = new Vector2Int(x, y);
-                        if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
-                        {
-                            var overlayTile = Instantiate(overlayPrefab, overlayContainer.transform);
-                            var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
-                            overlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z-1);
-                            overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
-                            // overlayTile.GetComponent<SpriteRenderer>().sortingOrder = 1;
-                            map.Add(tileKey, overlayTile);
-                        }
+                        GameObject overlayTile = Instantiate(overlayPrefab, overlayContainer.transform);
+                        Vector3 cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
+                        overlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z-1);
+                        overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
+                        overlayTile.GetComponent<OverlayTile>().GridLocation = tileLocation;
+                        // overlayTile.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                        map.Add(tileKey, overlayTile);
                     }
                 }
             }
         }
+    }
 
-        // Update is called once per frame
-        void Update()
-        {
+    // Update is called once per frame
+    void Update()
+    {
 
-        }
     }
 }

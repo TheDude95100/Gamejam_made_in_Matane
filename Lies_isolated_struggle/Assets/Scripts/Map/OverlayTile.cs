@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class OverlayTile : MonoBehaviour
 {
+    public Vector3Int GridLocation;
+
+    public bool isBlocked;
+
+    public GameObject previous;
+
+    public int G;
+    public int H;
+
+    public int F => G + H;
+
+
     // Update is called once per frame
     void Update()
     {

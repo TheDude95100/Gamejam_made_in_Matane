@@ -10,11 +10,14 @@ public class MouseController : MonoBehaviour
 {
     public GameObject CharacterPrefab;
     private CharacterInfo _character;
+    private PathFinder _pathFinder;
+    public float speed;
+    private List<OverlayTile> path = new List<OverlayTile>();
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        _pathFinder = new PathFinder();
     }
 
     private void LateUpdate()
@@ -36,7 +39,32 @@ public class MouseController : MonoBehaviour
                     _character = Instantiate(CharacterPrefab).GetComponent<CharacterInfo>();
                     PositionCharacterOnTile(overlayTile);
                 }
+                else
+                {
+                    var path = _pathFinder.FindPath(_character.standingOnTile, overlayTile);
+                }
             }
+        }
+
+        if (path.Count > 0)
+        {
+            MoveAlongPath();
+        }
+    }
+
+    private void MoveAlongPath()
+    {
+        var step = speed * Time.deltaTime;
+        var zIndex = path[0].transform.position.z;
+        _character.transform.position =
+            Vector2.MoveTowards(_character.transform.position, path[0].transform.position, step);
+        _character.transform.position =
+            new Vector3(_character.transform.position.x, _character.transform.position.y, zIndex);
+        
+        if(Vector2.Distance(_character.transform.position, path[0].transform.position) < 0.0001f)
+        {
+            PositionCharacterOnTile(path[0].gameObject);
+            path.RemoveAt(0);
         }
     }
 
