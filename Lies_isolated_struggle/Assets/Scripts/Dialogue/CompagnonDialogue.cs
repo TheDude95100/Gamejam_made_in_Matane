@@ -14,6 +14,11 @@ public class CompagnonDialogue : MonoBehaviour
 
     public Dialogue dialogueFin;
 
+    public Dictionary<string, Dialogue> dictionnaireEvent;
+
+    [SerializeField]
+    private string[] _stringsEvenement;
+
     public bool DialogueFini { get; set; }
 
     private void Start()
