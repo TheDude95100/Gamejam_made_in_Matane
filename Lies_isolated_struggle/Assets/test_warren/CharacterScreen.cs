@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 
 public class CharacterScreen : MonoBehaviour
 {
+    private bool _isOpen;
+
     private List<GameObject> _screenPanels;
     private Player _playerData;
     private GameObject _weaponChangeButtons;
@@ -14,6 +16,7 @@ public class CharacterScreen : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        _isOpen = false;
         _screenPanels = new List<GameObject>();
         _weaponChangeButtons = GameObject.FindGameObjectWithTag("ButtonsWeapon");
         for (int childIndex = 0; childIndex < this.gameObject.transform.childCount; childIndex++)
@@ -29,7 +32,16 @@ public class CharacterScreen : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.C))
         {
-            ActivateScreen(FindObjectOfType<Player>());
+            if(!_isOpen)
+            {
+                ActivateScreen(FindObjectOfType<Player>());
+                _isOpen = true;
+            }
+            else
+            {
+                DisableScreen();
+                _isOpen = false;
+            }
         }
     }
 
@@ -70,7 +82,6 @@ public class CharacterScreen : MonoBehaviour
         }
 
         UpdateWeaponStats();
-        //_screenPanels[5].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = ((_playerData.ActiveWeapon.Accuracy - 1) * 100) + "%";
     }
 
     public void ShowExtendedVersion()
@@ -106,5 +117,6 @@ public class CharacterScreen : MonoBehaviour
     {
         _screenPanels[5].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _playerData.ActiveWeapon.Name;
         _screenPanels[5].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _playerData.ActiveWeapon.Damage + "";
+        //_screenPanels[5].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = ((_playerData.ActiveWeapon.Accuracy - 1) * 100) + "%";
     }
 }

@@ -32,6 +32,7 @@ MonoBehaviour:
   _meleeAccuracyBonus: 1
   _battleCry: ...
   _abilities: []
-  _traits: []
+  _traits:
+  - {fileID: 11400000, guid: 765abcf53f815424a9a2971ef14002c2, type: 2}
   _weaponList:
   - {fileID: 11400000, guid: 55eba8f7a897409499d324ed8b0112ae, type: 2}
