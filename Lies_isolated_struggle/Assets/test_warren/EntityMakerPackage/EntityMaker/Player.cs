@@ -53,14 +53,14 @@ public class Player : Entity
     void Start()
     {
         UpdateStat();
-
+        SetCurrentHP(MaxHP);
         _weaponList = Data.WeaponList;
+        SetActiveWeapon(_weaponList[0]);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        UpdateStat();
     }
 
     public void SetCurrentHP(int currentHP)
@@ -140,7 +140,7 @@ public class Player : Entity
             }
         }
 
-        _maxHP += Mathf.FloorToInt(Constitution * (3 * MaxHPScaleBonus)) + MaxHPFlatBonus;
+        _maxHP = Mathf.FloorToInt(Constitution * (3 * MaxHPScaleBonus)) + MaxHPFlatBonus;
     }
 
     public void UpdateRangeArea(int rangeValue)
