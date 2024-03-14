@@ -9,12 +9,14 @@ public class CharacterScreen : MonoBehaviour
 {
     private List<GameObject> _screenPanels;
     private Player _playerData;
+    private GameObject _weaponChangeButtons;
     
     // Start is called before the first frame update
     void Awake()
     {
         _screenPanels = new List<GameObject>();
-        for(int childIndex = 0; childIndex < this.gameObject.transform.childCount; childIndex++)
+        _weaponChangeButtons = GameObject.FindGameObjectWithTag("ButtonsWeapon");
+        for (int childIndex = 0; childIndex < this.gameObject.transform.childCount; childIndex++)
         {
             GameObject temp = this.gameObject.transform.GetChild(childIndex).gameObject;
 
@@ -37,6 +39,7 @@ public class CharacterScreen : MonoBehaviour
 
         _screenPanels[0].SetActive(true);
         _screenPanels[2].SetActive(true);
+        _weaponChangeButtons.SetActive(false);
 
         _screenPanels[2].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _playerData.Data.Name;
         _screenPanels[2].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _playerData.CurrentHP + " / " + _playerData.MaxHP;
@@ -66,8 +69,7 @@ public class CharacterScreen : MonoBehaviour
             _screenPanels[4].transform.GetChild(index + 1).gameObject.SetActive(false);
         }
 
-        _screenPanels[5].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _playerData.ActiveWeapon.Name;
-        _screenPanels[5].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _playerData.ActiveWeapon.Damage + "";
+        UpdateWeaponStats();
         //_screenPanels[5].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = ((_playerData.ActiveWeapon.Accuracy - 1) * 100) + "%";
     }
 
@@ -96,6 +98,13 @@ public class CharacterScreen : MonoBehaviour
             _screenPanels[index].SetActive(false);
         }
 
+        _weaponChangeButtons.SetActive(true);
         _playerData = null;
+    }
+
+    public void UpdateWeaponStats()
+    {
+        _screenPanels[5].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _playerData.ActiveWeapon.Name;
+        _screenPanels[5].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _playerData.ActiveWeapon.Damage + "";
     }
 }

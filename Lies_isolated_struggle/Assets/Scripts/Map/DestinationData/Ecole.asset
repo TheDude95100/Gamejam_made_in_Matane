@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c378d45db892ce94b8a9397b7f9262d1, type: 3}
   m_Name: Ecole
   m_EditorClassIdentifier: 
-  destinationName: Ecole
-  listDestinationBefore: []
-  listDestinationAfter: []
-  difficulty: 4
-  ressourceRate: 125
+  _name: Ecole
+  _listDestinationBefore:
+  - {fileID: 11400000, guid: c54edcf6811416d47acf06bfca5e8685, type: 2}
+  _listDestinationAfter:
+  - {fileID: 11400000, guid: 308fec651f21b0740a139db7b2105d33, type: 2}
+  _difficulty: 8
+  _ressourceRate: 80

@@ -7,10 +7,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject canvasMenu;
     [SerializeField] private GameObject canvasPause;
     [SerializeField] private GameObject canvasSettings;
-    [SerializeField] private GameObject canvasEaster;
     [SerializeField] private AudioSource audioSource;
 
-
+    /**
     public void StartGame()
     {
         StartCoroutine(StartGameCoroutine());
@@ -21,13 +20,18 @@ public class UIController : MonoBehaviour
         audioSource.Play();
         yield return new WaitForSeconds(audioSource.clip.length);
         GameManager.Scene_Cinematic();
+    }**/
+
+    public void LaunchHome()
+    {
+        GameManager.Scene_Home();
     }
 
     // Fonction pour montrer les settings
     public void LaunchSettings()
     {
         int index = SceneManager.GetActiveScene().buildIndex;
-        if (index == 1)
+        if (index == 0)
         {
             canvasMenu.SetActive(false);
             canvasSettings.SetActive(true);
@@ -39,18 +43,11 @@ public class UIController : MonoBehaviour
         }
     }
 
-    // Fonction pour montrer l'easter
-    public void LaunchEaster()
-    {
-        canvasMenu.SetActive(!canvasMenu.activeSelf);
-        canvasEaster.SetActive(!canvasEaster.activeSelf);
-    }
-
     // Fonction pour cacher les settings
     public void QuitSettings()
     {
         int index = SceneManager.GetActiveScene().buildIndex;
-        if (index == 1)
+        if (index == 0)
         {
             canvasMenu.SetActive(true);
             canvasSettings.SetActive(false);
@@ -66,6 +63,12 @@ public class UIController : MonoBehaviour
     public void LaunchMenu()
     {
         GameManager.Scene_Menu();
+    }
+
+    // Fonction pour retourner au menu
+    public void LaunchMap()
+    {
+        GameManager.Scene_Map();
     }
 
     // Fonction pour quitter l'application

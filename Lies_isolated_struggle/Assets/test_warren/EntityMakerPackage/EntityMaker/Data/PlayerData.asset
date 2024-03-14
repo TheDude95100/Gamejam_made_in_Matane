@@ -21,12 +21,18 @@ MonoBehaviour:
   _agility: 5
   _constitution: 5
   _sanity: 5
+  _affinity: 0
+  _movement: 1
   _maxHPFlatBonus: 10
   _maxHPScaleBonus: 1
   _fireDamageBonus: 1
   _meleeDamageBonus: 1
   _rangedDamageBonus: 1
-  _accuracyBonus: 1
+  _rangedAccuracyBonus: 1
+  _meleeAccuracyBonus: 1
   _battleCry: ...
   _abilities: []
   _traits: []
+  _weaponList:
+  - {fileID: 11400000, guid: 8d97848740e03d448b45432e0aefa684, type: 2}
+  - {fileID: 11400000, guid: 55eba8f7a897409499d324ed8b0112ae, type: 2}
