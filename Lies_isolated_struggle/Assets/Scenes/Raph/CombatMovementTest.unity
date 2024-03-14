@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1438223592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 463b6dfa13242e34db98b00a7f3e9a48, type: 3}
+  m_Script: {fileID: 11500000, guid: e35f1854b5179e84c92bd6ad8eccde4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   overlayPrefab: {fileID: 1497731181865220349, guid: 26aeeac2189fda24bba7c11e65ecf50b,
@@ -1507,12 +1507,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2112583282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47fec6ca4b44a1f4ab19e995c1c8b826, type: 3}
+  m_Script: {fileID: 11500000, guid: edad4d752d5202247ac14854a43a528c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterPrefab: {fileID: 1660133016984718446, guid: 353cfa4af542df340a6bc94054353134,
+  cursor: {fileID: 2112583282}
+  speed: 3
+  characterPrefab: {fileID: 1660133016984718446, guid: 353cfa4af542df340a6bc94054353134,
     type: 3}
-  speed: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

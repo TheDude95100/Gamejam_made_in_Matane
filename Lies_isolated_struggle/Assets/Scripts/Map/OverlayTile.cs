@@ -1,37 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class OverlayTile : MonoBehaviour
+namespace Map
 {
-    public Vector3Int GridLocation;
-
-    public bool isBlocked;
-
-    public GameObject previous;
-
-    public int G;
-    public int H;
-
-    public int F => G + H;
-
-
-    // Update is called once per frame
-    void Update()
+    public class OverlayTile : MonoBehaviour
     {
-        if (Input.GetMouseButtonDown(0))
+        public int G;
+        public int H;
+        public int F { get { return G + H; } }
+
+        public bool isBlocked = false;
+
+        public OverlayTile Previous;
+
+        public Vector3Int gridLocation;
+
+
+        private void Update()
         {
-            HideTile();
+            if (Input.GetMouseButtonDown(0))
+            {
+                HideTile();
+            }
         }
-    }
 
-    public void ShowTile()
-    {
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-    }    
-    
-    public void HideTile()
-    {
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        public void HideTile()
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        }
+
     }
 }

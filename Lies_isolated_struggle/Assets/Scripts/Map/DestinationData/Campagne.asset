@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c378d45db892ce94b8a9397b7f9262d1, type: 3}
   m_Name: Campagne
   m_EditorClassIdentifier: 
-  destinationName: Campagne
-  listDestinationBefore: []
-  listDestinationAfter: []
-  difficulty: 1
-  ressourceRate: 50
+  _name: Campagne
+  _listDestinationBefore:
+  - {fileID: 11400000, guid: a72bf18e3c1e16d40a94bcfa5fb4b740, type: 2}
+  _listDestinationAfter: []
+  _difficulty: 10
+  _ressourceRate: 50

@@ -1,70 +1,121 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-
-public class MapManager : MonoBehaviour
+namespace Map
 {
-    private static MapManager _instance;
-    public static MapManager Instance => _instance;
-
-    public GameObject overlayPrefab;
-    public GameObject overlayContainer;
-
-    public Dictionary<Vector2Int, GameObject> map;
-    public bool ignoreBottomTiles;
-
-    private void Awake()
+    public class MapManager : MonoBehaviour
     {
-        if(_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        } else
-        {
-            _instance = this;
-        }
-    }
+        private static MapManager _instance;
+        public static MapManager Instance { get { return _instance; } }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        var tileMap = gameObject.GetComponentInChildren<Tilemap>();
-        map = new Dictionary<Vector2Int, GameObject>();
 
-        BoundsInt bounds = tileMap.cellBounds;
+        public GameObject overlayPrefab;
+        public GameObject overlayContainer;
 
-        for (int z = bounds.max.z; z >= bounds.min.z; z--)
+        public Dictionary<Vector2Int, OverlayTile> map;
+        public bool ignoreBottomTiles;
+
+        private void Awake()
         {
-            for (int y = bounds.min.y; y < bounds.max.y; y++)
+            if (_instance != null && _instance != this)
             {
-                for (int x = bounds.min.x; x < bounds.max.x; x++)
+                Destroy(this.gameObject);
+            } else
+            {
+                _instance = this;
+            }
+        }
+        
+
+        void Start()
+        {
+            var tileMaps = gameObject.transform.GetComponentsInChildren<Tilemap>().OrderByDescending(x => x.GetComponent<TilemapRenderer>().sortingOrder);
+            map = new Dictionary<Vector2Int, OverlayTile>();
+
+            foreach (var tm in tileMaps)
+            {
+                BoundsInt bounds = tm.cellBounds;
+
+                for (int z = bounds.max.z; z >= bounds.min.z; z--)
                 {
-                    if (z == 0 && ignoreBottomTiles)
-                        return;
-                    
-                    Vector3Int tileLocation = new Vector3Int(x, y, z);
-                    Debug.Log(tileLocation);
-                    Vector2Int tileKey = new Vector2Int(x, y);
-                    if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
+                    for (int y = bounds.min.y; y < bounds.max.y; y++)
                     {
-                        GameObject overlayTile = Instantiate(overlayPrefab, overlayContainer.transform);
-                        Vector3 cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
-                        overlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z-1);
-                        overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
-                        overlayTile.GetComponent<OverlayTile>().GridLocation = tileLocation;
-                        // overlayTile.GetComponent<SpriteRenderer>().sortingOrder = 1;
-                        map.Add(tileKey, overlayTile);
+                        for (int x = bounds.min.x; x < bounds.max.x; x++)
+                        {
+                            if (z == 0 && ignoreBottomTiles)
+                                return;
+
+                            if (tm.HasTile(new Vector3Int(x, y, z)))
+                            {
+                                if (!map.ContainsKey(new Vector2Int(x, y)))
+                                {
+                                    var overlayTile = Instantiate(overlayPrefab, overlayContainer.transform);
+                                    var cellWorldPosition = tm.GetCellCenterWorld(new Vector3Int(x, y, z));
+                                    overlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z - 1);
+                                    overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tm.GetComponent<TilemapRenderer>().sortingOrder;
+                                    overlayTile.gameObject.GetComponent<OverlayTile>().gridLocation = new Vector3Int(x, y, z);
+    
+                                    map.Add(new Vector2Int(x, y), overlayTile.gameObject.GetComponent<OverlayTile>());
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-    }
+        public List<OverlayTile> GetNeightbourOverlayTiles(OverlayTile currentOverlayTile)
+        {
+            var map = MapManager.Instance.map;
+            List<OverlayTile> neighbours = new List<OverlayTile>();
 
-    // Update is called once per frame
-    void Update()
-    {
+            //right
+            Vector2Int locationToCheck = new Vector2Int(
+                currentOverlayTile.gridLocation.x + 1,
+                currentOverlayTile.gridLocation.y
+            );
 
+            if (map.ContainsKey(locationToCheck))
+            {
+                if (Mathf.Abs(currentOverlayTile.transform.position.z - map[locationToCheck].transform.position.z) > 1)
+                    neighbours.Add(map[locationToCheck]);
+            }
+
+            //left
+            locationToCheck = new Vector2Int(
+                currentOverlayTile.gridLocation.x - 1,
+                currentOverlayTile.gridLocation.y
+            );
+
+            if (map.TryGetValue(locationToCheck, out OverlayTile value))
+            {
+                neighbours.Add(value);
+            }
+
+            //top
+            locationToCheck = new Vector2Int(
+                currentOverlayTile.gridLocation.x,
+                currentOverlayTile.gridLocation.y + 1
+            );
+
+            if (map.ContainsKey(locationToCheck))
+            {
+                neighbours.Add(map[locationToCheck]);
+            }
+
+            //bottom
+            locationToCheck = new Vector2Int(
+                currentOverlayTile.gridLocation.x,
+                currentOverlayTile.gridLocation.y - 1
+            );
+
+            if (map.ContainsKey(locationToCheck))
+            {
+                neighbours.Add(map[locationToCheck]);
+            }
+
+            return neighbours;
+        }
     }
 }

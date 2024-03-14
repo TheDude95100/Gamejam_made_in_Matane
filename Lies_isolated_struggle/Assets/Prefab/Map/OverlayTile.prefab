@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4859508448635300653}
   - component: {fileID: 3741349833982605961}
   - component: {fileID: 4235096622285939270}
-  - component: {fileID: 2509963761458562060}
+  - component: {fileID: 2729258920621691439}
   m_Layer: 0
   m_Name: OverlayTile
   m_TagString: Untagged
@@ -135,7 +135,7 @@ PolygonCollider2D:
       - {x: 0, y: -0.25}
       - {x: 0.5, y: 0}
   m_UseDelaunayMesh: 0
---- !u!114 &2509963761458562060
+--- !u!114 &2729258920621691439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,6 +144,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1497731181865220349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d14a5ef7a63c04c827d0deaa4f2884, type: 3}
+  m_Script: {fileID: 11500000, guid: 644a51a83012d414f805082e2923fa0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  G: 0
+  H: 0
+  isBlocked: 0
+  Previous: {fileID: 0}
+  gridLocation: {x: 0, y: 0, z: 0}

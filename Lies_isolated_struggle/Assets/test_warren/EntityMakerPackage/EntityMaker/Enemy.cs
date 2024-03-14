@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+
     private int _strengh,
                 _agility,
                 _constitution,
@@ -21,7 +22,10 @@ public class Enemy : Entity
     private float _rangedAccuracyBonus,
                   _meleeAccuracyBonus;
 
-    private Weapon currentWeapon;
+    private Weapon _activeWeapon;
+
+    [SerializeField]
+    private Weapon[] _weaponList;
 
     public int Strengh => _strengh;
     public int Agility => _agility;
@@ -38,19 +42,48 @@ public class Enemy : Entity
     public float RangedAccuracyBonus => _rangedAccuracyBonus;
     public float MeleeAccuracyBonus => _meleeAccuracyBonus;
 
-    public Weapon[] listWeapon;
+    public Weapon ActiveWeapon => _activeWeapon;
+    public Weapon[] WeaponList => _weaponList;
 
 
     // Start is called before the first frame update
     void Start()
     {
         UpdateStat();
+
+        _weaponList = Data.WeaponList;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void SetCurrentHP(int currentHP)
+    {
+        _currentHP = currentHP;
+    }
+
+    public void SetActiveWeapon(Weapon weapon)
+    {
+        _activeWeapon = weapon;
+    }
+
+    public void DealtDamage(int damage)
+    {
+        if (CurrentHP - damage <= 0)
+        {
+            _currentHP = 0;
+        }
+        else if (CurrentHP - damage >= MaxHP)
+        {
+            _currentHP = MaxHP;
+        }
+        else
+        {
+            _currentHP -= damage;
+        }
     }
 
     public void UpdateStat()
@@ -88,37 +121,6 @@ public class Enemy : Entity
         }
 
         _maxHP += Mathf.FloorToInt(Constitution * (3 * MaxHPScaleBonus)) + MaxHPFlatBonus;
-    }
-
-    public void SetCurrentHP(int currentHP)
-    {
-        _currentHP = currentHP;
-    }
-
-    public void DealtDamage(int damage)
-    {
-        if (CurrentHP - damage <= 0)
-        {
-            _currentHP = 0;
-        }
-        else if (CurrentHP - damage >= MaxHP)
-        {
-            _currentHP = MaxHP;
-        }
-        else
-        {
-            _currentHP = damage;
-        }
-    }
-
-    public void SetActiveWeapon(Weapon weapon)
-    {
-        currentWeapon = weapon;
-    }
-
-    public Weapon GetActiveWeapon()
-    {
-        return currentWeapon;
     }
 
     public void UpdateRangeArea(int rangeValue)

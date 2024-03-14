@@ -57,6 +57,9 @@ public class EntityData : ScriptableObject
     [SerializeField]
     private EntityTrait[] _traits;
 
+    [SerializeField]
+    private Weapon[] _weaponList;
+
     public string Name => _name;
     public EntityType EntityType => _entityType;
     public float ChanceToDropItem => _chanceToDropItem;
@@ -83,4 +86,5 @@ public class EntityData : ScriptableObject
 
     public EntityAbility[] Abilities => _abilities;
     public EntityTrait[] Traits => _traits;
+    public Weapon[] WeaponList => _weaponList;
 }

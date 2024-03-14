@@ -35,4 +35,10 @@ public class DestinationController : MonoBehaviour
     {
         destinationPanel.SetActive(false);
     }
+
+    public void GoDestination()
+    {
+        //GameManager.Scene_Fight(destinationName);     //Quand on aura different niveau
+        GameManager.Scene_Fight("Main_Fight");
+    }
 }

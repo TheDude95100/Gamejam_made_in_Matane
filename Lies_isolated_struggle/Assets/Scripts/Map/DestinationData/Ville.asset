@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c378d45db892ce94b8a9397b7f9262d1, type: 3}
   m_Name: Ville
   m_EditorClassIdentifier: 
-  destinationName: Ville
-  listDestinationBefore: []
-  listDestinationAfter: []
-  difficulty: 3
-  ressourceRate: 100
+  _name: Ville
+  _listDestinationBefore:
+  - {fileID: 11400000, guid: 911f2990ac566cb4c8bfc743875b1dd8, type: 2}
+  _listDestinationAfter:
+  - {fileID: 11400000, guid: a72bf18e3c1e16d40a94bcfa5fb4b740, type: 2}
+  _difficulty: 6
+  _ressourceRate: 100

@@ -1,120 +1,77 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PathFinder
+namespace Map
 {
-    public List<GameObject> FindPath(GameObject start, GameObject end)
+    public class PathFinder
     {
-        List<GameObject> openList = new List<GameObject>();
-        List<GameObject> closedList = new List<GameObject>();
-        
-        openList.Add(start);
-
-        while (openList.Count > 0)
+        public List<OverlayTile> FindPath(OverlayTile start, OverlayTile end)
         {
-            GameObject currentOverlayTile = openList.OrderBy(x => x.gameObject.GetComponent<OverlayTile>().F).First();
+            Debug.Log(start.transform.position);
+            Debug.Log(end.transform.position);
+            List<OverlayTile> openList = new List<OverlayTile>();
+            List<OverlayTile> closedList = new List<OverlayTile>();
 
-            openList.Remove(currentOverlayTile);
-            closedList.Add(currentOverlayTile);
+            openList.Add(start);
 
-            if (currentOverlayTile == end)
+            while (openList.Count > 0)
             {
-                return GetFinishedList(start, end);
+                OverlayTile currentOverlayTile = openList.OrderBy(x => x.F).First();
+
+                openList.Remove(currentOverlayTile);
+                closedList.Add(currentOverlayTile);
+
+                if (currentOverlayTile == end)
+                {
+                    return GetFinishedList(start, end);
+                }
+                foreach (OverlayTile tile in MapManager.Instance.GetNeightbourOverlayTiles(currentOverlayTile))
+                {
+                    if (tile.isBlocked || closedList.Contains(tile))
+                    {
+                        continue;
+                    }
+
+                    tile.G = GetManhattenDistance(start, tile);
+                    tile.H = GetManhattenDistance(end, tile);
+
+                    tile.Previous = currentOverlayTile;
+
+
+                    if (!openList.Contains(tile))
+                    {
+                        openList.Add(tile);
+                    }
+                }
             }
 
-            var neighbourTiles = GetNeighbourTiles(currentOverlayTile);
+            return null;
+        }
 
-            foreach (GameObject neighbour in neighbourTiles)
+        private List<OverlayTile> GetFinishedList(OverlayTile start, OverlayTile end)
+        {
+            List<OverlayTile> finishedList = new List<OverlayTile>();
+            OverlayTile currentTile = end;
+
+            while (currentTile != start)
             {
-                if (neighbour.gameObject.GetComponent<OverlayTile>().isBlocked || 
-                    closedList.Contains(neighbour) || 
-                    Mathf.Abs(currentOverlayTile.gameObject.GetComponent<OverlayTile>().GridLocation.z) > 1)
-                {
-                    continue;
-                }
-
-                neighbour.gameObject.GetComponent<OverlayTile>().G = GetManhattenDistance(start, neighbour);
-                neighbour.gameObject.GetComponent<OverlayTile>().H = GetManhattenDistance(end, neighbour);
-                neighbour.gameObject.GetComponent<OverlayTile>().previous = currentOverlayTile;
-                
-                if (!openList.Contains(neighbour))
-                {
-                    openList.Add(neighbour);
-                }
+                finishedList.Add(currentTile);
+                currentTile = currentTile.Previous;
             }
+
+            finishedList.Reverse();
+
+            return finishedList;
         }
 
-        return null;
-    }
-
-    private List<GameObject> GetFinishedList(GameObject start, GameObject end)
-    {
-        List<GameObject> finishedList = new List<GameObject>();
-
-        GameObject currentTile = end;
-
-        while (currentTile != start)
+        private int GetManhattenDistance(OverlayTile start, OverlayTile tile)
         {
-            finishedList.Add(currentTile);
-            currentTile = currentTile.gameObject.GetComponent<OverlayTile>().previous;
-        }
-        finishedList.Reverse();
-        return finishedList;
-
-    }
-
-    private int GetManhattenDistance(GameObject start, GameObject neighbour) =>
-        (start.gameObject.GetComponent<OverlayTile>().GridLocation.x - neighbour.gameObject.GetComponent<OverlayTile>().GridLocation.x) +
-        (start.gameObject.GetComponent<OverlayTile>().GridLocation.y - neighbour.gameObject.GetComponent<OverlayTile>().GridLocation.y);
-
-    private List<GameObject> GetNeighbourTiles(GameObject currentOverlayTile)
-    {
-        var map = MapManager.Instance.map;
-        List<GameObject> neighbours = new List<GameObject>();
-
-        // top
-        Vector2Int locationToCheck =
-            new Vector2Int(currentOverlayTile.gameObject.GetComponent<OverlayTile>().GridLocation.x,
-                currentOverlayTile.gameObject.GetComponent<OverlayTile>().GridLocation.y + 1);
-        
-        if (map.ContainsKey(locationToCheck))
-        {
-            neighbours.Add(map[locationToCheck]);
-        }
-        
-        // bottom
-        locationToCheck =
-            new Vector2Int(currentOverlayTile.gameObject.GetComponent<OverlayTile>().GridLocation.x,
-                currentOverlayTile.gameObject.GetComponent<OverlayTile>().GridLocation.y - 1);
-        
-        if (map.ContainsKey(locationToCheck))
-        {
-            neighbours.Add(map[locationToCheck]);
-        }
-        
-        // right
-        locationToCheck =
-            new Vector2Int(currentOverlayTile.gameObject.GetComponent<OverlayTile>().GridLocation.x + 1,
-                currentOverlayTile.gameObject.GetComponent<OverlayTile>().GridLocation.y);
-        
-        if (map.ContainsKey(locationToCheck))
-        {
-            neighbours.Add(map[locationToCheck]);
-        }
-        
-        // left
-        locationToCheck =
-            new Vector2Int(currentOverlayTile.gameObject.GetComponent<OverlayTile>().GridLocation.x - 1,
-                currentOverlayTile.gameObject.GetComponent<OverlayTile>().GridLocation.y);
-        
-        if (map.ContainsKey(locationToCheck))
-        {
-            neighbours.Add(map[locationToCheck]);
+            return Mathf.Abs(start.gridLocation.x - tile.gridLocation.x) +
+                   Mathf.Abs(start.gridLocation.y - tile.gridLocation.y);
         }
 
-        return neighbours;
+      
     }
 }

@@ -65,4 +65,19 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Mort");
     }
+
+    public static void Scene_Fight(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
+    }
+
+    public static void Scene_Home()
+    {
+        SceneManager.LoadScene("Main_Home");
+    }
+
+    public static void Scene_Map()
+    {
+        SceneManager.LoadScene("Main_Map");
+    }
 }

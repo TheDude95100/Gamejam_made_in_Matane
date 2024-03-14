@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Map;
+
 
 public class CharacterInfo : MonoBehaviour
 {
-    public GameObject standingOnTile;
+    public OverlayTile standingOnTile;
 }
+
+
