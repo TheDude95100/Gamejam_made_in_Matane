@@ -630,7 +630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &392063375
 Transform:
   m_ObjectHideFlags: 0
@@ -660,6 +660,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listeDialogue:
+  - nom: Introduction
+    phrases:
+    - C'est ma premiere phrase d'introduction
   - nom: Introduction 1
     phrases:
     - Reponse 1.1
@@ -670,7 +673,7 @@ MonoBehaviour:
     - Reponse 2
     - Reponse 2
     - Reponse 2
-  - nom: Introdcution 3
+  - nom: Introduction 3
     phrases:
     - Reponse 3
     - Reponse 3
@@ -699,14 +702,11 @@ MonoBehaviour:
   - nom: Loot 3
     phrases:
     - LE LOOOOT
-  introduction:
-    nom: Personnage 4
-    phrases:
-    - Je suis le 4e perso
-  dialogueFin:
-    nom: 
+  - nom: Dialogue Fin
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  nomPersonnage: Hunter
+  textBouton: {fileID: 162530073}
   flagEvent: 0
 --- !u!1 &432414067
 GameObject:
@@ -1642,6 +1642,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TalkingCharacter: {fileID: 0}
   idButton: 3
+  listeReponse:
+  - nom: Introduction
+    phrases:
+    - Reponse bouton 1
+  - nom: Mort
+    phrases:
+    - Reponse bouton 1
+  textMeshPro: {fileID: 1198799624}
 --- !u!1 &867390131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,6 +1912,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TalkingCharacter: {fileID: 0}
   idButton: 1
+  listeReponse:
+  - nom: Introduction
+    phrases:
+    - Reponse bouton 1
+  - nom: Mort
+    phrases:
+    - Reponse bouton 1
+  textMeshPro: {fileID: 605952999}
 --- !u!1 &953366453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,6 +2179,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TalkingCharacter: {fileID: 0}
   idButton: 2
+  listeReponse:
+  - nom: Introduction
+    phrases:
+    - Reponse bouton 1
+  - nom: Mort
+    phrases:
+    - Reponse bouton 1
+  textMeshPro: {fileID: 1808793904}
 --- !u!1 &1152957303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2233,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listeDialogue:
+  - nom: Introduction
+    phrases:
+    - C'est ma premiere phrase d'introduction
   - nom: Introduction 1
     phrases:
     - Reponse 1.1
@@ -2219,7 +2246,7 @@ MonoBehaviour:
     - Reponse 2
     - Reponse 2
     - Reponse 2
-  - nom: Introdcution 3
+  - nom: Introduction 3
     phrases:
     - Reponse 3
     - Reponse 3
@@ -2248,14 +2275,11 @@ MonoBehaviour:
   - nom: Loot 3
     phrases:
     - LE LOOOOT
-  introduction:
-    nom: Compagnon 1
-    phrases:
-    - C'est ma premiere phrase d'introduction
-  dialogueFin:
-    nom: 
+  - nom: Dialogue Fin
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  nomPersonnage: Doc
+  textBouton: {fileID: 85907114}
   flagEvent: 0
 --- !u!1 &1198799622
 GameObject:
@@ -2407,7 +2431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1230272721
 Transform:
   m_ObjectHideFlags: 0
@@ -2437,6 +2461,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listeDialogue:
+  - nom: Introduction
+    phrases:
+    - C'est ma premiere phrase d'introduction
   - nom: Introduction 1
     phrases:
     - Reponse 1.1
@@ -2447,7 +2474,7 @@ MonoBehaviour:
     - Reponse 2
     - Reponse 2
     - Reponse 2
-  - nom: Introdcution 3
+  - nom: Introduction 3
     phrases:
     - Reponse 3
     - Reponse 3
@@ -2476,14 +2503,11 @@ MonoBehaviour:
   - nom: Loot 3
     phrases:
     - LE LOOOOT
-  introduction:
-    nom: Personnage 2
-    phrases:
-    - Je suis le deuxieme perso
-  dialogueFin:
-    nom: 
+  - nom: Dialogue Fin
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  nomPersonnage: Junkrat
+  textBouton: {fileID: 1695555625}
   flagEvent: 0
 --- !u!1 &1515918145
 GameObject:
@@ -2869,7 +2893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1625004211
 Transform:
   m_ObjectHideFlags: 0
@@ -2899,6 +2923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listeDialogue:
+  - nom: Introduction
+    phrases:
+    - C'est ma premiere phrase d'introduction
   - nom: Introduction 1
     phrases:
     - Reponse 1.1
@@ -2909,7 +2936,7 @@ MonoBehaviour:
     - Reponse 2
     - Reponse 2
     - Reponse 2
-  - nom: Introdcution 3
+  - nom: Introduction 3
     phrases:
     - Reponse 3
     - Reponse 3
@@ -2938,14 +2965,11 @@ MonoBehaviour:
   - nom: Loot 3
     phrases:
     - LE LOOOOT
-  introduction:
-    nom: Personnage 3
-    phrases:
-    - Je suis le 3e perso
-  dialogueFin:
-    nom: 
+  - nom: Dialogue Fin
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  nomPersonnage: Bourrinos
+  textBouton: {fileID: 1528858548}
   flagEvent: 0
 --- !u!1 &1644397548
 GameObject:
@@ -3386,6 +3410,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1824965243}
   talkingCompagnon: {fileID: 0}
   currentDialogue: 
+  chosenAnswer: 
   flag: 0
 --- !u!4 &1773964216
 Transform:
