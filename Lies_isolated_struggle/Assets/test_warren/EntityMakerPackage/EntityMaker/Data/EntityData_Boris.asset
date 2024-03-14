@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EntityData_Boris
   m_EditorClassIdentifier: 
   _name: ...
-  _entityType: 0
+  _entityType: 3
   _chanceToDropItem: 0.5
   _rangeOfAwareness: 3
   _canEnterCombat: 1
@@ -21,6 +21,7 @@ MonoBehaviour:
   _agility: 25
   _constitution: 15
   _sanity: 5
+  _affinity: 0
   _movement: 1
   _maxHPFlatBonus: 0
   _maxHPScaleBonus: 1
@@ -33,3 +34,4 @@ MonoBehaviour:
   _abilities: []
   _traits:
   - {fileID: 11400000, guid: 765abcf53f815424a9a2971ef14002c2, type: 2}
+  _weaponList: []
