@@ -54,10 +54,16 @@ public class CharacterScreen : MonoBehaviour
 
         for(int index = 0; index < 3; index++)
         {
-            if(_playerData.Data.Traits[index] && index <= _playerData.Data.Traits.Count() - 1)
+            if(index <= _playerData.Data.Traits.Count() - 1)
             {
-                _screenPanels[4].transform.GetChild(index + 1).GetComponent<TextMeshProUGUI>().text = _playerData.Data.Traits[index].Name;
+                if(_playerData.Data.Traits[index])
+                {
+                    _screenPanels[4].transform.GetChild(index + 1).GetComponent<TextMeshProUGUI>().text = _playerData.Data.Traits[index].Name;
+                    _screenPanels[4].transform.GetChild(index + 1).gameObject.SetActive(true);
+                    continue;
+                }
             }
+            _screenPanels[4].transform.GetChild(index + 1).gameObject.SetActive(false);
         }
 
         _screenPanels[5].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _playerData.ActiveWeapon.Name;
