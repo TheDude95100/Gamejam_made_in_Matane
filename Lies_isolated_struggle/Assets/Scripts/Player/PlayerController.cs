@@ -5,7 +5,7 @@ using System.Linq;
 using Map;
 using UnityEngine;
 
-public class MouseController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public GameObject cursor;
     public float speed;
