@@ -12,13 +12,15 @@ public class CharacterScreen : MonoBehaviour
     private List<GameObject> _screenPanels;
     private Player _playerData;
     private GameObject _weaponChangeButtons;
+
+    public bool IsOpen => _isOpen; 
     
     // Start is called before the first frame update
     void Awake()
     {
         _isOpen = false;
         _screenPanels = new List<GameObject>();
-        _weaponChangeButtons = GameObject.FindGameObjectWithTag("ButtonsWeapon");
+        // _weaponChangeButtons = GameObject.FindGameObjectWithTag("ButtonsWeapon");
         for (int childIndex = 0; childIndex < this.gameObject.transform.childCount; childIndex++)
         {
             GameObject temp = this.gameObject.transform.GetChild(childIndex).gameObject;
@@ -28,21 +30,9 @@ public class CharacterScreen : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void ToggleIsOpen()
     {
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            if(!_isOpen)
-            {
-                ActivateScreen(FindObjectOfType<Player>());
-                _isOpen = true;
-            }
-            else
-            {
-                DisableScreen();
-                _isOpen = false;
-            }
-        }
+        _isOpen = !_isOpen;
     }
 
     public void ActivateScreen(Player playerData)
@@ -51,7 +41,7 @@ public class CharacterScreen : MonoBehaviour
 
         _screenPanels[0].SetActive(true);
         _screenPanels[2].SetActive(true);
-        _weaponChangeButtons.SetActive(false);
+        // _weaponChangeButtons.SetActive(false);
 
         _screenPanels[2].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _playerData.Data.Name;
         _screenPanels[2].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _playerData.CurrentHP + " / " + _playerData.MaxHP;
@@ -81,11 +71,12 @@ public class CharacterScreen : MonoBehaviour
             _screenPanels[4].transform.GetChild(index + 1).gameObject.SetActive(false);
         }
 
-        UpdateWeaponStats();
+        // UpdateWeaponStats();
     }
 
     public void ShowExtendedVersion()
     {
+        Debug.Log("Help");
         _screenPanels[0].SetActive(false);
         _screenPanels[1].SetActive(true);
         _screenPanels[3].SetActive(true);
@@ -109,7 +100,9 @@ public class CharacterScreen : MonoBehaviour
             _screenPanels[index].SetActive(false);
         }
 
-        _weaponChangeButtons.SetActive(true);
+        _isOpen = false;
+        
+        // _weaponChangeButtons.SetActive(true);
         _playerData = null;
     }
 

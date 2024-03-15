@@ -39,7 +39,6 @@ namespace Map
         
         public void SetSprite(ArrowTranslator.ArrowDirection direction)
         {
-            Debug.Log((int)direction);
             if (direction == ArrowTranslator.ArrowDirection.None)
                 GetComponentsInChildren<SpriteRenderer>()[1].color = new Color(1, 1, 1, 0);
             else

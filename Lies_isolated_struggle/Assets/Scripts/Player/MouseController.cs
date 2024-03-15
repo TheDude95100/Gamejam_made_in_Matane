@@ -19,6 +19,8 @@ public class MouseController : MonoBehaviour
     private List<OverlayTile> _rangeFinderTiles;
     private bool _isMoving;
 
+    private CharacterScreen _characterScreen;
+
     private void Start()
     {
         _path = new List<OverlayTile>();
@@ -27,10 +29,34 @@ public class MouseController : MonoBehaviour
         _arrowTranslator = new ArrowTranslator();
         _isMoving = false;
         _rangeFinderTiles = new List<OverlayTile>();
+
+        _characterScreen = FindObjectOfType<CharacterScreen>();
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            if(!_characterScreen.IsOpen)
+            {
+                _characterScreen.ActivateScreen(FindObjectOfType<Player>());
+                _characterScreen.ToggleIsOpen();
+            }
+            else
+            {
+                _characterScreen.DisableScreen();
+                _characterScreen.ToggleIsOpen();
+            }
+        }
     }
 
     void LateUpdate()
     {
+        if (_characterScreen.IsOpen)
+        {
+            return;
+        }
+
         RaycastHit2D? hit = GetFocusedOnTile();
 
         if (hit.HasValue)
@@ -65,7 +91,7 @@ public class MouseController : MonoBehaviour
                 if (_character == null)
                 {
                     _character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
-                    PositionCharacterOnLine(tile);
+                    PositionCharacterOnTile(tile);
                     GetInRangeTiles();
                 }
                 else
@@ -92,7 +118,7 @@ public class MouseController : MonoBehaviour
 
         if (Vector2.Distance(_character.transform.position, _path[0].transform.position) < 0.00001f)
         {
-            PositionCharacterOnLine(_path[0]);
+            PositionCharacterOnTile(_path[0]);
             _path.RemoveAt(0);
         }
 
@@ -101,10 +127,9 @@ public class MouseController : MonoBehaviour
             GetInRangeTiles();
             _isMoving = false;
         }
-
     }
 
-    private void PositionCharacterOnLine(OverlayTile tile)
+    private void PositionCharacterOnTile(OverlayTile tile)
     {
         _character.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y + 0.0001f, tile.transform.position.z);
         _character.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
@@ -129,7 +154,7 @@ public class MouseController : MonoBehaviour
     private void GetInRangeTiles()
     {
         _rangeFinderTiles = _rangeFinder.GetTilesInRange(new Vector2Int(_character.standingOnTile.gridLocation.x, _character.standingOnTile.gridLocation.y), 3);
-
+        
         foreach (var item in _rangeFinderTiles)
         {
             item.ShowTile();
