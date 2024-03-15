@@ -9,11 +9,14 @@ using UnityEngine;
 public class CompagnonDialogue : MonoBehaviour
 {
     public Dialogue[] listeDialogue;
+    public Dialogue[] listeReponse;
     public string nomPersonnage;
 
     public Dictionary<string, Dialogue> dictionnaireDialogue;
 
     public Dictionary<string, string> dictionnaireEvent;
+
+    public Dictionary<string, Dialogue> dictionnaireReponse;
 
     private DialogueManager _dm;
 
@@ -27,6 +30,7 @@ public class CompagnonDialogue : MonoBehaviour
         _dm = FindObjectOfType<DialogueManager>();
         textBouton.text = nomPersonnage;
         dictionnaireDialogue = new Dictionary<string, Dialogue>();
+        dictionnaireReponse= new Dictionary<string, Dialogue>();
         dictionnaireEvent= new Dictionary<string, string>()
         {
            {"Mort", "Nom du mort"},
@@ -36,6 +40,10 @@ public class CompagnonDialogue : MonoBehaviour
         for (int indexDialogue = 0; indexDialogue < listeDialogue.Length; indexDialogue++)
         {
             dictionnaireDialogue.Add(listeDialogue[indexDialogue].nom, listeDialogue[indexDialogue]);
+        }
+        for (int indexDialogue = 0; indexDialogue < listeReponse.Length; indexDialogue++)
+        {
+            dictionnaireReponse.Add(listeReponse[indexDialogue].nom, listeReponse[indexDialogue]);
         }
     }
 

@@ -12,10 +12,6 @@ public class ReponseButton : MonoBehaviour
 
     public int idButton;
 
-    public Dialogue[] listeReponse;
-
-    Dictionary<string, Dialogue> _reponseDic;
-
     public TextMeshProUGUI textMeshPro;
 
     private void OnEnable()
@@ -23,12 +19,7 @@ public class ReponseButton : MonoBehaviour
         _dm = FindObjectOfType<DialogueManager>();
         TalkingCharacter = _dm.talkingCompagnon;
         string dialogue = _dm.currentDialogue;
-        _reponseDic= new Dictionary<string, Dialogue>();
-        for (int indexDialogue = 0; indexDialogue < listeReponse.Length; indexDialogue++)
-        {
-            _reponseDic.Add(listeReponse[indexDialogue].nom, listeReponse[indexDialogue]);
-        }
-        textMeshPro.text = _reponseDic[dialogue].phrases[0];
+        textMeshPro.text = TalkingCharacter.dictionnaireReponse[dialogue + " " + idButton].phrases[0];
     }
     public void TriggerReponse()
     {

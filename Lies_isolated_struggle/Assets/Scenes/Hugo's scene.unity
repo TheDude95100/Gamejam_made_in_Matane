@@ -630,7 +630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &392063375
 Transform:
   m_ObjectHideFlags: 0
@@ -1645,10 +1645,10 @@ MonoBehaviour:
   listeReponse:
   - nom: Introduction
     phrases:
-    - Reponse bouton 1
+    - Reponse bouton 3
   - nom: Mort
     phrases:
-    - Reponse bouton 1
+    - Reponse bouton 3
   textMeshPro: {fileID: 1198799624}
 --- !u!1 &867390131
 GameObject:
@@ -2182,10 +2182,10 @@ MonoBehaviour:
   listeReponse:
   - nom: Introduction
     phrases:
-    - Reponse bouton 1
+    - Reponse bouton 2
   - nom: Mort
     phrases:
-    - Reponse bouton 1
+    - Reponse bouton 2
   textMeshPro: {fileID: 1808793904}
 --- !u!1 &1152957303
 GameObject:
@@ -2431,7 +2431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1230272721
 Transform:
   m_ObjectHideFlags: 0
@@ -2893,7 +2893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1625004211
 Transform:
   m_ObjectHideFlags: 0
