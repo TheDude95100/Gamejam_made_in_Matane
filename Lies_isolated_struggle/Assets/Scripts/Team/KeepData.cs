@@ -6,8 +6,10 @@ using UnityEngine;
 public class KeepData : MonoBehaviour
 {
 
-    [SerializeField] private GameObject[] listCompagnon;
-    [SerializeField] private Weapon[] weaponInventory;
+    [SerializeField] private List<GameObject> _listCompagnon;
+    [SerializeField] private Weapon[] _weaponInventory;
+
+    public List<GameObject> ListCompagnon => _listCompagnon;
 
     #region Singleton
     public static KeepData instance;
