@@ -56,7 +56,27 @@ public class DialogueManager : MonoBehaviour
     }
 
    public void SetCompagnonDialogue(CompagnonDialogue compagnon)
-    {
+   {
         talkingCompagnon= compagnon;
+   }
+
+    public void ChangerAffinite()
+    {
+        
+        int[] matriceReponse = talkingCompagnon.dictionnaireReponse[chosenAnswer].GetReactionAffinite();
+
+        CompagnonDialogue[] listeCompagnon = FindObjectsOfType<CompagnonDialogue>();
+
+        foreach (CompagnonDialogue compagnon in listeCompagnon)
+        {
+            int[] matriceCompagnon = compagnon.GetMatriceAffinite();
+            int boostAffinite = 0;
+            for (int indexMatriceAffinite =0; indexMatriceAffinite < matriceCompagnon.Length; indexMatriceAffinite++)
+            {
+                boostAffinite += matriceCompagnon[indexMatriceAffinite] * matriceReponse[indexMatriceAffinite];
+            }
+            compagnon.affinite += boostAffinite;
+            Debug.Log(compagnon.nomPersonnage + " affinite: " + compagnon.affinite);
+        }
     }
 }

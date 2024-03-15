@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EntityData_", menuName = "UnitData/Entity")]
+[CreateAssetMenu(fileName = "EntityData_", menuName = "Datasheet/Entity")]
 public class EntityData : ScriptableObject
 {
     [SerializeField]

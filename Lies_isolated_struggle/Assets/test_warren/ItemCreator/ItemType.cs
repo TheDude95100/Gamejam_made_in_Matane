@@ -4,8 +4,9 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Weapon,
-    Armor,
-    Consumable,
-    Ressources
+    None = 0,
+    Weapon = 1,
+    Armor = 2,
+    Consumable = 3,
+    Ressources = 4
 }

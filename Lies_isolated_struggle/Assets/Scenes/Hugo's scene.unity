@@ -705,9 +705,67 @@ MonoBehaviour:
   - nom: Dialogue Fin
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  listeReponse:
+  - nom: Introduction 1
+    phrases:
+    - Reponse 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Introduction 2
+    phrases:
+    - Reponse 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Introduction 3
+    phrases:
+    - Reponse 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Mort 1
+    phrases:
+    - Mort 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 1
+  - nom: Mort 2
+    phrases:
+    - Mort 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Mort 3
+    phrases:
+    - Mort 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 1
+    phrases:
+    - Loot 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 2
+    phrases:
+    - Loot 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 3
+    phrases:
+    - Loot 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
   nomPersonnage: Hunter
   textBouton: {fileID: 162530073}
   flagEvent: 0
+  affiniteSurvie: 0
+  affiniteCombat: -1
+  affiniteAnimaux: 1
 --- !u!1 &432414067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,13 +1700,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TalkingCharacter: {fileID: 0}
   idButton: 3
-  listeReponse:
-  - nom: Introduction
-    phrases:
-    - Reponse bouton 3
-  - nom: Mort
-    phrases:
-    - Reponse bouton 3
   textMeshPro: {fileID: 1198799624}
 --- !u!1 &867390131
 GameObject:
@@ -1912,13 +1963,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TalkingCharacter: {fileID: 0}
   idButton: 1
-  listeReponse:
-  - nom: Introduction
-    phrases:
-    - Reponse bouton 1
-  - nom: Mort
-    phrases:
-    - Reponse bouton 1
   textMeshPro: {fileID: 605952999}
 --- !u!1 &953366453
 GameObject:
@@ -2179,13 +2223,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TalkingCharacter: {fileID: 0}
   idButton: 2
-  listeReponse:
-  - nom: Introduction
-    phrases:
-    - Reponse bouton 2
-  - nom: Mort
-    phrases:
-    - Reponse bouton 2
   textMeshPro: {fileID: 1808793904}
 --- !u!1 &1152957303
 GameObject:
@@ -2278,9 +2315,67 @@ MonoBehaviour:
   - nom: Dialogue Fin
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  listeReponse:
+  - nom: Introduction 1
+    phrases:
+    - Reponse 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Introduction 2
+    phrases:
+    - Reponse 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Introduction 3
+    phrases:
+    - Reponse 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Mort 1
+    phrases:
+    - Mort 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 1
+  - nom: Mort 2
+    phrases:
+    - Mort 2
+    affiniteSurvie: 1
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Mort 3
+    phrases:
+    - Mort 3
+    affiniteSurvie: 0
+    affiniteCombat: 1
+    affiniteAnimaux: 0
+  - nom: Loot 1
+    phrases:
+    - Loot 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 2
+    phrases:
+    - Loot 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 3
+    phrases:
+    - Loot 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
   nomPersonnage: Doc
   textBouton: {fileID: 85907114}
   flagEvent: 0
+  affiniteSurvie: 1
+  affiniteCombat: -1
+  affiniteAnimaux: 0
 --- !u!1 &1198799622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,9 +2601,67 @@ MonoBehaviour:
   - nom: Dialogue Fin
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  listeReponse:
+  - nom: Introduction 1
+    phrases:
+    - Reponse 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Introduction 2
+    phrases:
+    - Reponse 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Introduction 3
+    phrases:
+    - Reponse 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Mort 1
+    phrases:
+    - Mort 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Mort 2
+    phrases:
+    - Mort 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Mort 3
+    phrases:
+    - Mort 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 1
+    phrases:
+    - Loot 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 2
+    phrases:
+    - Loot 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 3
+    phrases:
+    - Loot 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
   nomPersonnage: Junkrat
   textBouton: {fileID: 1695555625}
   flagEvent: 0
+  affiniteSurvie: 0
+  affiniteCombat: 1
+  affiniteAnimaux: -1
 --- !u!1 &1515918145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,9 +3121,67 @@ MonoBehaviour:
   - nom: Dialogue Fin
     phrases:
     - "Tu as d\xE9ja parl\xE9 avec moi"
+  listeReponse:
+  - nom: Introduction 1
+    phrases:
+    - Reponse 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Introduction 2
+    phrases:
+    - Reponse 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Introduction 3
+    phrases:
+    - Reponse 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Mort 1
+    phrases:
+    - Mort 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Mort 2
+    phrases:
+    - Mort 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Mort 3
+    phrases:
+    - Mort 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 1
+    phrases:
+    - Loot 1
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 2
+    phrases:
+    - Loot 2
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
+  - nom: Loot 3
+    phrases:
+    - Loot 3
+    affiniteSurvie: 0
+    affiniteCombat: 0
+    affiniteAnimaux: 0
   nomPersonnage: Bourrinos
   textBouton: {fileID: 1528858548}
   flagEvent: 0
+  affiniteSurvie: -1
+  affiniteCombat: 1
+  affiniteAnimaux: 0
 --- !u!1 &1644397548
 GameObject:
   m_ObjectHideFlags: 0

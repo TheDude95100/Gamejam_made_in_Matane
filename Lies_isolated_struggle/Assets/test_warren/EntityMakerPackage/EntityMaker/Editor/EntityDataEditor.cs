@@ -88,12 +88,12 @@ public class EntityDataEditor : Editor
         }
 
         EditorGUILayout.PropertyField(_entityType, new GUIContent("Entity type"));
-        //EditorGUILayout.LabelField("Item drop chance");
-        //_chanceToDropItem.floatValue = EditorGUILayout.Slider(
-        //            _chanceToDropItem.floatValue,
-        //            0,
-        //            100
-        //    );
+        EditorGUILayout.LabelField("Item drop chance");
+        _chanceToDropItem.floatValue = EditorGUILayout.Slider(
+                    _chanceToDropItem.floatValue,
+                    0,
+                    100
+            );
         //EditorGUILayout.PropertyField(_rangeOfAwareness, new GUIContent("Range of awareness"));
         EditorGUILayout.PropertyField(_canEnterCombat, new GUIContent("Can enter combat?"));
         EditorGUILayout.Space(10);

@@ -30,7 +30,8 @@ public class ReponseButton : MonoBehaviour
         }
         _dm.chosenAnswer = dialogue + " " + idButton;
         _dm.StartDialogue(new Dialogue(TalkingCharacter.nomPersonnage, TalkingCharacter.dictionnaireDialogue[_dm.currentDialogue + " " + idButton].phrases));
-        if(_dm.talkingCompagnon.dictionnaireEvent.Count >0) { _dm.talkingCompagnon.dictionnaireEvent.Remove(_dm.talkingCompagnon.dictionnaireEvent.First().Key); }
+        _dm.ChangerAffinite();
+        //if(_dm.talkingCompagnon.dictionnaireEvent.Count >0) { _dm.talkingCompagnon.dictionnaireEvent.Remove(_dm.talkingCompagnon.dictionnaireEvent.First().Key); }
         _dm.talkingCompagnon.flagEvent= true;
     }
 }
