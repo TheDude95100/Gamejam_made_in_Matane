@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,30 +7,31 @@ using UnityEngine;
 
 public class RangeFinder
 {
-    public List<OverlayTile> GetTilesInRange(OverlayTile startingTile, int range)
+    public List<OverlayTile> GetTilesInRange(Vector2Int location, int range)
     {
-        var tilesInRange = new List<OverlayTile>();
+        var startingTile = MapManager.Instance.map[location];
+        var inRangeTiles = new List<OverlayTile>();
         int stepCount = 0;
-        
-        tilesInRange.Add(startingTile);
 
-        var tileForPreviousStep = new List<OverlayTile>();
+        inRangeTiles.Add(startingTile);
 
+        //Should contain the surroundingTiles of the previous step. 
+        var tilesForPreviousStep = new List<OverlayTile>();
+        tilesForPreviousStep.Add(startingTile);
         while (stepCount < range)
         {
             var surroundingTiles = new List<OverlayTile>();
 
-            foreach (var item in tileForPreviousStep)
+            foreach (var item in tilesForPreviousStep)
             {
-                surroundingTiles.AddRange(MapManager.Instance.GetNeightbourOverlayTiles(item));
+                surroundingTiles.AddRange(MapManager.Instance.GetSurroundingTiles(new Vector2Int(item.gridLocation.x, item.gridLocation.y)));
             }
-            
-            tilesInRange.AddRange(surroundingTiles);
-            tileForPreviousStep = surroundingTiles.Distinct().ToList();
+
+            inRangeTiles.AddRange(surroundingTiles);
+            tilesForPreviousStep = surroundingTiles.Distinct().ToList();
             stepCount++;
-            
         }
-        
-        return tilesInRange.Distinct().ToList();
+
+        return inRangeTiles.Distinct().ToList();
     }
 }

@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Overlay
+    uniqueID: 2319770157
+    locked: 0
+  - name: Arrow
+    uniqueID: 1564025825
+    locked: 0
+  - name: Player
+    uniqueID: 2759505439
+    locked: 0
