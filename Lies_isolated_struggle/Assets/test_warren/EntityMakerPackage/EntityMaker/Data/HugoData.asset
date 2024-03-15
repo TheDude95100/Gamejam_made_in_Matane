@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3ccdd1b4fdc414da79ebe813a9eb96, type: 3}
+  m_Name: HugoData
+  m_EditorClassIdentifier: 
+  _name: Ben
+  _entityType: 3
+  _chanceToDropItem: 0.5
+  _rangeOfAwareness: 3
+  _canEnterCombat: 1
+  _strengh: 10
+  _agility: 3
+  _constitution: 8
+  _sanity: 2
+  _affinity: 10
+  _movement: 1
+  _maxHPFlatBonus: 20
+  _maxHPScaleBonus: 1
+  _fireDamageBonus: 3
+  _meleeDamageBonus: 3
+  _rangedDamageBonus: 3
+  _rangedAccuracyBonus: 2
+  _meleeAccuracyBonus: 2
+  _battleCry: ...
+  _abilities: []
+  _traits: []
+  _weaponList:
+  - {fileID: 11400000, guid: 8d97848740e03d448b45432e0aefa684, type: 2}
+  - {fileID: 11400000, guid: 55eba8f7a897409499d324ed8b0112ae, type: 2}

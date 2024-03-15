@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/Main_Fight.unity
     guid: 21a52055a8f8a4844b5629e597f2858f
+  - enabled: 1
+    path: Assets/Scenes/Ben/TeamChoice1.unity
+    guid: 911f8337cb3cbfd4993e8ca23689bb44
+  - enabled: 1
+    path: Assets/Scenes/Ben/TeamChoice2.unity
+    guid: 433076033a1e93e428b90b75a0283c75
   m_configObjects: {}

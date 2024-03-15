@@ -1589,7 +1589,7 @@ GameObject:
   - component: {fileID: 1910040476}
   m_Layer: 5
   m_Name: ButtonsWeapon
-  m_TagString: Untagged
+  m_TagString: ButtonsWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1768,6 +1768,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3513498838056488622, guid: 5a6119b99564bb64991676a355924425,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5159556165066154868, guid: 5a6119b99564bb64991676a355924425,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1867,6 +1872,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589146312604851473, guid: 5a6119b99564bb64991676a355924425,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

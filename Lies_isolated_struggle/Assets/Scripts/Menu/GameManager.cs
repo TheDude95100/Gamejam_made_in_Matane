@@ -80,4 +80,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main_Map");
     }
+
+    public static void Scene1()
+    {
+        SceneManager.LoadScene("TeamChoice1");
+    }
+
+    public static void Scene2()
+    {
+        SceneManager.LoadScene("TeamChoice2");
+    }
 }

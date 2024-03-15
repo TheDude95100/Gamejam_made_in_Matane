@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c3ccdd1b4fdc414da79ebe813a9eb96, type: 3}
-  m_Name: PlayerData
+  m_Name: BenData
   m_EditorClassIdentifier: 
   _name: Ben
   _entityType: 3
