@@ -10,7 +10,7 @@ public class CharacterScreen : MonoBehaviour
     private bool _isOpen;
 
     private List<GameObject> _screenPanels;
-    private Player _playerData;
+    private Character _playerData;
     private GameObject _weaponChangeButtons;
 
     public bool IsOpen => _isOpen; 
@@ -35,7 +35,7 @@ public class CharacterScreen : MonoBehaviour
         _isOpen = !_isOpen;
     }
 
-    public void ActivateScreen(Player playerData)
+    public void ActivateScreen(Character playerData)
     {
         _playerData = playerData;
 

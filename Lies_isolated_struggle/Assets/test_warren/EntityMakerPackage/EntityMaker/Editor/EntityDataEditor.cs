@@ -88,7 +88,7 @@ public class EntityDataEditor : Editor
         }
 
         EditorGUILayout.PropertyField(_entityType, new GUIContent("Entity type"));
-        EditorGUILayout.LabelField("Item drop chance");
+        EditorGUILayout.LabelField("Chance to drop item");
         _chanceToDropItem.floatValue = EditorGUILayout.Slider(
                     _chanceToDropItem.floatValue,
                     0,

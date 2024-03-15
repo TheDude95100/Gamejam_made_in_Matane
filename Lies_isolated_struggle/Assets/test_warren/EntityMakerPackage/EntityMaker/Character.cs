@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Entity
+public class Character: Entity
 {
     const int AFFINITY_MAX = 100,
               AFFINITY_MIN = -100;

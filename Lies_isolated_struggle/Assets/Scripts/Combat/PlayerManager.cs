@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField]  private GameObject[] listPlayer;
-    private Player currentPlayer;
+    private Character currentPlayer;
     [SerializeField] private GameObject listWeaponButton;
     [SerializeField] private GameObject prefabWeaponButton;
 
@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
 
     public void SelectCurrentPlayer(int playerIndex)
     {
-        currentPlayer = listPlayer[playerIndex].GetComponent<Player>();
+        currentPlayer = listPlayer[playerIndex].GetComponent<Character>();
         currentPlayer.SetActiveWeapon(currentPlayer.WeaponList[0]);
         SetRangeArea(currentPlayer.ActiveWeapon.Range);
         foreach(Weapon weapon in currentPlayer.WeaponList)
@@ -44,5 +44,5 @@ public class PlayerManager : MonoBehaviour
         currentPlayer.UpdateRangeArea(range);
     }
 
-    public Player GetCurrentPlayer() { return currentPlayer; }
+    public Character GetCurrentPlayer() { return currentPlayer; }
 }

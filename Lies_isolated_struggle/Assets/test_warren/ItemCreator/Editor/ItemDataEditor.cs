@@ -47,6 +47,21 @@ public class ItemDataEditor : Editor
 
     public void OnInspectorGUI() 
     {
+        serializedObject.UpdateIfRequiredOrScript();
 
+        EditorGUILayout.LabelField(_name.stringValue.ToUpper(), EditorStyles.boldLabel);
+        EditorGUILayout.Space(10);
+
+        EditorGUILayout.LabelField("General Stats", EditorStyles.boldLabel);
+
+        EditorGUILayout.PropertyField(_name, new GUIContent("Name"));
+        if (_name.stringValue == string.Empty)
+        {
+            EditorGUILayout.HelpBox("Caution: No name specified. Please name the entity!", MessageType.Warning);
+        }
+
+        EditorGUILayout.PropertyField(_type, new GUIContent("Entity type"));
+
+        serializedObject.ApplyModifiedProperties();
     }
 }

@@ -39,7 +39,7 @@ public class MouseController : MonoBehaviour
         {
             if(!_characterScreen.IsOpen)
             {
-                _characterScreen.ActivateScreen(FindObjectOfType<Player>());
+                _characterScreen.ActivateScreen(FindObjectOfType<Character>());
                 _characterScreen.ToggleIsOpen();
             }
             else
