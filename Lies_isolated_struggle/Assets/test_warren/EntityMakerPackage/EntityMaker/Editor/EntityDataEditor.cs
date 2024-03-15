@@ -31,6 +31,7 @@ public class EntityDataEditor : Editor
     private SerializedProperty _battleCry;
     private SerializedProperty _abilities;
     private SerializedProperty _traits;
+    private SerializedProperty _weaponList;
 
     private void OnEnable()
     {
@@ -59,6 +60,7 @@ public class EntityDataEditor : Editor
         _battleCry = serializedObject.FindProperty("_battleCry");
         _abilities = serializedObject.FindProperty("_abilities");
         _traits = serializedObject.FindProperty("_traits");
+        _weaponList = serializedObject.FindProperty("_weaponList");
     }
 
     public override void OnInspectorGUI()
@@ -234,6 +236,9 @@ public class EntityDataEditor : Editor
 
         EditorGUILayout.Space(5);
         EditorGUILayout.PropertyField(_traits, new GUIContent("Traits"));
+
+        EditorGUILayout.Space(5);
+        EditorGUILayout.PropertyField(_weaponList, new GUIContent("Weapons"));
 
         serializedObject.ApplyModifiedProperties();
     }

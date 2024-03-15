@@ -25,7 +25,9 @@ public class Player : Entity
     private float _rangedAccuracyBonus,
                   _meleeAccuracyBonus;
 
-    private Weapon currentWeapon;
+    private Weapon _activeWeapon;
+
+    private Weapon[] _weaponList;
 
     public int Strengh => _strengh;
     public int Agility => _agility;
@@ -43,24 +45,22 @@ public class Player : Entity
     public float RangedAccuracyBonus => _rangedAccuracyBonus;
     public float MeleeAccuracyBonus => _meleeAccuracyBonus;
 
-    public Weapon[] listWeapon;
+    public Weapon ActiveWeapon => _activeWeapon;
+    public Weapon[] WeaponList => _weaponList;
 
 
     // Start is called before the first frame update
     void Start()
     {
         UpdateStat();
+        SetCurrentHP(MaxHP);
+        _weaponList = Data.WeaponList;
+        SetActiveWeapon(_weaponList[0]);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
-    }
-
-    public Weapon GetActiveWeapon()
-    {
-        return currentWeapon;
+        UpdateStat();
     }
 
     public void SetCurrentHP(int currentHP)
@@ -70,7 +70,7 @@ public class Player : Entity
 
     public void SetActiveWeapon(Weapon weapon) 
     {
-        currentWeapon = weapon;
+        _activeWeapon = weapon;
     }
 
     public void DealtDamage(int damage)
@@ -140,7 +140,7 @@ public class Player : Entity
             }
         }
 
-        _maxHP += Mathf.FloorToInt(Constitution * (3 * MaxHPScaleBonus)) + MaxHPFlatBonus;
+        _maxHP = Mathf.FloorToInt(Constitution * (3 * MaxHPScaleBonus)) + MaxHPFlatBonus;
     }
 
     public void UpdateRangeArea(int rangeValue)

@@ -60,8 +60,6 @@ public class DialogueBox : MonoBehaviour
     {
 
         DialogueManager manager = FindObjectOfType<DialogueManager>();
-        Debug.Log("Manager flag: " + manager.flag);
-        Debug.Log("Dialogue flag: " + manager.talkingCompagnon.DialogueFini);
         if (manager.flag && !manager.talkingCompagnon.DialogueFini)
         {
             UnsetActiveContinueButton();

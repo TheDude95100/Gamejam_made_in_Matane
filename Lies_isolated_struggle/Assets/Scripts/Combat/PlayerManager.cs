@@ -27,9 +27,9 @@ public class PlayerManager : MonoBehaviour
     public void SelectCurrentPlayer(int playerIndex)
     {
         currentPlayer = listPlayer[playerIndex].GetComponent<Player>();
-        currentPlayer.SetActiveWeapon(currentPlayer.listWeapon[0]);
-        SetRangeArea(currentPlayer.GetActiveWeapon().Range);
-        foreach(Weapon weapon in currentPlayer.listWeapon)
+        currentPlayer.SetActiveWeapon(currentPlayer.WeaponList[0]);
+        SetRangeArea(currentPlayer.ActiveWeapon.Range);
+        foreach(Weapon weapon in currentPlayer.WeaponList)
         {
             GameObject newWeaponButton = Instantiate(prefabWeaponButton, listWeaponButton.transform);
             newWeaponButton.transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = weapon.name;
