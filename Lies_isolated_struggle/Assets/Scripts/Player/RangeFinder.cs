@@ -1,37 +1,38 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Map;
 using UnityEngine;
 
-public class RangeFinder
+namespace Player
 {
-    public List<OverlayTile> GetTilesInRange(Vector2Int location, int range)
+    public class RangeFinder
     {
-        var startingTile = MapManager.Instance.map[location];
-        var inRangeTiles = new List<OverlayTile>();
-        int stepCount = 0;
-
-        inRangeTiles.Add(startingTile);
-
-        //Should contain the surroundingTiles of the previous step. 
-        var tilesForPreviousStep = new List<OverlayTile>();
-        tilesForPreviousStep.Add(startingTile);
-        while (stepCount < range)
+        public List<OverlayTile> GetTilesInRange(Vector2Int location, int range)
         {
-            var surroundingTiles = new List<OverlayTile>();
+            var startingTile = MapManager.Instance.map[location];
+            var inRangeTiles = new List<OverlayTile>();
+            int stepCount = 0;
 
-            foreach (var item in tilesForPreviousStep)
+            inRangeTiles.Add(startingTile);
+
+            //Should contain the surroundingTiles of the previous step. 
+            var tilesForPreviousStep = new List<OverlayTile>();
+            tilesForPreviousStep.Add(startingTile);
+            while (stepCount < range)
             {
-                surroundingTiles.AddRange(MapManager.Instance.GetSurroundingTiles(new Vector2Int(item.gridLocation.x, item.gridLocation.y)));
+                var surroundingTiles = new List<OverlayTile>();
+
+                foreach (var item in tilesForPreviousStep)
+                {
+                    surroundingTiles.AddRange(MapManager.Instance.GetSurroundingTiles(new Vector2Int(item.gridLocation.x, item.gridLocation.y)));
+                }
+
+                inRangeTiles.AddRange(surroundingTiles);
+                tilesForPreviousStep = surroundingTiles.Distinct().ToList();
+                stepCount++;
             }
 
-            inRangeTiles.AddRange(surroundingTiles);
-            tilesForPreviousStep = surroundingTiles.Distinct().ToList();
-            stepCount++;
+            return inRangeTiles.Distinct().ToList();
         }
-
-        return inRangeTiles.Distinct().ToList();
     }
 }

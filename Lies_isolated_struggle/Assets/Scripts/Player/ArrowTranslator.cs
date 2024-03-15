@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using Map;
 using UnityEngine;
 
-public class ArrowTranslator
+namespace Player
+{
+    public class ArrowTranslator
     {
         public enum ArrowDirection
         {
@@ -107,3 +107,4 @@ public class ArrowTranslator
 
        
     }
+}

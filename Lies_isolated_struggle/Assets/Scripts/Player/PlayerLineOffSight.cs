@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Combat.BenProto;
 using UnityEngine;
 
 public class PlayerLineOffSight : MonoBehaviour
