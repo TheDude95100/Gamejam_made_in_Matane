@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    private bool _hasMoved;
 
     private int _strengh,
                 _agility,
@@ -23,10 +24,9 @@ public class Enemy : Entity
                   _meleeAccuracyBonus;
 
     private Weapon _activeWeapon;
-
-    [SerializeField]
     private Weapon[] _weaponList;
 
+    public bool HasMoved => _hasMoved;
     public int Strengh => _strengh;
     public int Agility => _agility;
     public int Constitution => _constitution;
@@ -68,6 +68,11 @@ public class Enemy : Entity
     public void SetActiveWeapon(Weapon weapon)
     {
         _activeWeapon = weapon;
+    }
+
+    public void ToggleHasMoved()
+    {
+        _hasMoved = !_hasMoved;
     }
 
     public void DealtDamage(int damage)

@@ -7,6 +7,8 @@ public class Player : Entity
     const int AFFINITY_MAX = 100,
               AFFINITY_MIN = -100;
 
+    private bool _hasMoved;
+
     private int _strengh,
                 _agility,
                 _constitution,
@@ -26,9 +28,9 @@ public class Player : Entity
                   _meleeAccuracyBonus;
 
     private Weapon _activeWeapon;
-
     private Weapon[] _weaponList;
 
+    public bool HasMoved => _hasMoved;
     public int Strengh => _strengh;
     public int Agility => _agility;
     public int Constitution => _constitution;
@@ -71,6 +73,11 @@ public class Player : Entity
     public void SetActiveWeapon(Weapon weapon) 
     {
         _activeWeapon = weapon;
+    }
+
+    public void ToggleHasMoved()
+    {
+        _hasMoved = !_hasMoved;
     }
 
     public void DealtDamage(int damage)
