@@ -7,27 +7,22 @@ namespace Map
 {
     public class MapManager : MonoBehaviour
     {
-        private static MapManager _instance;
-        public static MapManager Instance { get { return _instance; } }
-
-
+        public static MapManager Instance { get; private set; }
         public GameObject overlayPrefab;
         public GameObject overlayContainer;
-
         public Dictionary<Vector2Int, OverlayTile> map;
-        public bool ignoreBottomTiles;
+        public bool ignoreTopTiles;
 
         private void Awake()
         {
-            if (_instance != null && _instance != this)
+            if (Instance != null && Instance != this)
             {
                 Destroy(this.gameObject);
             } else
             {
-                _instance = this;
+                Instance = this;
             }
         }
-        
 
         void Start()
         {
@@ -44,7 +39,8 @@ namespace Map
                     {
                         for (int x = bounds.min.x; x < bounds.max.x; x++)
                         {
-                            if (z == 0 && ignoreBottomTiles)
+
+                            if (z == -2 && ignoreTopTiles)
                                 return;
 
                             if (tm.HasTile(new Vector3Int(x, y, z)))
@@ -65,57 +61,41 @@ namespace Map
                 }
             }
         }
-        public List<OverlayTile> GetNeightbourOverlayTiles(OverlayTile currentOverlayTile)
+
+        public List<OverlayTile> GetSurroundingTiles(Vector2Int originTile)
         {
-            var map = MapManager.Instance.map;
-            List<OverlayTile> neighbours = new List<OverlayTile>();
+            var surroundingTiles = new List<OverlayTile>();
 
-            //right
-            Vector2Int locationToCheck = new Vector2Int(
-                currentOverlayTile.gridLocation.x + 1,
-                currentOverlayTile.gridLocation.y
-            );
 
-            if (map.ContainsKey(locationToCheck))
+            Vector2Int TileToCheck = new Vector2Int(originTile.x + 1, originTile.y);
+            if (map.ContainsKey(TileToCheck))
             {
-                if (Mathf.Abs(currentOverlayTile.transform.position.z - map[locationToCheck].transform.position.z) > 1)
-                    neighbours.Add(map[locationToCheck]);
+                if (Mathf.Abs(map[TileToCheck].transform.position.z - map[originTile].transform.position.z) <= 1)
+                    surroundingTiles.Add(map[TileToCheck]);
             }
 
-            //left
-            locationToCheck = new Vector2Int(
-                currentOverlayTile.gridLocation.x - 1,
-                currentOverlayTile.gridLocation.y
-            );
-
-            if (map.TryGetValue(locationToCheck, out OverlayTile value))
+            TileToCheck = new Vector2Int(originTile.x - 1, originTile.y);
+            if (map.ContainsKey(TileToCheck))
             {
-                neighbours.Add(value);
+                if (Mathf.Abs(map[TileToCheck].transform.position.z - map[originTile].transform.position.z) <= 1)
+                    surroundingTiles.Add(map[TileToCheck]);
             }
 
-            //top
-            locationToCheck = new Vector2Int(
-                currentOverlayTile.gridLocation.x,
-                currentOverlayTile.gridLocation.y + 1
-            );
-
-            if (map.ContainsKey(locationToCheck))
+            TileToCheck = new Vector2Int(originTile.x, originTile.y + 1);
+            if (map.ContainsKey(TileToCheck))
             {
-                neighbours.Add(map[locationToCheck]);
+                if (Mathf.Abs(map[TileToCheck].transform.position.z - map[originTile].transform.position.z) <= 1)
+                    surroundingTiles.Add(map[TileToCheck]);
             }
 
-            //bottom
-            locationToCheck = new Vector2Int(
-                currentOverlayTile.gridLocation.x,
-                currentOverlayTile.gridLocation.y - 1
-            );
-
-            if (map.ContainsKey(locationToCheck))
+            TileToCheck = new Vector2Int(originTile.x, originTile.y - 1);
+            if (map.ContainsKey(TileToCheck))
             {
-                neighbours.Add(map[locationToCheck]);
+                if (Mathf.Abs(map[TileToCheck].transform.position.z - map[originTile].transform.position.z) <= 1)
+                    surroundingTiles.Add(map[TileToCheck]);
             }
 
-            return neighbours;
+            return surroundingTiles;
         }
     }
 }
