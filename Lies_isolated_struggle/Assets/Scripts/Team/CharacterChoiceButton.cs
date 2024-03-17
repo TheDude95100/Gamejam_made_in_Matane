@@ -8,7 +8,7 @@ public class CharacterChoiceButton : MonoBehaviour
 
     private void Start()
     {
-        transform.GetChild(0).gameObject.transform.GetComponent<TextMeshProUGUI>().text = _characterPrefab.transform.GetComponent<Player>().Data.Name;
+        transform.GetChild(0).gameObject.transform.GetComponent<TextMeshProUGUI>().text = _characterPrefab.transform.GetComponent<Character>().Data.Name;
     }
 
     public void ChooseCharacter()
