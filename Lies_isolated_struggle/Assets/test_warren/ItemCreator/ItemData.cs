@@ -15,10 +15,10 @@ public class ItemData : ScriptableObject
     [SerializeField]
     private bool _isEquipable = false;
     [SerializeField]
-    private int _quantity = 0;
-
+    private bool _isStackable = false;
     [SerializeField]
-    private bool _isAWeapon = false;
+    private int _maxQuantity = 0;
+
     [SerializeField]
     private int _damage = 0;
     [SerializeField]
@@ -27,15 +27,9 @@ public class ItemData : ScriptableObject
     private float _accuracy = 0.5f;
 
     [SerializeField]
-    private bool _isAnArmor = false;
-    [SerializeField]
     private int _defense = 0;
 
-    [SerializeField]
-    private bool _isAConsumable = false;
 
-    [SerializeField]
-    private bool _isAResosurce = false;
     [SerializeField]
     private int _food = 0;
     [SerializeField]
@@ -45,7 +39,8 @@ public class ItemData : ScriptableObject
     public ItemType Type => _type;
     public string Description => _description;
     public bool IsEquipable => _isEquipable;
-    public int Quantity => _quantity;
+    public bool IsStackable => _isStackable;
+    public int MaxQuantity => _maxQuantity;
 
     public int Damage => _damage;
     public int Range => _range;

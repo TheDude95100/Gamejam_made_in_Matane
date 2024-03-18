@@ -7,6 +7,7 @@ public class Entity : MonoBehaviour
 {
     [SerializeField]
     private EntityData _data;
+
     public OverlayTile standingOnTile;
 
     public EntityData Data => _data;
