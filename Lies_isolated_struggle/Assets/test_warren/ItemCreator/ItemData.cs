@@ -13,7 +13,7 @@ public class ItemData : ScriptableObject
     [TextArea(1,4)]
     private string _description = "...";
     [SerializeField]
-    private bool _isEquipped = false;
+    private bool _isEquipable = false;
     [SerializeField]
     private int _quantity = 0;
 
@@ -40,4 +40,19 @@ public class ItemData : ScriptableObject
     private int _food = 0;
     [SerializeField]
     private int _water = 0;
+
+    public string Name => _name;
+    public ItemType Type => _type;
+    public string Description => _description;
+    public bool IsEquipable => _isEquipable;
+    public int Quantity => _quantity;
+
+    public int Damage => _damage;
+    public int Range => _range;
+    public float Accuracy => _accuracy;
+
+    public int Defense => _defense;
+
+    public int Food => _food;
+    public int Water => _water;
 }

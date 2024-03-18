@@ -10,7 +10,7 @@ public class ItemDataEditor : Editor
     private SerializedProperty _name;
     private SerializedProperty _type;
     private SerializedProperty _description;
-    private SerializedProperty _isEquipped;
+    private SerializedProperty _isEquipable;
     private SerializedProperty _quantity;
 
     private SerializedProperty _damage;
@@ -29,7 +29,7 @@ public class ItemDataEditor : Editor
         _name = serializedObject.FindProperty("_name");
         _type = serializedObject.FindProperty("_type");
         _description = serializedObject.FindProperty("_description");
-        _isEquipped = serializedObject.FindProperty("_isEquipped");
+        _isEquipable = serializedObject.FindProperty("_isEquipped");
         _quantity = serializedObject.FindProperty("_quantity");
 
         //weapon
@@ -45,7 +45,7 @@ public class ItemDataEditor : Editor
         _water = serializedObject.FindProperty("_water");
     }
 
-    public void OnInspectorGUI() 
+    public override void OnInspectorGUI() 
     {
         serializedObject.UpdateIfRequiredOrScript();
 
@@ -61,6 +61,8 @@ public class ItemDataEditor : Editor
         }
 
         EditorGUILayout.PropertyField(_type, new GUIContent("Entity type"));
+        EditorGUILayout.PropertyField(_description, new GUIContent("Description"));
+
 
         serializedObject.ApplyModifiedProperties();
     }
