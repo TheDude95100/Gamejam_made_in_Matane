@@ -11,6 +11,9 @@ public class EntityData : ScriptableObject
     [SerializeField]
     private EntityType _entityType = EntityType.None;
     [SerializeField]
+    [Tooltip("Can the entity drop items on death.")]
+    private bool _canDropItems = false;
+    [SerializeField]
     [Range(0, 100)]
     private float _chanceToDropItem = 0.5f;
     [SerializeField]

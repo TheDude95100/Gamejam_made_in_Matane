@@ -8,6 +8,7 @@ public class EntityDataEditor : Editor
 {
     private SerializedProperty _name;
     private SerializedProperty _entityType;
+    private SerializedProperty _canDropItems;
     private SerializedProperty _chanceToDropItem;
     private SerializedProperty _rangeOfAwareness;
     private SerializedProperty _canEnterCombat;
@@ -33,13 +34,36 @@ public class EntityDataEditor : Editor
     private SerializedProperty _traits;
     private SerializedProperty _weaponList;
 
+    private GUIStyle _sectionLabel;
+    private GUIStyle _subSectionLabel;
+    private GUIStyle _titleLabel;
+
     private void OnEnable()
     {
+        _titleLabel = new GUIStyle();
+        _titleLabel.fontSize = 18;
+        _titleLabel.fontStyle = FontStyle.Bold;
+        _titleLabel.alignment = TextAnchor.MiddleCenter;
+        _titleLabel.normal.textColor = Color.white;
+
+        _sectionLabel = new GUIStyle();
+        _sectionLabel.fontSize = 14;
+        _sectionLabel.fontStyle = FontStyle.Bold;
+        _sectionLabel.alignment = TextAnchor.MiddleCenter;
+        _sectionLabel.normal.textColor = Color.white;
+
+        _subSectionLabel = new GUIStyle();
+        _subSectionLabel.fontSize = 12;
+        _subSectionLabel.fontStyle = FontStyle.Bold;
+        _subSectionLabel.normal.textColor = Color.white;
+
         _name = serializedObject.FindProperty("_name");
         _entityType = serializedObject.FindProperty("_entityType");
-        _chanceToDropItem = serializedObject.FindProperty("_chanceToDropItem");
         _rangeOfAwareness = serializedObject.FindProperty("_rangeOfAwareness");
         _canEnterCombat = serializedObject.FindProperty("_canEnterCombat");
+
+        _canDropItems = serializedObject.FindProperty("_canDropItems");
+        _chanceToDropItem = serializedObject.FindProperty("_chanceToDropItem");
 
         _strengh = serializedObject.FindProperty("_strengh");
         _agility = serializedObject.FindProperty("_agility");
@@ -67,7 +91,7 @@ public class EntityDataEditor : Editor
     {
         serializedObject.UpdateIfRequiredOrScript();
 
-        EditorGUILayout.LabelField(_name.stringValue.ToUpper(), EditorStyles.boldLabel);
+        EditorGUILayout.LabelField(_name.stringValue.ToUpper(), _titleLabel);
         EditorGUILayout.Space(10);
 
         float difficulty = (_strengh.intValue * 1.5f) + (_agility.intValue * 0.5f) + (_constitution.intValue * 1f);
@@ -79,7 +103,8 @@ public class EntityDataEditor : Editor
         //add something to draw after
 
         //custom GUI here
-        EditorGUILayout.LabelField("General Stats", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("General Stats", _sectionLabel);
+        EditorGUILayout.Space(10);
 
         EditorGUILayout.PropertyField(_name, new GUIContent("Name"));
         if (_name.stringValue == string.Empty)
@@ -88,19 +113,27 @@ public class EntityDataEditor : Editor
         }
 
         EditorGUILayout.PropertyField(_entityType, new GUIContent("Entity type"));
-        EditorGUILayout.LabelField("Chance to drop item");
-        _chanceToDropItem.floatValue = EditorGUILayout.Slider(
-                    _chanceToDropItem.floatValue,
-                    0,
-                    100
-            );
+        EditorGUILayout.Space(5);
+
+        EditorGUILayout.PropertyField(_canDropItems, new GUIContent("Can drop items?"));
+        if(_canDropItems.boolValue)
+        {
+            EditorGUILayout.LabelField("Chance to drop item");
+            _chanceToDropItem.floatValue = EditorGUILayout.Slider(
+                        _chanceToDropItem.floatValue,
+                        0,
+                        100
+                );
+        }
+        EditorGUILayout.Space(5);
         //EditorGUILayout.PropertyField(_rangeOfAwareness, new GUIContent("Range of awareness"));
         EditorGUILayout.PropertyField(_canEnterCombat, new GUIContent("Can enter combat?"));
         EditorGUILayout.Space(10);
 
         if(_canEnterCombat.boolValue)
         {
-            EditorGUILayout.LabelField("Combat Stats", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Combat Stats", _sectionLabel);
+            EditorGUILayout.Space(10);
             EditorGUI.indentLevel++;
 
             EditorGUILayout.BeginHorizontal();
@@ -127,7 +160,7 @@ public class EntityDataEditor : Editor
 
             EditorGUILayout.Space(5);
 
-            EditorGUILayout.LabelField("Hit points");
+            EditorGUILayout.LabelField("Hit points", _subSectionLabel);
             EditorGUIUtility.labelWidth = 120;
             EditorGUI.indentLevel++;
 
@@ -144,7 +177,7 @@ public class EntityDataEditor : Editor
 
             EditorGUILayout.Space(5);
 
-            EditorGUILayout.LabelField("Damage modifiers");
+            EditorGUILayout.LabelField("Damage modifiers", _subSectionLabel);
             EditorGUI.indentLevel++;
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Fire damage");
@@ -174,7 +207,7 @@ public class EntityDataEditor : Editor
 
             EditorGUILayout.Space(5);
 
-            EditorGUILayout.LabelField("Accuracy modifiers");
+            EditorGUILayout.LabelField("Accuracy modifiers", _subSectionLabel);
             EditorGUI.indentLevel++;
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Ranged Accuracy Bonus");
@@ -219,6 +252,7 @@ public class EntityDataEditor : Editor
                 EditorGUILayout.HelpBox("Entities shouldn't have negative Movement", MessageType.Warning);
             }
 
+            EditorGUILayout.Space(5);
             if (GUILayout.Button("Random Stats"))
             {
                 RandomStats();
@@ -228,15 +262,19 @@ public class EntityDataEditor : Editor
         }
 
         EditorGUILayout.Space(10);
-        EditorGUILayout.LabelField("Dialogue", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Dialogues", _sectionLabel);
         EditorGUILayout.PropertyField(_battleCry, new GUIContent("Battle Cry"));
 
+        EditorGUILayout.Space(10);
+        EditorGUILayout.LabelField("Passives and Actives", _sectionLabel);
         EditorGUILayout.Space(5);
         EditorGUILayout.PropertyField(_abilities, new GUIContent("Abilities"));
 
         EditorGUILayout.Space(5);
         EditorGUILayout.PropertyField(_traits, new GUIContent("Traits"));
 
+        EditorGUILayout.Space(10);
+        EditorGUILayout.LabelField("Inventory", _sectionLabel);
         EditorGUILayout.Space(5);
         EditorGUILayout.PropertyField(_weaponList, new GUIContent("Weapons"));
 
