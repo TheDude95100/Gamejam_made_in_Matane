@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57848adcae4f2ba4f89061b74a55bc67, type: 3}
   m_Name: ItemData_
   m_EditorClassIdentifier: 
-  _name: Pomme
+  _name: pomme
   _type: 0
   _description: ...
-  _isEquipable: 0
+  _isEquipable: 1
   _isStackable: 0
   _maxQuantity: 0
-  _damage: 0
-  _range: 0
-  _accuracy: 0.5
-  _defense: 0
+  _baseDamage: 0
+  _baseRange: 1
+  _baseAccuracy: 0.481
+  _baseDefense: 0
   _food: 0
   _water: 0

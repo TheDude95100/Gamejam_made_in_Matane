@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Audrey
   _entityType: 0
+  _canDropItems: 0
   _chanceToDropItem: 0.5
   _rangeOfAwareness: 3
   _canEnterCombat: 1
@@ -33,4 +34,5 @@ MonoBehaviour:
   _battleCry: ...
   _abilities: []
   _traits: []
-  _weaponList: []
+  _weaponList:
+  - {fileID: 0}
