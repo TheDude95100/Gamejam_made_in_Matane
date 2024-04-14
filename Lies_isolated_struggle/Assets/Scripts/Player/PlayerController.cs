@@ -11,7 +11,7 @@ namespace Player
         public float speed;
         public GameObject characterPrefab;
 
-        private CharacterInfo _character;
+        private Entity _character;
         private PathFinder _pathFinder;
         private RangeFinder _rangeFinder;
         private ArrowTranslator _arrowTranslator;
@@ -90,7 +90,7 @@ namespace Player
 
                     if (_character == null)
                     {
-                        _character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
+                        _character = Instantiate(characterPrefab).GetComponent<Character>();
                         PositionCharacterOnTile(tile);
                         GetInRangeTiles();
                     }

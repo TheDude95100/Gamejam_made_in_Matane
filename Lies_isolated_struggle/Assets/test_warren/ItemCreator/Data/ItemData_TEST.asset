@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57848adcae4f2ba4f89061b74a55bc67, type: 3}
-  m_Name: ItemData_
+  m_Name: ItemData_TEST
   m_EditorClassIdentifier: 
   _name: pomme
-  _type: 0
+  _type: 1
   _description: ...
   _isEquipable: 1
   _isStackable: 0

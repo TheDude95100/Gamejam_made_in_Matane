@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TraitData_", menuName = "UnitData/Trait")]
+[CreateAssetMenu(fileName = "TraitData_", menuName = "Datasheet/Trait")]
 public class EntityTrait : ScriptableObject
 {
     [SerializeField]

@@ -16,12 +16,12 @@ public class PlayerLineOffSight : MonoBehaviour
                 {
                     bool hasLineOffSight = ray.collider.CompareTag("Enemy");
                     Vector3 distance = enemy.transform.position - transform.position;
-                    if (hasLineOffSight && distance.magnitude<=PlayerManager.instance.GetCurrentPlayer().ActiveWeapon.Range)
+                    if (hasLineOffSight && distance.magnitude<=PlayerManager.instance.GetCurrentPlayer().ActiveWeapon.BaseRange)
                     {
                         Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.green);
                         if(enemy.GetComponent<testEnemye>().GetClicked()) 
                         {
-                            enemy.GetComponent<testEnemye>().Damage(PlayerManager.instance.GetCurrentPlayer().ActiveWeapon.Damage);
+                            enemy.GetComponent<testEnemye>().Damage(CalculateTotalDamage());
                         }
                     }
                     else
@@ -35,4 +35,10 @@ public class PlayerLineOffSight : MonoBehaviour
         
     }
 
+    private int CalculateTotalDamage()
+    {
+        Character player = PlayerManager.instance.GetCurrentPlayer();
+
+        return Mathf.RoundToInt(player.ActiveWeapon.BaseDamage * player.RangedDamageBonus);
+    }
 }

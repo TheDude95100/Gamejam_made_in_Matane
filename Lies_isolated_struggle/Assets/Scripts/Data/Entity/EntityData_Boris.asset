@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Boris
   _entityType: 3
+  _canDropItems: 0
   _chanceToDropItem: 0.5
   _rangeOfAwareness: 3
   _canEnterCombat: 1
@@ -35,4 +36,5 @@ MonoBehaviour:
   _traits:
   - {fileID: 11400000, guid: 765abcf53f815424a9a2971ef14002c2, type: 2}
   _weaponList:
-  - {fileID: 11400000, guid: 55eba8f7a897409499d324ed8b0112ae, type: 2}
+  - {fileID: 11400000, guid: f5cbb2fe98180644590a829cf17a0a2d, type: 2}
+  - {fileID: 11400000, guid: c96f59cb85d72b94f98fa8d3ff2e37ac, type: 2}

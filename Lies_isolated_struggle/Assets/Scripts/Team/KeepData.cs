@@ -7,7 +7,7 @@ public class KeepData : MonoBehaviour
 {
 
     [SerializeField] private List<GameObject> _listCompagnon;
-    [SerializeField] private Weapon[] _weaponInventory;
+    [SerializeField] private ItemData[] _weaponInventory;
 
     public List<GameObject> ListCompagnon => _listCompagnon;
 

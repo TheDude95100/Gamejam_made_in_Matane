@@ -109,7 +109,7 @@ public class CharacterScreen : MonoBehaviour
     public void UpdateWeaponStats()
     {
         _screenPanels[5].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _playerData.ActiveWeapon.Name;
-        _screenPanels[5].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _playerData.ActiveWeapon.Damage + "";
+        _screenPanels[5].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _playerData.ActiveWeapon.BaseDamage + "";
         //_screenPanels[5].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = ((_playerData.ActiveWeapon.Accuracy - 1) * 100) + "%";
     }
 }

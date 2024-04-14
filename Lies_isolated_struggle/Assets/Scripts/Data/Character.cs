@@ -28,8 +28,8 @@ public class Character: Entity
     private float _rangedAccuracyBonus,
                   _meleeAccuracyBonus;
 
-    private Weapon _activeWeapon;
-    private Weapon[] _weaponList;
+    private ItemData _activeWeapon;
+    private ItemData[] _weaponList;
 
     public bool HasMoved => _hasMoved;
     public int Strengh => _strengh;
@@ -48,8 +48,8 @@ public class Character: Entity
     public float RangedAccuracyBonus => _rangedAccuracyBonus;
     public float MeleeAccuracyBonus => _meleeAccuracyBonus;
 
-    public Weapon ActiveWeapon => _activeWeapon;
-    public Weapon[] WeaponList => _weaponList;
+    public ItemData ActiveWeapon => _activeWeapon;
+    public ItemData[] WeaponList => _weaponList;
 
 
     // Start is called before the first frame update
@@ -71,7 +71,7 @@ public class Character: Entity
         _currentHP = currentHP;
     }
 
-    public void SetActiveWeapon(Weapon weapon) 
+    public void SetActiveWeapon(ItemData weapon) 
     {
         _activeWeapon = weapon;
     }

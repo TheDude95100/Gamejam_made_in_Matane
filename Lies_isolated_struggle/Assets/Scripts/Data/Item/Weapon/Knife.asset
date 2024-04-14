@@ -9,9 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd69a5a5c0c8b24f9af9ad4b7cc1837, type: 3}
-  m_Name: Gun
+  m_Script: {fileID: 11500000, guid: 57848adcae4f2ba4f89061b74a55bc67, type: 3}
+  m_Name: Knife
   m_EditorClassIdentifier: 
-  _name: Gun
-  _damage: 5
-  _range: 15
+  _name: Knife
+  _type: 1
+  _description: ...
+  _isEquipable: 1
+  _isStackable: 0
+  _maxQuantity: 0
+  _baseDamage: 2
+  _baseRange: 1
+  _baseAccuracy: 0.95
+  _baseDefense: 0
+  _food: 0
+  _water: 0

@@ -288,7 +288,6 @@ GameObject:
   - component: {fileID: 364166247}
   - component: {fileID: 364166246}
   - component: {fileID: 364166244}
-  - component: {fileID: 364166245}
   - component: {fileID: 364166248}
   - component: {fileID: 364166249}
   m_Layer: 0
@@ -325,18 +324,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &364166245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364166243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17dc3c0913684334c8f1e2e424a08a21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &364166246
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -427,10 +414,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 364166243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a566ae6d2cb18b944abe234dcaf24d69, type: 3}
+  m_Script: {fileID: 11500000, guid: daf557936aa989642ab3d1b444dfd3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 5cf00a95fcd8d9444b46a4b30a8786ee, type: 2}
+  _data: {fileID: 11400000, guid: 456340edc64b4f0438fdd31277e9b525, type: 2}
+  standingOnTile: {fileID: 0}
 --- !u!1 &383336676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,10 +1689,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

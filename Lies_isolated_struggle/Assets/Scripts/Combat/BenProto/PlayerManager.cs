@@ -29,8 +29,8 @@ namespace Combat.BenProto
         {
             currentPlayer = listPlayer[playerIndex].GetComponent<Character>();
             currentPlayer.SetActiveWeapon(currentPlayer.WeaponList[0]);
-            SetRangeArea(currentPlayer.ActiveWeapon.Range);
-            foreach(Weapon weapon in currentPlayer.WeaponList)
+            SetRangeArea(currentPlayer.ActiveWeapon.BaseRange);
+            foreach(ItemData weapon in currentPlayer.WeaponList)
             {
                 GameObject newWeaponButton = Instantiate(prefabWeaponButton, listWeaponButton.transform);
                 newWeaponButton.transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = weapon.name;
