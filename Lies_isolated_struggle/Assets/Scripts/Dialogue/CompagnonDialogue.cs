@@ -22,8 +22,6 @@ public class CompagnonDialogue : MonoBehaviour
 
     private DialogueManager _dm;
 
-    public TextMeshProUGUI textBouton;
-
     public int affinite;
 
     public bool flagEvent = false;
@@ -33,10 +31,13 @@ public class CompagnonDialogue : MonoBehaviour
     public int affiniteAnimaux;
 
     private int[] _matriceAffinite;
+
+    private TextMeshProUGUI textBouton;
     public bool DialogueFini { get; set; }
 
     private void Start()
     {
+        textBouton = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
         _dm = FindObjectOfType<DialogueManager>();
         textBouton.text = nomPersonnage;
         _matriceAffinite = new int[3];
