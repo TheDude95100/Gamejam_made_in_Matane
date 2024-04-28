@@ -20,6 +20,8 @@ namespace Map
         
         public List<Sprite> arrows;
 
+        private Color actualTileColor = new Color(1, 1, 1, 1);
+
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -30,9 +32,19 @@ namespace Map
 
         public void ShowTile()
         { 
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            gameObject.GetComponent<SpriteRenderer>().color = actualTileColor;
         }
-        
+
+        public void ChangeColor(int showMode)
+        {
+           switch (showMode)
+           {
+                case 0: actualTileColor = new Color(1, 1, 1, 1); break; // Movement color
+                case 1: actualTileColor = new Color(1, 0, 0, 1); break; // Attack color
+           }
+           gameObject.GetComponent<SpriteRenderer>().color = actualTileColor;
+        }
+
         public void HideTile()
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Map;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace Player
 {
@@ -20,6 +21,8 @@ namespace Player
         private bool _isMoving;
 
         private CharacterScreen _characterScreen;
+
+        private int showMode = 0;
 
         private void Start()
         {
@@ -46,6 +49,19 @@ namespace Player
                 {
                     _characterScreen.DisableScreen();
                     _characterScreen.ToggleIsOpen();
+                }
+            }
+            if(Input.GetKeyDown(KeyCode.D))
+            {
+                if(showMode == 0)
+                {
+                    showMode = 1;
+                    GetInRangeTiles();
+                }
+                else
+                {
+                    showMode = 0;
+                    GetInRangeTiles();
                 }
             }
         }
@@ -86,7 +102,7 @@ namespace Player
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    tile.ShowTile();
+                    tile.ChangeColor(showMode);
 
                     if (_character == null)
                     {
@@ -157,7 +173,7 @@ namespace Player
         
             foreach (var item in _rangeFinderTiles)
             {
-                item.ShowTile();
+                item.ChangeColor(showMode);
             }
         }
     }
