@@ -21,8 +21,9 @@ namespace Player
         private bool _isMoving;
 
         private CharacterScreen _characterScreen;
+        public EnemyController enemyController;
 
-        private int showMode = 0;
+        private int _showMode = 0;
 
         private void Start()
         {
@@ -51,19 +52,6 @@ namespace Player
                     _characterScreen.ToggleIsOpen();
                 }
             }
-            if(Input.GetKeyDown(KeyCode.D))
-            {
-                if(showMode == 0)
-                {
-                    showMode = 1;
-                    GetInRangeTiles();
-                }
-                else
-                {
-                    showMode = 0;
-                    GetInRangeTiles();
-                }
-            }
         }
 
         void LateUpdate()
@@ -90,27 +78,47 @@ namespace Player
                         MapManager.Instance.map[item.grid2DLocation].SetSprite(ArrowTranslator.ArrowDirection.None);
                     }
 
-                    for (int i = 0; i < _path.Count; i++)
+                    if (_showMode == 0)
                     {
-                        var previousTile = i > 0 ? _path[i - 1] : _character.standingOnTile;
-                        var futureTile = i < _path.Count - 1 ? _path[i + 1] : null;
+                        for (int i = 0; i < _path.Count; i++)
+                        {
+                            var previousTile = i > 0 ? _path[i - 1] : _character.standingOnTile;
+                            var futureTile = i < _path.Count - 1 ? _path[i + 1] : null;
 
-                        var arrow = _arrowTranslator.TranslateDirection(previousTile, _path[i], futureTile);
-                        _path[i].SetSprite(arrow);
+                            var arrow = _arrowTranslator.TranslateDirection(previousTile, _path[i], futureTile);
+                            _path[i].SetSprite(arrow);
+                        }
                     }
+                    
                 }
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    tile.ChangeColor(showMode);
+                    Debug.Log(enemyController.GetCanSpawn());
 
                     if (_character == null)
                     {
                         _character = Instantiate(characterPrefab).GetComponent<Character>();
                         PositionCharacterOnTile(tile);
                         GetInRangeTiles();
+                        enemyController.CanSpawn();
                     }
-                    else
+                    else if(_showMode == 1)
+                    {
+                        foreach(Enemy enemy in enemyController.listEnemy)
+                        {
+                            if (enemy.standingOnTile.Equals(tile) && _rangeFinderTiles.Contains(tile))
+                            {
+                                Debug.Log("pan");
+                            }
+                            else
+                            {
+                                Debug.Log("pas pan");
+                            }
+                        }
+                        GetInRangeTiles();
+                    }
+                    else if (!enemyController.GetCanSpawn())
                     {
                         _isMoving = true;
                         tile.gameObject.GetComponent<OverlayTile>().HideTile();
@@ -167,14 +175,20 @@ namespace Player
             return null;
         }
 
-        private void GetInRangeTiles()
+        public void GetInRangeTiles()
         {
             _rangeFinderTiles = _rangeFinder.GetTilesInRange(new Vector2Int(_character.standingOnTile.gridLocation.x, _character.standingOnTile.gridLocation.y), 3);
         
             foreach (var item in _rangeFinderTiles)
             {
-                item.ChangeColor(showMode);
+                item.ChangeColor(_showMode);
             }
+        }
+
+        public void ChangeMode(int showMode)
+        {
+            _showMode = showMode;
+            GetInRangeTiles();
         }
     }
 }
