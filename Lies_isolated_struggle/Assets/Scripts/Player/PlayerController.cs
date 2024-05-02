@@ -25,6 +25,9 @@ namespace Player
 
         private int _showMode = 0;
 
+        public int testX = 4;
+        public int testY = -2;
+
         private void Start()
         {
             _path = new List<OverlayTile>();
@@ -94,14 +97,11 @@ namespace Player
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Debug.Log(enemyController.GetCanSpawn());
-
                     if (_character == null)
                     {
                         _character = Instantiate(characterPrefab).GetComponent<Character>();
                         PositionCharacterOnTile(tile);
                         GetInRangeTiles();
-                        enemyController.CanSpawn();
                     }
                     else if(_showMode == 1)
                     {
@@ -109,16 +109,13 @@ namespace Player
                         {
                             if (enemy.standingOnTile.Equals(tile) && _rangeFinderTiles.Contains(tile))
                             {
-                                Debug.Log("pan");
+                                enemy.DealtDamage(2);
                             }
-                            else
-                            {
-                                Debug.Log("pas pan");
-                            }
+                            Debug.Log(enemy.MaxHP);
                         }
                         GetInRangeTiles();
                     }
-                    else if (!enemyController.GetCanSpawn())
+                    else
                     {
                         _isMoving = true;
                         tile.gameObject.GetComponent<OverlayTile>().HideTile();

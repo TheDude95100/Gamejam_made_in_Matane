@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 524335448}
   - component: {fileID: 524335447}
   - component: {fileID: 524335446}
+  - component: {fileID: 524335449}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -339,7 +340,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 524335447}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 524335449}
+        m_TargetAssemblyTypeName: ButtonMode, Assembly-CSharp
+        m_MethodName: ChangeMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &524335447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +391,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524335444}
   m_CullTransparentMesh: 1
+--- !u!114 &524335449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524335444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23de7bb392dc675469eaf9f91c95b311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modeInt: 0
+  playerController: {fileID: 1546953821}
 --- !u!1 &614837717
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +826,7 @@ PrefabInstance:
     - target: {fileID: 149239195815027200, guid: 5a6119b99564bb64991676a355924425,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5159556165066154868, guid: 5a6119b99564bb64991676a355924425,
         type: 3}
@@ -901,6 +928,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6123270953199527591, guid: 5a6119b99564bb64991676a355924425,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -34.055664
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -918,6 +950,7 @@ GameObject:
   - component: {fileID: 1082282279}
   - component: {fileID: 1082282278}
   - component: {fileID: 1082282277}
+  - component: {fileID: 1082282280}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -988,7 +1021,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1082282278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082282280}
+        m_TargetAssemblyTypeName: ButtonMode, Assembly-CSharp
+        m_MethodName: ChangeMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1082282278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,6 +1072,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082282275}
   m_CullTransparentMesh: 1
+--- !u!114 &1082282280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082282275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23de7bb392dc675469eaf9f91c95b311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modeInt: 1
+  playerController: {fileID: 1546953821}
 --- !u!1 &1253217833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,6 +2178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546953822}
   - component: {fileID: 1546953821}
+  - component: {fileID: 1546953823}
   m_Layer: 0
   m_Name: MouseController
   m_TagString: Untagged
@@ -2142,6 +2202,9 @@ MonoBehaviour:
   speed: 3
   characterPrefab: {fileID: 1660133016984718446, guid: 353cfa4af542df340a6bc94054353134,
     type: 3}
+  enemyController: {fileID: 1546953823}
+  testX: 4
+  testY: -2
 --- !u!4 &1546953822
 Transform:
   m_ObjectHideFlags: 0
@@ -2157,6 +2220,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1546953823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546953820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5792b3921040198459039770896e257b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 2112583282}
+  speed: 3
+  enemyPrefab: {fileID: 9141940292749908202, guid: eff506eb66f52f644b888d1b067b8ade,
+    type: 3}
+  playerController: {fileID: 1546953821}
+  listSpawnPoints:
+  - {x: 0, y: -2}
+  - {x: 3, y: -7}
+  - {x: -2, y: -8}
+  - {x: 1, y: -9}
+  - {x: 5, y: -9}
+  listEnemy:
+  - {fileID: 7388020805006811445, guid: eff506eb66f52f644b888d1b067b8ade, type: 3}
+  - {fileID: 7388020805006811445, guid: eff506eb66f52f644b888d1b067b8ade, type: 3}
+  - {fileID: 7388020805006811445, guid: eff506eb66f52f644b888d1b067b8ade, type: 3}
 --- !u!1 &2112583282
 GameObject:
   m_ObjectHideFlags: 0

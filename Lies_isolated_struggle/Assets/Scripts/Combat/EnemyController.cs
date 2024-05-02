@@ -3,6 +3,7 @@ using Player;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -10,53 +11,33 @@ public class EnemyController : MonoBehaviour
     public GameObject cursor;
     public float speed;
     public GameObject enemyPrefab;
-    public List<Enemy> listEnemy;
     public PlayerController playerController;
+    public List<Vector2Int> listSpawnPoints;
+    public List<Enemy> listEnemy;
+    public int numberEnemy = 2;
+    public GameObject listEnemyParent;
 
-    private Entity _enemy;
+    //private Entity _enemyComponent;
+
     private bool canSpawn = false;
 
-    void LateUpdate()
+    private void Start()
     {
-        RaycastHit2D? hit = GetFocusedOnTile();
-
-        if (hit.HasValue)
+        for(int i=0; i< numberEnemy; i++)
         {
-            OverlayTile tile = hit.Value.collider.gameObject.GetComponent<OverlayTile>();
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (_enemy == null && canSpawn)
-                {
-                    _enemy = Instantiate(enemyPrefab).GetComponent<Enemy>();
-                    listEnemy.Add((Enemy)_enemy);
-                    PositionCharacterOnTile(tile);
-                    canSpawn = false;
-                    playerController.GetInRangeTiles();
-                }
-            }
+            Vector2Int randomSpawnCoord = listSpawnPoints[Random.Range(0, listSpawnPoints.Count - 1)];
+            SpawnPoint randomSpawnPoint = new SpawnPoint(randomSpawnCoord.x, randomSpawnCoord.y);
+            Enemy _enemyComponent = Instantiate(enemyPrefab, listEnemyParent.transform).GetComponent<Enemy>();
+            PositionCharacterOnTile(randomSpawnPoint.GetTile(), _enemyComponent);
+            listEnemy.Add(_enemyComponent);
+            listSpawnPoints.Remove(randomSpawnCoord);
         }
     }
-    private void PositionCharacterOnTile(OverlayTile tile)
+    private void PositionCharacterOnTile(OverlayTile tile, Entity enemy)
     {
-        Debug.Log(_enemy.transform.position);
-        _enemy.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y + 0.0001f, tile.transform.position.z);
-        _enemy.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
-        _enemy.standingOnTile = tile;
-    }
-
-    private static RaycastHit2D? GetFocusedOnTile()
-    {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-
-        RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos2D, Vector2.zero);
-
-        if (hits.Length > 0)
-        {
-            return hits.OrderByDescending(i => i.collider.transform.position.z).First();
-        }
-
-        return null;
+        enemy.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y + 0.0001f, tile.transform.position.z);
+        enemy.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
+        enemy.standingOnTile = tile;
     }
 
     public void CanSpawn()
