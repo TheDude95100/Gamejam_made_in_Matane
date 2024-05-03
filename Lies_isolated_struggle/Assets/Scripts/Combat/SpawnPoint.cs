@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPoint : MonoBehaviour
+[System.Serializable]
+public class SpawnPoint
 {
     [SerializeField] private int _XPos;
     [SerializeField] private int _YPos;
