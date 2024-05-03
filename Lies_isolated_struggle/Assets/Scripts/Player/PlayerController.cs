@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using Combat.BenProto;
 using Map;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace Player
 {
@@ -22,6 +22,8 @@ namespace Player
 
         private CharacterScreen _characterScreen;
         public EnemyController enemyController;
+
+        [SerializeField] private Transform _characterList;
 
         private int _showMode = 0;
 
@@ -99,9 +101,10 @@ namespace Player
                 {
                     if (_character == null)
                     {
-                        _character = Instantiate(characterPrefab).GetComponent<Character>();
+                        _character = Instantiate(characterPrefab, _characterList).GetComponent<Character>();
                         PositionCharacterOnTile(tile);
-                        GetInRangeTiles();
+                        GetInRangeTiles((int)speed);
+                        CombatManager.instance.UpdateList();
                     }
                     else if(_showMode == 1)
                     {
@@ -111,9 +114,9 @@ namespace Player
                             {
                                 enemy.DealtDamage(2);
                             }
-                            Debug.Log(enemy.MaxHP);
                         }
-                        GetInRangeTiles();
+                        CombatManager.instance.UpdateList();
+                        GetInRangeTiles(CombatManager.instance.CurrentWeapon.BaseRange);
                     }
                     else
                     {
@@ -145,7 +148,7 @@ namespace Player
 
             if (_path.Count == 0)
             {
-                GetInRangeTiles();
+                GetInRangeTiles((int)speed);
                 _isMoving = false;
             }
         }
@@ -172,9 +175,9 @@ namespace Player
             return null;
         }
 
-        public void GetInRangeTiles()
+        public void GetInRangeTiles(int range)
         {
-            _rangeFinderTiles = _rangeFinder.GetTilesInRange(new Vector2Int(_character.standingOnTile.gridLocation.x, _character.standingOnTile.gridLocation.y), 3);
+            _rangeFinderTiles = _rangeFinder.GetTilesInRange(new Vector2Int(_character.standingOnTile.gridLocation.x, _character.standingOnTile.gridLocation.y), range);
         
             foreach (var item in _rangeFinderTiles)
             {
@@ -185,7 +188,7 @@ namespace Player
         public void ChangeMode(int showMode)
         {
             _showMode = showMode;
-            GetInRangeTiles();
+            GetInRangeTiles(CombatManager.instance.CurrentWeapon.BaseRange);
         }
     }
 }

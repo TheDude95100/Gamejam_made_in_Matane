@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerLineOffSight : MonoBehaviour
 {
     private void FixedUpdate()
-    {
+    {/*
         foreach (var enemy in CombatManager.instance.GetEnemies())
         {
             if (enemy != null)
@@ -31,7 +31,7 @@ public class PlayerLineOffSight : MonoBehaviour
                 }
             }
             
-        }
+        }*/
         
     }
 

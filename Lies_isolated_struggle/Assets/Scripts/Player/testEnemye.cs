@@ -25,7 +25,7 @@ public class testEnemye : MonoBehaviour
     
 
     public void Damage(int damage)
-    {
+    {/*
         if (hp - damage <= 0) 
         {
             Destroy(gameObject);
@@ -35,6 +35,6 @@ public class testEnemye : MonoBehaviour
         {
             Debug.Log("Take " + damage + " damage");
             hp-= damage;
-        }
+        }*/
     }
 }

@@ -35,7 +35,7 @@ namespace Combat.BenProto
                 GameObject newWeaponButton = Instantiate(prefabWeaponButton, listWeaponButton.transform);
                 newWeaponButton.transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = weapon.name;
                 WeaponButton weaponButton = newWeaponButton.transform.GetComponent<WeaponButton>();
-                weaponButton.SetWeaponName(weapon);
+                weaponButton.SetWeapon(weapon);
                 // newWeaponButton.transform.GetChild(1).transform.GetComponent<Image>().sprite = weapon.imageWeapon;      // A faire quand on aura des images
             }
         }

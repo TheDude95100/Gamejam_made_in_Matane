@@ -28,7 +28,7 @@ public class Character: Entity
     private float _rangedAccuracyBonus,
                   _meleeAccuracyBonus;
 
-    private ItemData _activeWeapon;
+    public ItemData _activeWeapon;
     private ItemData[] _weaponList;
 
     public bool HasMoved => _hasMoved;
