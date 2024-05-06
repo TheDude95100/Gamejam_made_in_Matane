@@ -9,7 +9,6 @@ Gamejam réalisé du 11/03/2024 au 17/03/2024, le thême sur lequel l'équipe es
 Le but ? Rejoindre un sanctuaire où de nombreux survivants vont pour survivre à l'extinction de l'humanité. Sur le chemin, de nombreux dangers se dresseront contre vous et ce n'est qu'avec l'aide de compagnons croisés durant votre périple que vous pourrez survivre. Traquer, tuer et piller les monstres sera votre quotidien. Alors, prenez votre sac, la première arme à portée, et partez pour Safe Heaven, si vous survivez bien sûr...
 
 ### Idée pour le jeu
-${\textsf{\color{lightgreen}}}$
 ###### Prototype 
 |                        `Repaire`                          |                           `Combat`                                |                      `Niveaux`                     |
 | :-------------------------------------------------------: | :---------------------------------------------------------------: | :-------------------------------------------------:|
