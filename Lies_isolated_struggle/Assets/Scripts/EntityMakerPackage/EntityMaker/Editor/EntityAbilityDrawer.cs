@@ -40,11 +40,11 @@ public class EntityAbilityDrawer : PropertyDrawer
     //request more vertical spacing
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        int totalLines = 1;
+        float totalLines = 1;
         
         if(property.isExpanded)
         {
-            totalLines += 3;
+            totalLines += 3.15f;
         }
 
         return EditorGUIUtility.singleLineHeight * totalLines;

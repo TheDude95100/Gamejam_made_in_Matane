@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: ...
   _entityType: 0
-  _canDropItems: 0
-  _chanceToDropItem: 0.5
+  _canDropItems: 1
+  _dropType: 0
   _rangeOfAwareness: 3
   _canEnterCombat: 1
-  _strengh: 1
-  _agility: 1
-  _constitution: 1
-  _sanity: 1
+  _strengh: 7
+  _agility: 25
+  _constitution: 7
+  _sanity: 0
   _affinity: 0
   _movement: 1
   _maxHPFlatBonus: 0
@@ -31,7 +31,17 @@ MonoBehaviour:
   _rangedDamageBonus: 1
   _rangedAccuracyBonus: 1
   _meleeAccuracyBonus: 1
+  _priorityTarget: []
   _battleCry: ...
-  _abilities: []
+  _abilities:
+  - _name: 
+    _damage: 0
+    _range: 0
+    _element: 0
   _traits: []
+  _lootTableItemList:
+  - _itemPrefab: {fileID: 0}
+    _minQuantityToDrop: 0
+    _maxQuantityToDrop: 0
+    _chanceToDrop: 0
   _weaponList: []

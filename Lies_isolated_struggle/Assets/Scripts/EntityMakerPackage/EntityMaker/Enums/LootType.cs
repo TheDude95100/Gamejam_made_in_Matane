@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EntityType
+public enum LootType
 {
-    None = 0,
-    Undead,
-    Dragon,
-    Humanoid
+    LootTable = 0,
+    Inventory
 }

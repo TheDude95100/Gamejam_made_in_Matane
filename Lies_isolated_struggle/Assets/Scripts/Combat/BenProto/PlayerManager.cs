@@ -29,7 +29,7 @@ namespace Combat.BenProto
         {
             currentPlayer = listPlayer[playerIndex].GetComponent<Character>();
             currentPlayer.SetActiveWeapon(currentPlayer.WeaponList[0]);
-            SetRangeArea(currentPlayer.ActiveWeapon.BaseRange);
+            SetRangeArea(Mathf.FloorToInt(currentPlayer.ActiveWeapon.BaseRange));
             foreach(ItemData weapon in currentPlayer.WeaponList)
             {
                 GameObject newWeaponButton = Instantiate(prefabWeaponButton, listWeaponButton.transform);

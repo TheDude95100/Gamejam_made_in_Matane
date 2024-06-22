@@ -19,7 +19,7 @@ namespace Combat.BenProto
         public void SetCurrentWeapon()
         {
             Debug.Log(_weapon.Name);
-            PlayerManager.instance.SetRangeArea(_weapon.BaseRange);
+            PlayerManager.instance.SetRangeArea(Mathf.FloorToInt(_weapon.BaseRange));
             PlayerManager.instance.GetCurrentPlayer().SetActiveWeapon(_weapon);
 
 

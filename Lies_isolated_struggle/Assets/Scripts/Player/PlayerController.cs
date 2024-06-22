@@ -116,7 +116,7 @@ namespace Player
                             }
                         }
                         CombatManager.instance.UpdateList();
-                        GetInRangeTiles(CombatManager.instance.CurrentWeapon.BaseRange);
+                        GetInRangeTiles(Mathf.FloorToInt(CombatManager.instance.CurrentWeapon.BaseRange));
                     }
                     else
                     {
@@ -188,7 +188,7 @@ namespace Player
         public void ChangeMode(int showMode)
         {
             _showMode = showMode;
-            GetInRangeTiles(CombatManager.instance.CurrentWeapon.BaseRange);
+            GetInRangeTiles(Mathf.FloorToInt(CombatManager.instance.CurrentWeapon.BaseRange));
         }
     }
 }
