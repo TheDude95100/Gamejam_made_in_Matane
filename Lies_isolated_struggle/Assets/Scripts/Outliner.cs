@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Outliner : MonoBehaviour
+public class Outliner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private Material _outerlineMaterial;
 
@@ -12,12 +13,19 @@ public class Outliner : MonoBehaviour
     private void Start()
     {
         _outerlineMaterial = GetComponent<Image>().material;
+        _outerLineIsActive = _outerlineMaterial.GetFloat("_ActiveOuterline");
     }
 
-    public void HoverOuterLine()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        _outerLineIsActive = _outerlineMaterial.GetFloat("_ActiveOuterline");
-        _outerlineMaterial.SetFloat("_ActiveOuterline", _outerLineIsActive==0f ? 1f : 0f);
+        _outerlineMaterial.SetFloat("_ActiveOuterline", 1f);
+        Debug.Log("Entrez");
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _outerlineMaterial.SetFloat("_ActiveOuterline", 0f);
+        Debug.Log("Sortie");
     }
 
 
