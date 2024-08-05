@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: survivor3
+  m_Name: survivor5
   m_Shader: {fileID: -6465566751694194690, guid: 797d01bb67a61394cb773ed674f7d03c,
     type: 3}
   m_Parent: {fileID: 0}
