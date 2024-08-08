@@ -13,14 +13,25 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   _name: Knife
-  _type: 1
-  _description: ...
+  _typeOfItem: 0
+  _typeOfWeapon: 0
+  _description: Slash Slash
   _isEquipable: 1
   _isStackable: 0
   _maxQuantity: 0
   _baseDamage: 2
   _baseRange: 1
   _baseAccuracy: 0.95
+  _baseMagazineSize: 1
+  _basePelletsPerShot: 1
+  _baseBulletsPerShot: 1
+  _rateOfFire: 1
+  _firingCooldown: 1
+  _spread: 1
+  _reloadSpeed: 1
+  _weaponShootingType: 0
   _baseDefense: 0
   _food: 0
   _water: 0
+  _shootingAudio: {fileID: 0}
+  _relaodingAudio: {fileID: 0}

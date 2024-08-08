@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - ButtonsWeapon
   - Selectable
+  - ToolTipUI
   layers:
   - Default
   - TransparentFX

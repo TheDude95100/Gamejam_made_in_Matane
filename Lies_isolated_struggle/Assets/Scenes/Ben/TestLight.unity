@@ -314,7 +314,7 @@ MonoBehaviour:
   _myLight: {fileID: 1551108393}
   _maxInterval: 4
   _maxFlicker: 0.2
-  _lightColor: {r: 0, g: 0, b: 0, a: 0}
+  _lightColor: {r: 0.8584906, g: 0, b: 0, a: 0}
 --- !u!136 &304565641
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -439,7 +439,7 @@ MonoBehaviour:
   _myLight: {fileID: 133364015}
   _maxInterval: 6
   _maxFlicker: 0.2
-  _lightColor: {r: 0, g: 0, b: 0, a: 0}
+  _lightColor: {r: 0.8584906, g: 0, b: 0, a: 0}
 --- !u!136 &434585707
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   _myLight: {fileID: 446957805}
   _maxInterval: 2
   _maxFlicker: 0.2
-  _lightColor: {r: 0, g: 0, b: 0, a: 0}
+  _lightColor: {r: 0.8584906, g: 0, b: 0, a: 0}
 --- !u!1 &1155562283
 GameObject:
   m_ObjectHideFlags: 0
