@@ -52,16 +52,19 @@ public class OutlineSelection : MonoBehaviour
             {
                 if (_selection != null)
                 {
+                    _selection.GetComponent<LootableObject>().CloseLootPanel();
                     _selection.gameObject.GetComponent<Outline>().enabled = false;
                 }
                 _selection = _raycastHit.transform;
                 _selection.gameObject.GetComponent<Outline>().enabled = true;
+                _selection.GetComponent<LootableObject>().OpenLootPanel();
                 _highlight = null;
             }
             else
             {
                 if (_selection)
                 {
+                    _selection.GetComponent<LootableObject>().CloseLootPanel();
                     _selection.gameObject.GetComponent<Outline>().enabled = false;
                     _selection = null;
                 }

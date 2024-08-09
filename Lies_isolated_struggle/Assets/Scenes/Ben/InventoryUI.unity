@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 71141081}
   - component: {fileID: 71141080}
   - component: {fileID: 71141079}
+  - component: {fileID: 71141083}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Selectable
@@ -351,6 +352,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1315178296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &71141083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71141078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26857a0bdd264b84ca3d5fd5951651ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listPossibleLootableItem:
+  - {fileID: 11400000, guid: 9af4c531f4a3bfe40adb89b3b2fa9797, type: 2}
+  - {fileID: 11400000, guid: c96f59cb85d72b94f98fa8d3ff2e37ac, type: 2}
+  - {fileID: 11400000, guid: 2187224ad70174b488ed9b6810ecbf6d, type: 2}
+  _pourcentDropableChance:
+  - 100
+  - 40
+  - 20
+  _lootPanel: {fileID: 1916918342}
+  _lootSlotPanel: {fileID: 1624532566}
+  _lootButtonPrefab: {fileID: 2671617398358321355, guid: e6bcd68913404b743a154c2e89e91c75,
+    type: 3}
+  _toolTipUI: {fileID: 1519143050}
 --- !u!1 &98934564
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +586,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257644968}
   m_CullTransparentMesh: 1
+--- !u!1 &274634258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 274634260}
+  - component: {fileID: 274634259}
+  m_Layer: 0
+  m_Name: PlayerTest
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &274634259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274634258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66412d4a9d1b5b641b101eae618183a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: []
+--- !u!4 &274634260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274634258}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 428.01938, y: 664.3579, z: 0.7778282}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &362709155
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26857a0bdd264b84ca3d5fd5951651ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _listLootableItem:
+  _listPossibleLootableItem:
   - {fileID: 11400000, guid: 9af4c531f4a3bfe40adb89b3b2fa9797, type: 2}
   - {fileID: 11400000, guid: c96f59cb85d72b94f98fa8d3ff2e37ac, type: 2}
   - {fileID: 11400000, guid: 2187224ad70174b488ed9b6810ecbf6d, type: 2}
@@ -686,78 +757,11 @@ MonoBehaviour:
   - 100
   - 40
   - 20
+  _lootPanel: {fileID: 1916918342}
   _lootSlotPanel: {fileID: 1624532566}
   _lootButtonPrefab: {fileID: 2671617398358321355, guid: e6bcd68913404b743a154c2e89e91c75,
     type: 3}
   _toolTipUI: {fileID: 1519143050}
---- !u!1001 &603919659
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1476556678088720151, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_Name
-      value: Ben
-      objectReference: {fileID: 0}
-    - target: {fileID: 8451289285285861210, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 830.94507
-      objectReference: {fileID: 0}
-    - target: {fileID: 8451289285285861210, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 581.4256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8451289285285861210, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.111877
-      objectReference: {fileID: 0}
-    - target: {fileID: 8451289285285861210, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8451289285285861210, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8451289285285861210, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8451289285285861210, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8451289285285861210, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8451289285285861210, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8451289285285861210, guid: 25147a14d8a961e44a0cdada026ddde2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 25147a14d8a961e44a0cdada026ddde2, type: 3}
 --- !u!1 &625374940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,6 +1113,7 @@ GameObject:
   - component: {fileID: 768892297}
   - component: {fileID: 768892296}
   - component: {fileID: 768892295}
+  - component: {fileID: 768892299}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Selectable
@@ -1202,6 +1207,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1315178296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &768892299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768892294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26857a0bdd264b84ca3d5fd5951651ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listPossibleLootableItem:
+  - {fileID: 11400000, guid: 9af4c531f4a3bfe40adb89b3b2fa9797, type: 2}
+  - {fileID: 11400000, guid: c96f59cb85d72b94f98fa8d3ff2e37ac, type: 2}
+  - {fileID: 11400000, guid: 2187224ad70174b488ed9b6810ecbf6d, type: 2}
+  _pourcentDropableChance:
+  - 100
+  - 40
+  - 20
+  _lootPanel: {fileID: 1916918342}
+  _lootSlotPanel: {fileID: 1624532566}
+  _lootButtonPrefab: {fileID: 2671617398358321355, guid: e6bcd68913404b743a154c2e89e91c75,
+    type: 3}
+  _toolTipUI: {fileID: 1519143050}
 --- !u!1 &830076939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,6 +1244,7 @@ GameObject:
   - component: {fileID: 830076942}
   - component: {fileID: 830076941}
   - component: {fileID: 830076940}
+  - component: {fileID: 830076944}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Selectable
@@ -1309,6 +1340,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1315178296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &830076944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830076939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26857a0bdd264b84ca3d5fd5951651ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listPossibleLootableItem:
+  - {fileID: 11400000, guid: 9af4c531f4a3bfe40adb89b3b2fa9797, type: 2}
+  - {fileID: 11400000, guid: c96f59cb85d72b94f98fa8d3ff2e37ac, type: 2}
+  - {fileID: 11400000, guid: 2187224ad70174b488ed9b6810ecbf6d, type: 2}
+  _pourcentDropableChance:
+  - 100
+  - 40
+  - 20
+  _lootPanel: {fileID: 1916918342}
+  _lootSlotPanel: {fileID: 1624532566}
+  _lootButtonPrefab: {fileID: 2671617398358321355, guid: e6bcd68913404b743a154c2e89e91c75,
+    type: 3}
+  _toolTipUI: {fileID: 1519143050}
 --- !u!1 &923166850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,7 +1827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1916918343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1960,4 +2016,4 @@ SceneRoots:
   - {fileID: 687984135}
   - {fileID: 1315178296}
   - {fileID: 923166854}
-  - {fileID: 603919659}
+  - {fileID: 274634260}
