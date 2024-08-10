@@ -9,6 +9,7 @@ public class LootButton : MonoBehaviour
     private ItemData _lootData;
     private GameObject _player;
     private GameObject _lootableObject;
+    private PossibleLoot _possibleLoot;
 
     private void Start()
     {
@@ -25,17 +26,20 @@ public class LootButton : MonoBehaviour
         _toolTipUI.SetActive(false);
     }
 
-    public void SetItemData(ItemData item, GameObject toolTipUI, GameObject lootableObject)
+    public void SetItemData(ItemData item, GameObject toolTipUI, GameObject lootableObject, PossibleLoot possibleLoot)
     {
         _lootData = item;
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = item.name;
         _toolTipUI = toolTipUI;
         _lootableObject = lootableObject;
+        _possibleLoot = possibleLoot;
     }
 
     public void Loot()
     {
-        _player.GetComponent<PlayerLoot>().AddItem(_lootData);
-        _lootableObject.GetComponent<LootableObject>().RemoveItem(_lootData);
+        Debug.Log("loot : " + _lootData.name);
+        //_player.GetComponent<PlayerLoot>().AddItem(_lootData);
+        _lootableObject.GetComponent<LootableObject>().RemoveItem(_possibleLoot, _lootData);
+        Destroy(gameObject);
     }
 }

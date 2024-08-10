@@ -6,31 +6,15 @@ using UnityEngine.UI;
 
 public class LootableObject : MonoBehaviour
 {
-    [SerializeField] private ItemData[] _listPossibleLootableItem;
-    [SerializeField] private float[] _pourcentDropableChance;
     [SerializeField] private GameObject _lootPanel;
     [SerializeField] private GameObject _lootSlotPanel;
     [SerializeField] private GameObject _lootButtonPrefab;
     [SerializeField] private GameObject _toolTipUI;
 
-    private List<ItemData> _listLootableItem = new List<ItemData>();
-
-    private void Start()
-    {
-        for(int i=0;i< _listPossibleLootableItem.Length;i++)
-        {
-            float chanceDrop = Random.value*100;
-            if(chanceDrop < _pourcentDropableChance[i]) 
-            {
-                _listLootableItem.Add(_listPossibleLootableItem[i]);
-            }
-        }
-    }
-
-    public void OpenLootPanel()
+    public void OpenLootPanel(PossibleLoot possibleLoot)
     {
         _lootPanel.SetActive(true);
-        InstatiateItemButton();
+        InstatiateItemButton(possibleLoot);
     }
     public void CloseLootPanel()
     {
@@ -38,17 +22,17 @@ public class LootableObject : MonoBehaviour
         _lootPanel.SetActive(false);
     }
 
-    public void RemoveItem(ItemData item)
+    public void RemoveItem(PossibleLoot possibleLoot,ItemData item)
     {
-        _listLootableItem.Remove(item);
+        possibleLoot.GetLootList().Remove(item);
     }
 
-    private void InstatiateItemButton()
+    private void InstatiateItemButton(PossibleLoot possibleLoot)
     {
-        foreach(ItemData item in _listLootableItem)
+        foreach(ItemData item in possibleLoot.GetLootList())
         {
             GameObject newLootButton = Instantiate(_lootButtonPrefab, _lootSlotPanel.transform);
-            newLootButton.GetComponent<LootButton>().SetItemData(item, _toolTipUI,gameObject);
+            newLootButton.GetComponent<LootButton>().SetItemData(item, _toolTipUI,gameObject, possibleLoot);
         }
     }
 

@@ -9,6 +9,7 @@ public class OutlineSelection : MonoBehaviour
 
     [SerializeField] private Color _outlineColor;
     [SerializeField] private float _outlineThickness;
+    [SerializeField] private LootableObject lootableObject;
 
     private void Awake()
     {
@@ -52,22 +53,22 @@ public class OutlineSelection : MonoBehaviour
             {
                 if (_selection != null)
                 {
-                    _selection.GetComponent<LootableObject>().CloseLootPanel();
+                    lootableObject.CloseLootPanel();
                     _selection.gameObject.GetComponent<Outline>().enabled = false;
                 }
                 _selection = _raycastHit.transform;
                 _selection.gameObject.GetComponent<Outline>().enabled = true;
-                _selection.GetComponent<LootableObject>().OpenLootPanel();
+                lootableObject.OpenLootPanel(_selection.GetComponent<PossibleLoot>());
                 _highlight = null;
             }
             else
-            {
+            {/**
                 if (_selection)
                 {
-                    _selection.GetComponent<LootableObject>().CloseLootPanel();
+                    lootableObject.CloseLootPanel();
                     _selection.gameObject.GetComponent<Outline>().enabled = false;
                     _selection = null;
-                }
+                }**/
             }
         }
         #endregion
