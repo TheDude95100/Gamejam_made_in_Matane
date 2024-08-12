@@ -14,7 +14,7 @@ Le but ? Rejoindre un sanctuaire où de nombreux survivants vont pour survivre �
 | :-------------------------------------------------------: | :---------------------------------------------------------------: | :-------------------------------------------------:|
 | ${\textsf{\color{lightgreen}Dialogue avec un compagnon}}$ | ${\textsf{\color{lightgreen}Tilemap isométrique}}$                | ${\textsf{\color{lightgreen}Difficulté linéaire}}$ |
 | ${\textsf{\color{lightgreen}Composition du groupe}}$      | ${\textsf{\color{orange}Combat tour par tour avec limite de tours}}$ | ${\textsf{\color{lightgreen}Pas d'embranchement}}$ |
-|                                                           | ${\textsf{\color{red}Ressources à ramasser durant le combat}}$    |                                                    |
+|                                                           | ${\textsf{\color{orange}Ressources à ramasser durant le combat}}$    |                                                    |
 
 ###### Idée finale
 
