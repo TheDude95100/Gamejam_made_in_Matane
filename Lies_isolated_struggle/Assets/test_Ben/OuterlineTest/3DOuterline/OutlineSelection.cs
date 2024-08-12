@@ -3,16 +3,17 @@ using UnityEngine.EventSystems;
 
 public class OutlineSelection : MonoBehaviour
 {
+    [SerializeField] private Color _outlineColor;
+    [SerializeField] private float _outlineThickness;
+
+    private LootableObject lootableObject;
     private Transform _highlight;
     private Transform _selection;
     private RaycastHit _raycastHit;
 
-    [SerializeField] private Color _outlineColor;
-    [SerializeField] private float _outlineThickness;
-    [SerializeField] private LootableObject lootableObject;
-
     private void Awake()
     {
+        lootableObject = gameObject.GetComponent<LootableObject>();
         GameObject[] listSelectable = GameObject.FindGameObjectsWithTag("Selectable");
         foreach (GameObject go in listSelectable) 
         {
@@ -54,24 +55,20 @@ public class OutlineSelection : MonoBehaviour
                 if (_selection != null)
                 {
                     lootableObject.CloseLootPanel();
-                    _selection.gameObject.GetComponent<Outline>().enabled = false;
                 }
                 _selection = _raycastHit.transform;
                 _selection.gameObject.GetComponent<Outline>().enabled = true;
                 lootableObject.OpenLootPanel(_selection.GetComponent<PossibleLoot>());
                 _highlight = null;
             }
-            else
-            {/**
-                if (_selection)
-                {
-                    lootableObject.CloseLootPanel();
-                    _selection.gameObject.GetComponent<Outline>().enabled = false;
-                    _selection = null;
-                }**/
-            }
         }
         #endregion
+    }
+
+    public void DisableOutline()
+    {
+        _selection.gameObject.GetComponent<Outline>().enabled = false;
+        _selection = null;
     }
 
 }

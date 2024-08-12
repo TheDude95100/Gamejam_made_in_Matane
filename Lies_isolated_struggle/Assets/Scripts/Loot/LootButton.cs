@@ -38,8 +38,9 @@ public class LootButton : MonoBehaviour
     public void Loot()
     {
         Debug.Log("loot : " + _lootData.name);
-        //_player.GetComponent<PlayerLoot>().AddItem(_lootData);
+        _player.GetComponent<PlayerLoot>().AddItem(_lootData);
         _lootableObject.GetComponent<LootableObject>().RemoveItem(_possibleLoot, _lootData);
+        _toolTipUI.SetActive(false);
         Destroy(gameObject);
     }
 }

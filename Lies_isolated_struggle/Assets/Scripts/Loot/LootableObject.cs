@@ -11,6 +11,13 @@ public class LootableObject : MonoBehaviour
     [SerializeField] private GameObject _lootButtonPrefab;
     [SerializeField] private GameObject _toolTipUI;
 
+    private OutlineSelection _outlineSelection;
+
+    private void Start()
+    {
+        _outlineSelection = gameObject.GetComponent<OutlineSelection>();
+    }
+
     public void OpenLootPanel(PossibleLoot possibleLoot)
     {
         _lootPanel.SetActive(true);
@@ -20,6 +27,8 @@ public class LootableObject : MonoBehaviour
     {
         ClearItemButton();
         _lootPanel.SetActive(false);
+        _outlineSelection.DisableOutline();
+        _toolTipUI.SetActive(false);
     }
 
     public void RemoveItem(PossibleLoot possibleLoot,ItemData item)
