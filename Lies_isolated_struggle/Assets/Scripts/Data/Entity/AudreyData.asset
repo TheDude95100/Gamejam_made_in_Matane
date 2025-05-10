@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Audrey
   _entityType: 0
   _canDropItems: 0
-  _chanceToDropItem: 0.5
+  _dropType: 0
   _rangeOfAwareness: 3
   _canEnterCombat: 1
   _strengh: 1
@@ -31,8 +31,10 @@ MonoBehaviour:
   _rangedDamageBonus: 1
   _rangedAccuracyBonus: 1
   _meleeAccuracyBonus: 1
+  _priorityTarget: []
   _battleCry: ...
   _abilities: []
   _traits: []
+  _lootTableItemList: []
   _weaponList:
   - {fileID: 0}
