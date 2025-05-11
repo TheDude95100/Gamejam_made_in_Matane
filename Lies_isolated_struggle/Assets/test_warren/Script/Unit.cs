@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -21,9 +22,9 @@ public class Unit : MonoBehaviour
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
         }
 
-        if(Input.GetKeyDown(KeyCode.D))
+        if(Input.GetMouseButtonDown((int)MouseButton.Left))
         {
-            Move(new Vector3(-3,1,2));
+            Move(MouseWorld.GetPosition());
         }
     }
     private void Move(Vector3 targetPosition)
