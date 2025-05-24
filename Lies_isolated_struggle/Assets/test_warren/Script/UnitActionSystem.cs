@@ -11,13 +11,20 @@ public class UnitActionSystem : MonoBehaviour
     [SerializeField]
     private LayerMask unitLayerMask;
 
-    private static UnitActionSystem _instance;
+    public static UnitActionSystem Instance{ get; private set; }
 
-    //public Event EventHandler OnSelectedUnitChanged;
+    public event EventHandler OnSelectedUnitChanged;
 
     private void Awake()
     {
-        _instance = this;
+        if(Instance != null)
+        {
+            Debug.LogError("There'S more than one UnitActionSystem! " + transform + " - " + Instance);
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
     }
 
     private void Update()
@@ -37,10 +44,11 @@ public class UnitActionSystem : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if(Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, _instance.unitLayerMask))
+        if(Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, Instance.unitLayerMask))
         {
             if(raycastHit.transform.TryGetComponent<Unit>(out Unit unit))
             {
+                SetSelectedUnit(unit);
                 return true;
             }
         }
@@ -51,7 +59,7 @@ public class UnitActionSystem : MonoBehaviour
     {
         selectedUnit = unit;
 
-        //OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
+        OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public Unit GetSelectedUnit()
