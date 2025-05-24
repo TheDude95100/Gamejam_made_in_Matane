@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour
 
     private Vector3 _targetPosition;
 
-    private void Start()
+    private void Awake()
     {
         _targetPosition = transform.position;
     }
@@ -32,14 +32,9 @@ public class Unit : MonoBehaviour
         {
             unitAnimator.SetBool("IsWalking", false);
         }
-
-        if(Input.GetMouseButtonDown((int)MouseButton.Left))
-        {
-            Move(MouseWorld.GetPosition());
-        }
     }
 
-    private void Move(Vector3 targetPosition)
+    public void Move(Vector3 targetPosition)
     {
         _targetPosition = targetPosition;
     }
