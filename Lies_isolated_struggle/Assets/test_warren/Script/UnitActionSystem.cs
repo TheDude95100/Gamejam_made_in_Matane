@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,6 +12,8 @@ public class UnitActionSystem : MonoBehaviour
     private LayerMask unitLayerMask;
 
     private static UnitActionSystem _instance;
+
+    //public Event EventHandler OnSelectedUnitChanged;
 
     private void Awake()
     {
@@ -39,10 +41,21 @@ public class UnitActionSystem : MonoBehaviour
         {
             if(raycastHit.transform.TryGetComponent<Unit>(out Unit unit))
             {
-                selectedUnit = unit;
                 return true;
             }
         }
         return false;
+    }
+
+    private void SetSelectedUnit(Unit unit)
+    {
+        selectedUnit = unit;
+
+        //OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public Unit GetSelectedUnit()
+    {
+        return selectedUnit;
     }
 }
