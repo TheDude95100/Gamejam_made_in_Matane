@@ -1396,6 +1396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f2219e1da327b45a8e16df77733692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitAnimator: {fileID: 1376681260}
 --- !u!4 &325629513
 Transform:
   m_ObjectHideFlags: 0
@@ -7063,6 +7064,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6640039900101889840, guid: 0f8d47a6e99653140ac5bf40fa841201,
     type: 3}
   m_PrefabInstance: {fileID: 1351266790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1376681260 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95787105524477528, guid: 2f3e27eecb190e44a9af50723c394274,
+    type: 3}
+  m_PrefabInstance: {fileID: 782971210}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1389323707
 PrefabInstance:
