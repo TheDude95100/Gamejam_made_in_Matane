@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class UnitActionSystemUI : MonoBehaviour
     private Transform actionButtonPrefab;
     [SerializeField]
     private Transform actionButtonContainerTransform;
+    [SerializeField]
+    private TextMeshProUGUI actionPointsText;
 
     private List<ActionButtonUI> _actionButtonUIList;
 
@@ -22,8 +25,10 @@ public class UnitActionSystemUI : MonoBehaviour
     {
         UnitActionSystem.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
         UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
+        UnitActionSystem.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
         CreateUnitActionButtons();
         UpdateSelectedVisual();
+        UpdateActionPoints();
     }
 
     private void CreateUnitActionButtons()
@@ -47,10 +52,26 @@ public class UnitActionSystemUI : MonoBehaviour
         }
     }
 
+    private void UpdateSelectedVisual()
+    {
+        foreach(ActionButtonUI actionButtonUI in _actionButtonUIList)
+        {
+            actionButtonUI.UpdateSelectedVisual();
+        }
+    }
+
+    private void UpdateActionPoints()
+    {
+        Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+
+        actionPointsText.text = "Action Points: " + selectedUnit.GetActionPoints();
+    }
+
     private void UnitActionSystem_OnSelectedUnitChanged(object sender, EventArgs e)
     {
         CreateUnitActionButtons();
         UpdateSelectedVisual();
+        UpdateActionPoints();
     }
 
     private void UnitActionSystem_OnSelectedActionChanged(object sender, EventArgs e)
@@ -58,11 +79,8 @@ public class UnitActionSystemUI : MonoBehaviour
         UpdateSelectedVisual();
     }
 
-    private void UpdateSelectedVisual()
+    private void UnitActionSystem_OnActionStarted(object sender, EventArgs e)
     {
-        foreach(ActionButtonUI actionButtonUI in _actionButtonUIList)
-        {
-            actionButtonUI.UpdateSelectedVisual();
-        }
+        UpdateActionPoints();
     }
 }
