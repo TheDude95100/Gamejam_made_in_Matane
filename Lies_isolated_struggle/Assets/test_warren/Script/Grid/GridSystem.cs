@@ -41,6 +41,29 @@ public class GridSystem
         );
     }
 
+    public GridObject GetGridObject(GridPosition gridPosition)
+    {
+        return _gridObjectArray[gridPosition.x, gridPosition.z];
+    }
+
+    public int GetWidth()
+    {
+        return _width;
+    }
+
+    public int GetHeight()
+    {
+        return _height;
+    }
+
+    public bool IsValidPosition(GridPosition gridPosition)
+    {
+        return gridPosition.x >= 0 && 
+               gridPosition.z >= 0 && 
+               gridPosition.x < _width && 
+               gridPosition.z < _height;
+    }
+
     public void CreateDebugObjects(Transform debugPrefab)
     {
         for (int x = 0; x < _width; x++)
@@ -56,18 +79,5 @@ public class GridSystem
 
             }
         }
-    }
-
-    public GridObject GetGridObject(GridPosition gridPosition)
-    {
-        return _gridObjectArray[gridPosition.x, gridPosition.z];
-    }
-
-    public bool IsValidPosition(GridPosition gridPosition)
-    {
-        return gridPosition.x >= 0 && 
-               gridPosition.z >= 0 && 
-               gridPosition.x < _width && 
-               gridPosition.z < _height;
     }
 }
