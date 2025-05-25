@@ -15,7 +15,7 @@ public class Testing : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.T))
         {
-            unit.GetMoveAction().GetValidActionGridPosition();
+            unit.GetMoveAction().GetValidActionGridPositionList();
         }
     }
 }
