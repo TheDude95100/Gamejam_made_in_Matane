@@ -1,15 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpinAction : BaseAction
 {
-
     private float rotationAmountDone;
 
     private void Update()
     {
-        if (!isActive)
+        if (!_isActive)
         {
             return;
         }
@@ -20,13 +20,15 @@ public class SpinAction : BaseAction
 
         if(rotationAmountDone >= 360)
         {
-            isActive = false;
+            _isActive = false;
+            _onActionComplete();
         }
     }
 
-    public void Spin()
+    public void Spin(Action onSpinComplete)
     {
-        isActive = true;
+        _onActionComplete = onSpinComplete;
+        _isActive = true;
         rotationAmountDone = 0;
         Debug.Log("Spin");
     }

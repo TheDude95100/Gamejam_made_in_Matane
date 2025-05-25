@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public abstract class BaseAction : MonoBehaviour
 {
     protected Unit _unit;
-    protected bool isActive;
+    protected bool _isActive;
+    protected Action _onActionComplete;
 
     protected virtual void Awake()
     { 
