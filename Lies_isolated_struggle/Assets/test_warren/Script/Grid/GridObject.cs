@@ -21,6 +21,18 @@ public class GridObject
         return _unitList;
     }
 
+    public Unit GetUnit()
+    {
+        if(HasAnyUnit())
+        {
+            return _unitList[0];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public void AddUnit(Unit unit)
     {
         _unitList.Add(unit);

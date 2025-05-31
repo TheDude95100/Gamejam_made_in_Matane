@@ -20,8 +20,7 @@ public class SpinAction : BaseAction
 
         if(rotationAmountDone >= 360)
         {
-            _isActive = false;
-            _onActionComplete();
+            ActionComplete();
         }
     }
 
@@ -30,10 +29,9 @@ public class SpinAction : BaseAction
         return "Spin";
     }
 
-    public override void TakeAction(GridPosition gridPosition, Action onSpinComplete)
+    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
-        _onActionComplete = onSpinComplete;
-        _isActive = true;
+        ActionStart(onActionComplete);
         rotationAmountDone = 0;
     }
 

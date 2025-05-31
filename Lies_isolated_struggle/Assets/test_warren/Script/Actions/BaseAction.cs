@@ -13,12 +13,6 @@ public abstract class BaseAction : MonoBehaviour
         _unit = GetComponent<Unit>();
     }
 
-    public abstract string GetActionName();
-
-    public abstract void TakeAction(GridPosition gridPosition, Action onActionComplete);
-
-    public abstract List<GridPosition> GetValidActionGridPositionList();
-
     public virtual bool IsValidActionGridPosition(GridPosition gridPosition)
     {
         List<GridPosition> validGridPositionList = GetValidActionGridPositionList();
@@ -28,5 +22,23 @@ public abstract class BaseAction : MonoBehaviour
     public virtual int GetActionPointCost()
     {
         return 1;
+    }
+
+    public abstract string GetActionName();
+
+    public abstract void TakeAction(GridPosition gridPosition, Action onActionComplete);
+
+    public abstract List<GridPosition> GetValidActionGridPositionList();
+
+    protected void ActionStart(Action onActionComplete)
+    {
+        _isActive = true;
+        _onActionComplete = onActionComplete;
+    }
+
+    protected void ActionComplete()
+    {
+        _onActionComplete();
+        _isActive = false;
     }
 }
