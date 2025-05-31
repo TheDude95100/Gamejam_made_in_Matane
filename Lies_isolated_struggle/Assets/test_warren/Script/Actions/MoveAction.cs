@@ -6,12 +6,13 @@ using UnityEngine.EventSystems;
 
 public class MoveAction : BaseAction
 {
-    [SerializeField] 
-    private Animator unitAnimator;
     [SerializeField]
     private int maxMovementDistance = 4;
 
     private Vector3 _targetPosition;
+
+    public event EventHandler OnStartMoving;
+    public event EventHandler OnStopMoving;
 
     protected override void Awake()
     {
@@ -34,12 +35,10 @@ public class MoveAction : BaseAction
         {
             float moveSpeed = 4f;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
-
-            unitAnimator.SetBool("IsWalking", true);
         }
         else
         {
-            unitAnimator.SetBool("IsWalking", false);
+            OnStopMoving?.Invoke(this, EventArgs.Empty);
             ActionComplete();
         }
 
@@ -95,7 +94,8 @@ public class MoveAction : BaseAction
 
     public override void TakeAction(GridPosition targetGridPosition, Action onActionComplete)
     {
-        _targetPosition = LevelGrid.Instance.GetWorldPosition(targetGridPosition);
         ActionStart(onActionComplete);
+        _targetPosition = LevelGrid.Instance.GetWorldPosition(targetGridPosition);
+        OnStartMoving?.Invoke(this, EventArgs.Empty);
     }
 }

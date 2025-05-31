@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7994142490132266446}
-  - component: {fileID: 8926292672356509340}
   - component: {fileID: 8244655243758964190}
+  - component: {fileID: 8926292672356509340}
+  - component: {fileID: 1783213576012474727}
   - component: {fileID: 5130674298956219282}
   - component: {fileID: 8284720357299194791}
   - component: {fileID: 1539913935848485997}
@@ -38,19 +39,6 @@ Transform:
   - {fileID: 2519190734542577174}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8926292672356509340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2748814027576446682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f2219e1da327b45a8e16df77733692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEnemy: 0
 --- !u!65 &8244655243758964190
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72,6 +60,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4143344, y: 1.7211041, z: 0.370045}
   m_Center: {x: -0.015030518, y: 0.86311543, z: -0.0059518516}
+--- !u!114 &8926292672356509340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748814027576446682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f2219e1da327b45a8e16df77733692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnemy: 0
+--- !u!114 &1783213576012474727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748814027576446682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0175f79863ba6964eafe7902be2d9f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3542504341422888195}
 --- !u!114 &5130674298956219282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087cc2c194aa92f4785e999c21c37c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitAnimator: {fileID: 3542504341422888195}
   maxMovementDistance: 4
 --- !u!114 &8284720357299194791
 MonoBehaviour:
@@ -110,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1638fdacc683e49b962d05d6153e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxShootingDistance: 4
 --- !u!1 &5229568270297860282
 GameObject:
   m_ObjectHideFlags: 0
