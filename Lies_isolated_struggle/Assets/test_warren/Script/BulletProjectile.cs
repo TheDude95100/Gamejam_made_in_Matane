@@ -34,8 +34,6 @@ public class BulletProjectile : MonoBehaviour
 
     public void Setup(Vector3 targetPosition)
     {
-        Debug.Log(targetPosition);
-        Debug.Log(transform.position);
         _targetPosition = targetPosition;
     }
 }

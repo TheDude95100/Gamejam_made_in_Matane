@@ -19,6 +19,8 @@ public class Unit : MonoBehaviour
     private int _actionPoints;
 
     public static event EventHandler OnAnyActionPointsChanged;
+    public static event EventHandler OnAnyUnitSpawned;
+    public static event EventHandler OnAnyUnitDeath;
 
     private void Awake()
     {
@@ -37,6 +39,8 @@ public class Unit : MonoBehaviour
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
 
         _healthSystem.OnDeath += HealthSystem_OnDeath;
+
+        OnAnyUnitSpawned?.Invoke(this, EventArgs.Empty);
     }
 
     private void Update()
@@ -131,5 +135,7 @@ public class Unit : MonoBehaviour
     {
         LevelGrid.Instance.RemoveUnitAtGridPosition(_gridPosition, this);
         Destroy(gameObject);
+
+        OnAnyUnitDeath?.Invoke(this, EventArgs.Empty);
     }
 }
