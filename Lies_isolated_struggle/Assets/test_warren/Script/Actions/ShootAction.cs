@@ -124,6 +124,11 @@ public class ShootAction : BaseAction
         return _targetUnit;
     }
 
+    public int GetMaxShootingDistance()
+    {
+        return maxShootingDistance;
+    }
+
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         _targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
