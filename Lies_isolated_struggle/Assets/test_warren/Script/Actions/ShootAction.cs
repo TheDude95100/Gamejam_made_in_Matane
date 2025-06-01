@@ -118,10 +118,6 @@ public class ShootAction : BaseAction
 
         return validGridPositionList;
     }
-    public override int GetActionPointCost()
-    {
-        return 2;
-    }
 
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
