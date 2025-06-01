@@ -119,16 +119,22 @@ public class ShootAction : BaseAction
         return validGridPositionList;
     }
 
+    public Unit GetTargetUnit()
+    {
+        return _targetUnit;
+    }
+
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
-        ActionStart(onActionComplete);
-        _canShootBullet = true;
-
         _targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
 
         _currentState = State.Aiming;
         float aimingStateTime = 1f;
         _stateTimer = aimingStateTime;
+
+        _canShootBullet = true;
+
+        ActionStart(onActionComplete);
     }
 
     private void NextState()
