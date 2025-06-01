@@ -6,18 +6,17 @@ using UnityEngine;
 public class GridDebugObject : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshPro debugVisual;
+    private TextMeshPro gridPositionText;
 
-    private GridObject _gridObject;
+    private object _gridObject;
 
-    public void SetGridObject(GridObject gridObject)
+    public virtual void SetGridObject(object gridObject)
     {
         _gridObject = gridObject;
-
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        debugVisual.text = _gridObject.ToString();
+        gridPositionText.text = _gridObject.ToString();
     }
 }
