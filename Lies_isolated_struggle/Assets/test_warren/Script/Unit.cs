@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour
     private GridPosition _gridPosition;
     private MoveAction _moveAction;
     private SpinAction _spinAction;
+    private ShootAction _shootAction;
     private BaseAction[] _baseActionArray;
     private HealthSystem _healthSystem;
     private int _actionPoints;
@@ -27,6 +28,7 @@ public class Unit : MonoBehaviour
         _actionPoints = ACTION_POINTS_MAX;
         _moveAction = GetComponent<MoveAction>();
         _spinAction = GetComponent<SpinAction>();
+        _shootAction = GetComponent<ShootAction>();
         _baseActionArray = GetComponents<BaseAction>();
         _healthSystem = GetComponent<HealthSystem>();
     }
@@ -63,6 +65,11 @@ public class Unit : MonoBehaviour
     public SpinAction GetSpinAction()
     {
         return _spinAction;
+    }
+
+    public ShootAction GetShootAction()
+    {
+        return _shootAction;
     }
 
     public GridPosition GetGridPosition()
@@ -114,6 +121,8 @@ public class Unit : MonoBehaviour
 
         return false;
     }
+
+    public float GetHealthNormalized() => _healthSystem.GetHealthNormalized();
 
     private void SpendActionPoints(int amount)
     {
