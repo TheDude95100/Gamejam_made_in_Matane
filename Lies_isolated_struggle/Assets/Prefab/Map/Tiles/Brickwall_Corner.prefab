@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4450828996022101625}
   - component: {fileID: 3344829773187564141}
   - component: {fileID: 2622384306677662017}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Brickwall_Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}

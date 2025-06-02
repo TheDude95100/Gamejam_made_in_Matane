@@ -9,9 +9,11 @@ public class PathNode
     private int _hCost;
     private int _fCost;
     private PathNode _cameFromPathNode;
+    private bool _isWalkable;
 
     public PathNode(GridPosition gridPosition)
     {
+        _isWalkable = true;
         _gridPosition = gridPosition;
     }
 
@@ -40,6 +42,16 @@ public class PathNode
         return _gridPosition;
     }
 
+    public bool GetIsWalkable()
+    {
+        return _isWalkable;
+    }
+
+    public PathNode GetCameFromPathNode()
+    {
+        return _cameFromPathNode;
+    }
+
     public void SetGCost(int gCost)
     {
         _gCost = gCost;
@@ -50,6 +62,16 @@ public class PathNode
         _hCost = hCost;
     }
 
+    public void SetCameFromPathNode(PathNode pathNode)
+    {
+        _cameFromPathNode = pathNode;
+    }
+
+    public void SetIsWalkable (bool isWalkable)
+    {
+        _isWalkable = isWalkable;
+    }
+
     public void CalculateFCost()
     {
         _fCost = _gCost + _hCost;
@@ -58,15 +80,5 @@ public class PathNode
     public void ResetCameFromPathNode()
     {
         _cameFromPathNode = null;
-    }
-
-    public void SetCameFromPathNode(PathNode pathNode)
-    {
-        _cameFromPathNode = pathNode;
-    }
-
-    public PathNode GetCameFromPathNode()
-    {
-        return _cameFromPathNode;
     }
 }

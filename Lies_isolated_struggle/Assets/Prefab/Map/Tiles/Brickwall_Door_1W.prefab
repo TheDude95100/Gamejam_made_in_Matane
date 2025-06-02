@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8934929073440049723}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 274889451187844650}
   - component: {fileID: 5387784335365470339}
   - component: {fileID: 5359399946074112681}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Brickwall_Doorframe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4622054923260439003}
   - component: {fileID: 8084462475768865695}
   - component: {fileID: 3664883405605448187}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4483797226357774537}
   - component: {fileID: 7802498542623131093}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Brickwall_Door_1W
   m_TagString: Untagged
   m_Icon: {fileID: 0}

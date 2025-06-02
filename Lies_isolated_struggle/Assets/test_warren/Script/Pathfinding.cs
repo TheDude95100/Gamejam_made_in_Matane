@@ -11,10 +11,12 @@ public class Pathfinding : MonoBehaviour
 
     [SerializeField]
     private Transform gridObjectDebugPrefab;
+    [SerializeField]
+    private LayerMask obstacleLayerMask;
 
     private int _width;
     private int _height;
-    private float cellSize;
+    private float _cellSize;
     private GridSystem<PathNode> _gridSystem;
 
     public static Pathfinding Instance { get; private set; }
@@ -30,8 +32,32 @@ public class Pathfinding : MonoBehaviour
 
         Instance = this;
 
-        _gridSystem = new GridSystem<PathNode>(10, 10, 1f, (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
+    }
+
+    public void Setup(int width, int height, float cellSize)
+    {
+        _width = width;
+        _height = height;
+        _cellSize = cellSize;
+
+        _gridSystem = new GridSystem<PathNode>(_width, _height, _cellSize, (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
         _gridSystem.CreateDebugObjects(gridObjectDebugPrefab);
+
+
+
+        for (int x = 0; x < _width; x++)
+        {
+            for (int z = 0; z < _height; z++)
+            {
+                GridPosition gridPodition = new GridPosition(x, z);
+                Vector3 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPodition);
+                float raycastOffsetDistance = 5f;
+                if(Physics.Raycast(worldPosition + Vector3.down * raycastOffsetDistance, Vector3.up, raycastOffsetDistance * 2, obstacleLayerMask))
+                {
+                    GetNode(x, z).SetIsWalkable(false);
+                }
+            }
+        }
     }
 
     public List<GridPosition> FindPath(GridPosition startGridPosition, GridPosition endGridPosition)
@@ -43,9 +69,9 @@ public class Pathfinding : MonoBehaviour
         PathNode endNode = _gridSystem.GetGridObject(endGridPosition);
         openList.Add(startNode);
 
-        for (int x = 0; x < _gridSystem.GetWidth(); x++)
+        for (int x = 0; x < _width; x++)
         {
-            for (int z = 0; z < _gridSystem.GetHeight(); z++)
+            for (int z = 0; z < _height; z++)
             {
                 GridPosition gridPodition = new GridPosition(x, z);
                 PathNode pathNode = _gridSystem.GetGridObject(gridPodition);
@@ -78,6 +104,12 @@ public class Pathfinding : MonoBehaviour
             {
                 if(closedList.Contains(neighborNode))
                 {
+                    continue;
+                }
+
+                if(!neighborNode.GetIsWalkable())
+                {
+                    closedList.Add(neighborNode);
                     continue;
                 }
 

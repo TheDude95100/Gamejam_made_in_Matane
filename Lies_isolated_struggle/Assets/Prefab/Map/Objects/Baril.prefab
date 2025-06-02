@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8435906483009368066}
   - component: {fileID: 2260915584832945160}
   - component: {fileID: 5054587252034656204}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Baril_container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1868267446686279825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Baril_Top_pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 5865663755950798859}
   - component: {fileID: 863992893876879907}
   - component: {fileID: 22993787416203954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Baril_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7887903322244051081}
   - component: {fileID: 872954236450641025}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Baril
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -7,6 +7,12 @@ using UnityEngine.EventSystems;
 public class LevelGrid : MonoBehaviour
 {
     [SerializeField]
+    private int _width;
+    [SerializeField]
+    private int _height;
+    [SerializeField]
+    private float _cellSize;
+    [SerializeField]
     private Transform gridObjectDebugPrefab;
 
     private GridSystem<GridObject> gridSystem;
@@ -26,8 +32,13 @@ public class LevelGrid : MonoBehaviour
 
         Instance = this;
 
-        gridSystem = new GridSystem<GridObject>(10, 10, 1f, (GridSystem<GridObject> g, GridPosition gridPosition) => new GridObject(g, gridPosition));
+        gridSystem = new GridSystem<GridObject>(_width, _height, _cellSize, (GridSystem<GridObject> g, GridPosition gridPosition) => new GridObject(g, gridPosition));
         //gridSystem.CreateDebugObjects(gridObjectDebugPrefab);
+    }
+
+    private void Start()
+    {
+        Pathfinding.Instance.Setup(_width, _height, _cellSize);
     }
 
     public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
