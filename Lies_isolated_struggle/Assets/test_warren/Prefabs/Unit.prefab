@@ -404,6 +404,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxShootingDistance: 4
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &4304403299373333015
 GameObject:
   m_ObjectHideFlags: 0

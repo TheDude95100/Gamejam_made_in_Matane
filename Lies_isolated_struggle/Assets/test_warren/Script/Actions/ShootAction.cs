@@ -8,6 +8,8 @@ public class ShootAction : BaseAction
 {
     [SerializeField]
     private int maxShootingDistance = 4;
+    [SerializeField]
+    private LayerMask obstacleLayerMask;
 
     private enum State
     {
@@ -113,6 +115,20 @@ public class ShootAction : BaseAction
                 if(targetUnit.IsEnemy() == _unit.IsEnemy())
                 {
                     //unit in the same group
+                    continue;
+                }
+
+                Vector3 unitWorldPosition = LevelGrid.Instance.GetWorldPosition(unitGridPosition);
+                Vector3 shootDirection = (targetUnit.GetWorldPosition() + unitWorldPosition).normalized;
+                float unitShoulderHeight = 1.7f;
+                if(Physics.Raycast(
+                        unitWorldPosition + Vector3.up * unitShoulderHeight,
+                        shootDirection,
+                        Vector3.Distance(unitWorldPosition, targetUnit.GetWorldPosition()),
+                        obstacleLayerMask
+                    ))
+                {
+                    //blocked by an obstacle
                     continue;
                 }
 
