@@ -8,7 +8,6 @@ public class Pathfinding : MonoBehaviour
     private const int MOVE_STRAIGHT_COST = 10;
     private const int MOVE_DIAGONAL_COST = 14;
 
-
     [SerializeField]
     private Transform gridObjectDebugPrefab;
     [SerializeField]
@@ -31,7 +30,6 @@ public class Pathfinding : MonoBehaviour
         }
 
         Instance = this;
-
     }
 
     public void Setup(int width, int height, float cellSize)
@@ -41,9 +39,7 @@ public class Pathfinding : MonoBehaviour
         _cellSize = cellSize;
 
         _gridSystem = new GridSystem<PathNode>(_width, _height, _cellSize, (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
-        _gridSystem.CreateDebugObjects(gridObjectDebugPrefab);
-
-
+        //_gridSystem.CreateDebugObjects(gridObjectDebugPrefab);
 
         for (int x = 0; x < _width; x++)
         {
