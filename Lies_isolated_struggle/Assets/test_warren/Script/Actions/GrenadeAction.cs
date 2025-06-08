@@ -17,7 +17,6 @@ public class GrenadeAction : BaseAction
             return; 
         }
 
-        ActionComplete();
     }
     public override string GetActionName()
     {
