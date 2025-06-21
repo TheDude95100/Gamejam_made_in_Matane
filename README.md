@@ -10,9 +10,9 @@ Le but ? Rejoindre un sanctuaire où de nombreux survivants vont pour survivre �
 
 ### Idée pour le jeu
 ###### Prototype 
-|                        `Repaire`                          |                           `Combat`                                |                      `Niveaux`                     |
-| :-------------------------------------------------------: | :---------------------------------------------------------------: | :-------------------------------------------------:|
-| ${\textsf{\color{lightgreen}Dialogue avec un compagnon}}$ | ${\textsf{\color{orange}Vue isométrique}}$                | ${\textsf{\color{lightgreen}Difficulté linéaire}}$ |
+|                        `Repaire`                          |                           `Combat`                                   |                      `Niveaux`                     |
+| :-------------------------------------------------------: | :------------------------------------------------------------------: | :-------------------------------------------------:|
+| ${\textsf{\color{lightgreen}Dialogue avec un compagnon}}$ | ${\textsf{\color{orange}Vue isométrique}}$                           | ${\textsf{\color{lightgreen}Difficulté linéaire}}$ |
 | ${\textsf{\color{lightgreen}Composition du groupe}}$      | ${\textsf{\color{orange}Combat tour par tour avec limite de tours}}$ | ${\textsf{\color{lightgreen}Pas d'embranchement}}$ |
 |                                                           | ${\textsf{\color{orange}Ressources à ramasser durant le combat}}$    |                                                    |
   
